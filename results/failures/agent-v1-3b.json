@@ -1,0 +1,153 @@
+{
+  "run": "agent-v1-3b",
+  "cases": {
+    "always_reprune-0": {
+      "category": "answered before looking at code",
+      "evidence": "tools ['bisect_commits']; claimed src/brute_force.py:100"
+    },
+    "always_reprune-1": {
+      "category": "answered before looking at code",
+      "evidence": "tools ['bisect_commits']; claimed src/algorithm.py:100"
+    },
+    "always_reprune-2": {
+      "category": "answered before looking at code",
+      "evidence": "tools ['bisect_commits']; claimed src/algorithm.py:100"
+    },
+    "copy_vectors-0": {
+      "category": "answered before looking at code",
+      "evidence": "tools ['bisect_commits']; claimed src/knn.py:100"
+    },
+    "copy_vectors-1": {
+      "category": "answered before looking at code",
+      "evidence": "tools ['bisect_commits']; claimed src/search.py:100"
+    },
+    "copy_vectors-2": {
+      "category": "answered before looking at code",
+      "evidence": "tools ['bisect_commits']; claimed src/distance.py:100"
+    },
+    "debug_log-0": {
+      "category": "answered before looking at code",
+      "evidence": "tools ['bisect_commits']; claimed search.py:100"
+    },
+    "debug_log-1": {
+      "category": "answered before looking at code",
+      "evidence": "tools ['bisect_commits']; claimed search.py:100"
+    },
+    "debug_log-2": {
+      "category": "answered before looking at code",
+      "evidence": "tools ['bisect_commits']; claimed search.py:100"
+    },
+    "devectorize_dists-0": {
+      "category": "answered before looking at code",
+      "evidence": "tools ['bisect_commits']; claimed src/search.py:100"
+    },
+    "devectorize_dists-1": {
+      "category": "answered before looking at code",
+      "evidence": "tools ['bisect_commits']; claimed src/search.py:100"
+    },
+    "devectorize_dists-2": {
+      "category": "answered before looking at code",
+      "evidence": "tools ['bisect_commits']; claimed search.py:100"
+    },
+    "devectorize_l2-0": {
+      "category": "answered before looking at code",
+      "evidence": "tools ['bisect_commits']; claimed src/search.py:100"
+    },
+    "devectorize_l2-1": {
+      "category": "answered before looking at code",
+      "evidence": "tools ['bisect_commits']; claimed search.py:10"
+    },
+    "devectorize_l2-2": {
+      "category": "answered before looking at code",
+      "evidence": "tools ['bisect_commits']; claimed search.py:100"
+    },
+    "ef_default-0": {
+      "category": "answered before looking at code",
+      "evidence": "tools ['bisect_commits']; claimed src/search.py:100"
+    },
+    "ef_default-1": {
+      "category": "answered before looking at code",
+      "evidence": "tools ['bisect_commits']; claimed search.py:100"
+    },
+    "ef_default-2": {
+      "category": "answered before looking at code",
+      "evidence": "tools ['bisect_commits']; claimed search.py:100"
+    },
+    "heapify_each-0": {
+      "category": "answered before looking at code",
+      "evidence": "tools ['bisect_commits']; claimed src/search.py:100"
+    },
+    "heapify_each-1": {
+      "category": "answered before looking at code",
+      "evidence": "tools ['bisect_commits']; claimed src/search.py:144"
+    },
+    "heapify_each-2": {
+      "category": "answered before looking at code",
+      "evidence": "tools ['bisect_commits']; claimed src/search.py:100"
+    },
+    "heuristic_recompute-0": {
+      "category": "answered before looking at code",
+      "evidence": "tools ['bisect_commits']; claimed heuristic.py:100"
+    },
+    "heuristic_recompute-1": {
+      "category": "answered before looking at code",
+      "evidence": "tools ['bisect_commits']; claimed src/algorithm.py:100"
+    },
+    "heuristic_recompute-2": {
+      "category": "answered before looking at code",
+      "evidence": "tools ['bisect_commits']; claimed heuristic.py:100"
+    },
+    "pairwise_python-0": {
+      "category": "answered before looking at code",
+      "evidence": "tools ['bisect_commits']; claimed brute_force.py:100"
+    },
+    "pairwise_python-1": {
+      "category": "answered before looking at code",
+      "evidence": "tools ['bisect_commits']; claimed src/algorithm.py:100"
+    },
+    "pairwise_python-2": {
+      "category": "answered before looking at code",
+      "evidence": "tools ['bisect_commits']; claimed io.py:100"
+    },
+    "stack_gather-0": {
+      "category": "answered before looking at code",
+      "evidence": "tools ['bisect_commits']; claimed search.py:100"
+    },
+    "stack_gather-1": {
+      "category": "answered before looking at code",
+      "evidence": "tools ['bisect_commits']; claimed src/search.py:100"
+    },
+    "stack_gather-2": {
+      "category": "answered before looking at code",
+      "evidence": "tools ['bisect_commits']; claimed src/search.py:100"
+    },
+    "visited_list-0": {
+      "category": "answered before looking at code",
+      "evidence": "tools ['bisect_commits']; claimed search_layer.py:100"
+    },
+    "visited_list-1": {
+      "category": "answered before looking at code",
+      "evidence": "tools ['bisect_commits']; claimed search.py:100"
+    },
+    "visited_list-2": {
+      "category": "answered before looking at code",
+      "evidence": "tools ['bisect_commits']; claimed search.py:100"
+    },
+    "wide_descent-0": {
+      "category": "answered before looking at code",
+      "evidence": "tools ['bisect_commits']; claimed search.py:100"
+    },
+    "wide_descent-1": {
+      "category": "answered before looking at code",
+      "evidence": "tools ['bisect_commits']; claimed search.py:100"
+    },
+    "wide_descent-2": {
+      "category": "answered before looking at code",
+      "evidence": "tools ['bisect_commits']; claimed search.py:10"
+    }
+  },
+  "counts": {
+    "answered before looking at code": 36
+  },
+  "hallucinated_args_cases": 0
+}

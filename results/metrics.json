@@ -1,0 +1,934 @@
+{
+  "agent-v1-3b": {
+    "n_cases": 63,
+    "n_detectable": 36,
+    "n_subthreshold": 15,
+    "n_controls": 12,
+    "detection": {
+      "k": 36,
+      "n": 36,
+      "rate": 1.0,
+      "ci95": [
+        0.904,
+        1
+      ]
+    },
+    "false_alarm": {
+      "k": 0,
+      "n": 12,
+      "rate": 0.0,
+      "ci95": [
+        0,
+        0.243
+      ]
+    },
+    "subthreshold_flagged": {
+      "k": 3,
+      "n": 15,
+      "rate": 0.2,
+      "ci95": [
+        0.07,
+        0.452
+      ]
+    },
+    "errors": 0,
+    "culprit_commit": {
+      "k": 36,
+      "n": 36,
+      "rate": 1.0,
+      "ci95": [
+        0.904,
+        1
+      ]
+    },
+    "root_cause_line": {
+      "k": 0,
+      "n": 36,
+      "rate": 0.0,
+      "ci95": [
+        0,
+        0.096
+      ]
+    },
+    "root_cause_line_strict": {
+      "k": 0,
+      "n": 36,
+      "rate": 0.0,
+      "ci95": [
+        0,
+        0.096
+      ]
+    },
+    "verified_fix": {
+      "k": 0,
+      "n": 36,
+      "rate": 0.0,
+      "ci95": [
+        0,
+        0.096
+      ]
+    },
+    "false_fix": {
+      "cases": [],
+      "k": 0,
+      "n": 0,
+      "rate": null
+    },
+    "hidden_tests": {
+      "checked": 0,
+      "failed": []
+    },
+    "handoffs": {
+      "total": 36,
+      "necessary": 36,
+      "unnecessary_correct_diagnosis": 0
+    },
+    "calibration": {
+      "low": null,
+      "medium": {
+        "k": 0,
+        "n": 36,
+        "rate": 0.0,
+        "ci95": [
+          0,
+          0.096
+        ]
+      },
+      "high": null
+    },
+    "cost": {
+      "cases": 36,
+      "steps": 2,
+      "tool_calls": 1,
+      "benchmark_comparisons_measured": 0,
+      "wall_time_s": 4.46,
+      "llm_seconds": 4.28,
+      "prompt_tokens": 3675.67,
+      "completion_tokens": 110.31
+    },
+    "by_category": {
+      "algorithmic": {
+        "n": 9,
+        "commit": 9,
+        "line": 0,
+        "verified": 0
+      },
+      "de-vectorization": {
+        "n": 9,
+        "commit": 9,
+        "line": 0,
+        "verified": 0
+      },
+      "copying": {
+        "n": 3,
+        "commit": 3,
+        "line": 0,
+        "verified": 0
+      },
+      "lost caching": {
+        "n": 3,
+        "commit": 3,
+        "line": 0,
+        "verified": 0
+      },
+      "logging in hot path": {
+        "n": 3,
+        "commit": 3,
+        "line": 0,
+        "verified": 0
+      },
+      "configuration": {
+        "n": 6,
+        "commit": 6,
+        "line": 0,
+        "verified": 0
+      },
+      "allocation churn": {
+        "n": 3,
+        "commit": 3,
+        "line": 0,
+        "verified": 0
+      }
+    }
+  },
+  "agent-v2-3b": {
+    "n_cases": 63,
+    "n_detectable": 36,
+    "n_subthreshold": 15,
+    "n_controls": 12,
+    "detection": {
+      "k": 36,
+      "n": 36,
+      "rate": 1.0,
+      "ci95": [
+        0.904,
+        1
+      ]
+    },
+    "false_alarm": {
+      "k": 0,
+      "n": 12,
+      "rate": 0.0,
+      "ci95": [
+        0,
+        0.243
+      ]
+    },
+    "subthreshold_flagged": {
+      "k": 3,
+      "n": 15,
+      "rate": 0.2,
+      "ci95": [
+        0.07,
+        0.452
+      ]
+    },
+    "errors": 0,
+    "culprit_commit": {
+      "k": 14,
+      "n": 36,
+      "rate": 0.389,
+      "ci95": [
+        0.248,
+        0.551
+      ]
+    },
+    "root_cause_line": {
+      "k": 13,
+      "n": 36,
+      "rate": 0.361,
+      "ci95": [
+        0.225,
+        0.524
+      ]
+    },
+    "root_cause_line_strict": {
+      "k": 2,
+      "n": 36,
+      "rate": 0.056,
+      "ci95": [
+        0.015,
+        0.181
+      ]
+    },
+    "verified_fix": {
+      "k": 1,
+      "n": 36,
+      "rate": 0.028,
+      "ci95": [
+        0.005,
+        0.142
+      ]
+    },
+    "false_fix": {
+      "cases": [],
+      "k": 0,
+      "n": 1,
+      "rate": 0.0,
+      "ci95": [
+        0,
+        0.793
+      ]
+    },
+    "hidden_tests": {
+      "checked": 0,
+      "failed": []
+    },
+    "handoffs": {
+      "total": 35,
+      "necessary": 23,
+      "unnecessary_correct_diagnosis": 12
+    },
+    "calibration": {
+      "low": {
+        "k": 1,
+        "n": 1,
+        "rate": 1.0,
+        "ci95": [
+          0.207,
+          1
+        ]
+      },
+      "medium": {
+        "k": 11,
+        "n": 12,
+        "rate": 0.917,
+        "ci95": [
+          0.646,
+          0.985
+        ]
+      },
+      "high": {
+        "k": 1,
+        "n": 1,
+        "rate": 1.0,
+        "ci95": [
+          0.207,
+          1
+        ]
+      }
+    },
+    "cost": {
+      "cases": 36,
+      "steps": 13.11,
+      "tool_calls": 10.14,
+      "benchmark_comparisons_measured": 0.42,
+      "wall_time_s": 37.4,
+      "llm_seconds": 34.71,
+      "prompt_tokens": 44217.08,
+      "completion_tokens": 1138.42
+    },
+    "by_category": {
+      "algorithmic": {
+        "n": 9,
+        "commit": 2,
+        "line": 1,
+        "verified": 0
+      },
+      "de-vectorization": {
+        "n": 9,
+        "commit": 3,
+        "line": 3,
+        "verified": 0
+      },
+      "copying": {
+        "n": 3,
+        "commit": 2,
+        "line": 2,
+        "verified": 1
+      },
+      "lost caching": {
+        "n": 3,
+        "commit": 0,
+        "line": 0,
+        "verified": 0
+      },
+      "logging in hot path": {
+        "n": 3,
+        "commit": 2,
+        "line": 2,
+        "verified": 0
+      },
+      "configuration": {
+        "n": 6,
+        "commit": 3,
+        "line": 3,
+        "verified": 0
+      },
+      "allocation churn": {
+        "n": 3,
+        "commit": 2,
+        "line": 2,
+        "verified": 0
+      }
+    }
+  },
+  "agent-v3-3b": {
+    "n_cases": 63,
+    "n_detectable": 36,
+    "n_subthreshold": 15,
+    "n_controls": 12,
+    "detection": {
+      "k": 36,
+      "n": 36,
+      "rate": 1.0,
+      "ci95": [
+        0.904,
+        1
+      ]
+    },
+    "false_alarm": {
+      "k": 0,
+      "n": 12,
+      "rate": 0.0,
+      "ci95": [
+        0,
+        0.243
+      ]
+    },
+    "subthreshold_flagged": {
+      "k": 3,
+      "n": 15,
+      "rate": 0.2,
+      "ci95": [
+        0.07,
+        0.452
+      ]
+    },
+    "errors": 0,
+    "culprit_commit": {
+      "k": 24,
+      "n": 36,
+      "rate": 0.667,
+      "ci95": [
+        0.503,
+        0.798
+      ]
+    },
+    "root_cause_line": {
+      "k": 22,
+      "n": 36,
+      "rate": 0.611,
+      "ci95": [
+        0.449,
+        0.752
+      ]
+    },
+    "root_cause_line_strict": {
+      "k": 4,
+      "n": 36,
+      "rate": 0.111,
+      "ci95": [
+        0.044,
+        0.253
+      ]
+    },
+    "verified_fix": {
+      "k": 2,
+      "n": 36,
+      "rate": 0.056,
+      "ci95": [
+        0.015,
+        0.181
+      ]
+    },
+    "false_fix": {
+      "cases": [],
+      "k": 0,
+      "n": 2,
+      "rate": 0.0,
+      "ci95": [
+        0,
+        0.658
+      ]
+    },
+    "hidden_tests": {
+      "checked": 0,
+      "failed": []
+    },
+    "handoffs": {
+      "total": 34,
+      "necessary": 14,
+      "unnecessary_correct_diagnosis": 20
+    },
+    "calibration": {
+      "low": {
+        "k": 1,
+        "n": 1,
+        "rate": 1.0,
+        "ci95": [
+          0.207,
+          1
+        ]
+      },
+      "medium": {
+        "k": 20,
+        "n": 22,
+        "rate": 0.909,
+        "ci95": [
+          0.722,
+          0.975
+        ]
+      },
+      "high": {
+        "k": 1,
+        "n": 1,
+        "rate": 1.0,
+        "ci95": [
+          0.207,
+          1
+        ]
+      }
+    },
+    "cost": {
+      "cases": 36,
+      "steps": 11.33,
+      "tool_calls": 7.75,
+      "benchmark_comparisons_measured": 0.44,
+      "wall_time_s": 70.16,
+      "llm_seconds": 67.67,
+      "prompt_tokens": 34978.81,
+      "completion_tokens": 1028.44
+    },
+    "by_category": {
+      "algorithmic": {
+        "n": 9,
+        "commit": 4,
+        "line": 3,
+        "verified": 0
+      },
+      "de-vectorization": {
+        "n": 9,
+        "commit": 5,
+        "line": 5,
+        "verified": 0
+      },
+      "copying": {
+        "n": 3,
+        "commit": 2,
+        "line": 2,
+        "verified": 1
+      },
+      "lost caching": {
+        "n": 3,
+        "commit": 2,
+        "line": 2,
+        "verified": 0
+      },
+      "logging in hot path": {
+        "n": 3,
+        "commit": 3,
+        "line": 2,
+        "verified": 1
+      },
+      "configuration": {
+        "n": 6,
+        "commit": 6,
+        "line": 6,
+        "verified": 0
+      },
+      "allocation churn": {
+        "n": 3,
+        "commit": 2,
+        "line": 2,
+        "verified": 0
+      }
+    }
+  },
+  "classic": {
+    "n_cases": 63,
+    "n_detectable": 36,
+    "n_subthreshold": 15,
+    "n_controls": 12,
+    "detection": {
+      "k": 36,
+      "n": 36,
+      "rate": 1.0,
+      "ci95": [
+        0.904,
+        1
+      ]
+    },
+    "false_alarm": {
+      "k": 0,
+      "n": 12,
+      "rate": 0.0,
+      "ci95": [
+        0,
+        0.243
+      ]
+    },
+    "subthreshold_flagged": {
+      "k": 3,
+      "n": 15,
+      "rate": 0.2,
+      "ci95": [
+        0.07,
+        0.452
+      ]
+    },
+    "errors": 0,
+    "culprit_commit": {
+      "k": 36,
+      "n": 36,
+      "rate": 1.0,
+      "ci95": [
+        0.904,
+        1
+      ]
+    },
+    "root_cause_line": {
+      "k": 35,
+      "n": 36,
+      "rate": 0.972,
+      "ci95": [
+        0.858,
+        0.995
+      ]
+    },
+    "root_cause_line_strict": {
+      "k": 35,
+      "n": 36,
+      "rate": 0.972,
+      "ci95": [
+        0.858,
+        0.995
+      ]
+    },
+    "verified_fix": {
+      "k": 0,
+      "n": 36,
+      "rate": 0.0,
+      "ci95": [
+        0,
+        0.096
+      ]
+    },
+    "false_fix": {
+      "cases": [],
+      "k": 0,
+      "n": 0,
+      "rate": null
+    },
+    "hidden_tests": {
+      "checked": 0,
+      "failed": []
+    },
+    "handoffs": {
+      "total": 36,
+      "necessary": 1,
+      "unnecessary_correct_diagnosis": 35
+    },
+    "calibration": {
+      "low": null,
+      "medium": {
+        "k": 35,
+        "n": 36,
+        "rate": 0.972,
+        "ci95": [
+          0.858,
+          0.995
+        ]
+      },
+      "high": null
+    },
+    "cost": {
+      "cases": 36,
+      "steps": null,
+      "tool_calls": null,
+      "benchmark_comparisons_measured": 5.58,
+      "wall_time_s": 15.32,
+      "llm_seconds": null,
+      "prompt_tokens": null,
+      "completion_tokens": null
+    },
+    "by_category": {
+      "algorithmic": {
+        "n": 9,
+        "commit": 9,
+        "line": 8,
+        "verified": 0
+      },
+      "de-vectorization": {
+        "n": 9,
+        "commit": 9,
+        "line": 9,
+        "verified": 0
+      },
+      "copying": {
+        "n": 3,
+        "commit": 3,
+        "line": 3,
+        "verified": 0
+      },
+      "lost caching": {
+        "n": 3,
+        "commit": 3,
+        "line": 3,
+        "verified": 0
+      },
+      "logging in hot path": {
+        "n": 3,
+        "commit": 3,
+        "line": 3,
+        "verified": 0
+      },
+      "configuration": {
+        "n": 6,
+        "commit": 6,
+        "line": 6,
+        "verified": 0
+      },
+      "allocation churn": {
+        "n": 3,
+        "commit": 3,
+        "line": 3,
+        "verified": 0
+      }
+    }
+  },
+  "notools-3b": {
+    "n_cases": 51,
+    "n_detectable": 36,
+    "n_subthreshold": 15,
+    "n_controls": 0,
+    "detection": {
+      "k": 36,
+      "n": 36,
+      "rate": 1.0,
+      "ci95": [
+        0.904,
+        1
+      ]
+    },
+    "false_alarm": null,
+    "subthreshold_flagged": {
+      "k": 3,
+      "n": 15,
+      "rate": 0.2,
+      "ci95": [
+        0.07,
+        0.452
+      ]
+    },
+    "errors": 0,
+    "culprit_commit": {
+      "given": true
+    },
+    "root_cause_line": {
+      "k": 36,
+      "n": 36,
+      "rate": 1.0,
+      "ci95": [
+        0.904,
+        1
+      ]
+    },
+    "root_cause_line_strict": {
+      "k": 0,
+      "n": 36,
+      "rate": 0.0,
+      "ci95": [
+        0,
+        0.096
+      ]
+    },
+    "verified_fix": {
+      "k": 3,
+      "n": 36,
+      "rate": 0.083,
+      "ci95": [
+        0.029,
+        0.218
+      ]
+    },
+    "false_fix": {
+      "cases": [],
+      "k": 0,
+      "n": 3,
+      "rate": 0.0,
+      "ci95": [
+        0,
+        0.562
+      ]
+    },
+    "hidden_tests": {
+      "checked": 0,
+      "failed": []
+    },
+    "handoffs": {
+      "total": 33,
+      "necessary": 0,
+      "unnecessary_correct_diagnosis": 33
+    },
+    "calibration": {
+      "low": null,
+      "medium": {
+        "k": 36,
+        "n": 36,
+        "rate": 1.0,
+        "ci95": [
+          0.904,
+          1
+        ]
+      },
+      "high": null
+    },
+    "cost": {
+      "cases": 36,
+      "steps": null,
+      "tool_calls": null,
+      "benchmark_comparisons_measured": 0.39,
+      "wall_time_s": 4.62,
+      "llm_seconds": 3.85,
+      "prompt_tokens": 399.81,
+      "completion_tokens": 141.69
+    },
+    "by_category": {
+      "algorithmic": {
+        "n": 9,
+        "commit": 9,
+        "line": 9,
+        "verified": 0
+      },
+      "de-vectorization": {
+        "n": 9,
+        "commit": 9,
+        "line": 9,
+        "verified": 1
+      },
+      "copying": {
+        "n": 3,
+        "commit": 3,
+        "line": 3,
+        "verified": 0
+      },
+      "lost caching": {
+        "n": 3,
+        "commit": 3,
+        "line": 3,
+        "verified": 0
+      },
+      "logging in hot path": {
+        "n": 3,
+        "commit": 3,
+        "line": 3,
+        "verified": 2
+      },
+      "configuration": {
+        "n": 6,
+        "commit": 6,
+        "line": 6,
+        "verified": 0
+      },
+      "allocation churn": {
+        "n": 3,
+        "commit": 3,
+        "line": 3,
+        "verified": 0
+      }
+    }
+  },
+  "notools-v3-3b": {
+    "n_cases": 51,
+    "n_detectable": 36,
+    "n_subthreshold": 15,
+    "n_controls": 0,
+    "detection": {
+      "k": 36,
+      "n": 36,
+      "rate": 1.0,
+      "ci95": [
+        0.904,
+        1
+      ]
+    },
+    "false_alarm": null,
+    "subthreshold_flagged": {
+      "k": 3,
+      "n": 15,
+      "rate": 0.2,
+      "ci95": [
+        0.07,
+        0.452
+      ]
+    },
+    "errors": 0,
+    "culprit_commit": {
+      "given": true
+    },
+    "root_cause_line": {
+      "k": 36,
+      "n": 36,
+      "rate": 1.0,
+      "ci95": [
+        0.904,
+        1
+      ]
+    },
+    "root_cause_line_strict": {
+      "k": 0,
+      "n": 36,
+      "rate": 0.0,
+      "ci95": [
+        0,
+        0.096
+      ]
+    },
+    "verified_fix": {
+      "k": 3,
+      "n": 36,
+      "rate": 0.083,
+      "ci95": [
+        0.029,
+        0.218
+      ]
+    },
+    "false_fix": {
+      "cases": [],
+      "k": 0,
+      "n": 3,
+      "rate": 0.0,
+      "ci95": [
+        0,
+        0.562
+      ]
+    },
+    "hidden_tests": {
+      "checked": 0,
+      "failed": []
+    },
+    "handoffs": {
+      "total": 33,
+      "necessary": 0,
+      "unnecessary_correct_diagnosis": 33
+    },
+    "calibration": {
+      "low": null,
+      "medium": {
+        "k": 36,
+        "n": 36,
+        "rate": 1.0,
+        "ci95": [
+          0.904,
+          1
+        ]
+      },
+      "high": null
+    },
+    "cost": {
+      "cases": 36,
+      "steps": null,
+      "tool_calls": null,
+      "benchmark_comparisons_measured": 0,
+      "wall_time_s": 71.42,
+      "llm_seconds": 70.57,
+      "prompt_tokens": 399.81,
+      "completion_tokens": 141.69
+    },
+    "by_category": {
+      "algorithmic": {
+        "n": 9,
+        "commit": 9,
+        "line": 9,
+        "verified": 0
+      },
+      "de-vectorization": {
+        "n": 9,
+        "commit": 9,
+        "line": 9,
+        "verified": 1
+      },
+      "copying": {
+        "n": 3,
+        "commit": 3,
+        "line": 3,
+        "verified": 0
+      },
+      "lost caching": {
+        "n": 3,
+        "commit": 3,
+        "line": 3,
+        "verified": 0
+      },
+      "logging in hot path": {
+        "n": 3,
+        "commit": 3,
+        "line": 3,
+        "verified": 2
+      },
+      "configuration": {
+        "n": 6,
+        "commit": 6,
+        "line": 6,
+        "verified": 0
+      },
+      "allocation churn": {
+        "n": 3,
+        "commit": 3,
+        "line": 3,
+        "verified": 0
+      }
+    }
+  }
+}

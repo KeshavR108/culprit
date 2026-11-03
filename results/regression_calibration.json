@@ -1,0 +1,334 @@
+{
+  "env": {
+    "cpu": "Apple M4",
+    "cores": 10,
+    "python": "3.13.5",
+    "platform": "macOS-26.1-arm64-arm-64bit-Mach-O",
+    "load_avg_1m": 5.2724609375
+  },
+  "regressions": {
+    "visited_list": {
+      "category": "algorithmic",
+      "bench": "search",
+      "expected": "large",
+      "ratio": 1.3522,
+      "ci95": [
+        1.2497,
+        1.4436
+      ],
+      "verdict": "regression",
+      "median_good_ms": 17.827,
+      "median_bad_ms": 24.106,
+      "rounds": 30,
+      "tests_pass_with_regression": true,
+      "tests_tail": [
+        "45 passed, 9 deselected in 3.18s"
+      ],
+      "above_threshold": true
+    },
+    "heap_to_sort": {
+      "category": "algorithmic",
+      "bench": "search",
+      "expected": "moderate",
+      "ratio": 1.006,
+      "ci95": [
+        0.9276,
+        1.0971
+      ],
+      "verdict": "inconclusive",
+      "median_good_ms": 18.093,
+      "median_bad_ms": 18.201,
+      "rounds": 60,
+      "tests_pass_with_regression": true,
+      "tests_tail": [
+        "41 passed, 9 deselected in 2.25s"
+      ],
+      "above_threshold": false
+    },
+    "devectorize_dists": {
+      "category": "de-vectorization",
+      "bench": "search",
+      "expected": "large",
+      "ratio": 3.172,
+      "ci95": [
+        2.8883,
+        3.3759
+      ],
+      "verdict": "regression",
+      "median_good_ms": 18.848,
+      "median_bad_ms": 59.787,
+      "rounds": 30,
+      "tests_pass_with_regression": true,
+      "tests_tail": [
+        "37 passed, 9 deselected in 3.64s"
+      ],
+      "above_threshold": true
+    },
+    "devectorize_l2": {
+      "category": "de-vectorization",
+      "bench": "search",
+      "expected": "large",
+      "ratio": 2.4916,
+      "ci95": [
+        2.2833,
+        2.7112
+      ],
+      "verdict": "regression",
+      "median_good_ms": 17.897,
+      "median_bad_ms": 44.592,
+      "rounds": 30,
+      "tests_pass_with_regression": true,
+      "tests_tail": [
+        "39 passed, 9 deselected in 2.94s"
+      ],
+      "above_threshold": true
+    },
+    "copy_vectors": {
+      "category": "copying",
+      "bench": "search",
+      "expected": "large",
+      "ratio": 1.4716,
+      "ci95": [
+        1.4218,
+        1.5393
+      ],
+      "verdict": "regression",
+      "median_good_ms": 17.745,
+      "median_bad_ms": 26.113,
+      "rounds": 30,
+      "tests_pass_with_regression": true,
+      "tests_tail": [
+        "37 passed, 9 deselected in 2.07s"
+      ],
+      "above_threshold": true
+    },
+    "heuristic_recompute": {
+      "category": "lost caching",
+      "bench": "build",
+      "expected": "large",
+      "ratio": 6.6422,
+      "ci95": [
+        5.7575,
+        7.0198
+      ],
+      "verdict": "regression",
+      "median_good_ms": 96.959,
+      "median_bad_ms": 644.019,
+      "rounds": 30,
+      "tests_pass_with_regression": true,
+      "tests_tail": [
+        "38 passed, 9 deselected in 6.06s"
+      ],
+      "above_threshold": true
+    },
+    "debug_log": {
+      "category": "logging in hot path",
+      "bench": "search",
+      "expected": "moderate",
+      "ratio": 1.1625,
+      "ci95": [
+        1.1474,
+        1.1816
+      ],
+      "verdict": "regression",
+      "median_good_ms": 17.123,
+      "median_bad_ms": 19.905,
+      "rounds": 30,
+      "tests_pass_with_regression": true,
+      "tests_tail": [
+        "38 passed, 9 deselected in 2.00s"
+      ],
+      "above_threshold": true
+    },
+    "prepare_in_loop": {
+      "category": "lost caching",
+      "bench": "search",
+      "expected": "subtle",
+      "ratio": 1.0043,
+      "ci95": [
+        0.9735,
+        1.0238
+      ],
+      "verdict": "no_regression",
+      "median_good_ms": 17.575,
+      "median_bad_ms": 17.65,
+      "rounds": 30,
+      "tests_pass_with_regression": true,
+      "tests_tail": [
+        "38 passed, 9 deselected in 1.87s"
+      ],
+      "above_threshold": false
+    },
+    "sorted_neighbors": {
+      "category": "allocation churn",
+      "bench": "search",
+      "expected": "subtle",
+      "ratio": 1.0517,
+      "ci95": [
+        1.0353,
+        1.0792
+      ],
+      "verdict": "inconclusive",
+      "median_good_ms": 17.637,
+      "median_bad_ms": 18.549,
+      "rounds": 60,
+      "tests_pass_with_regression": true,
+      "tests_tail": [
+        "37 passed, 9 deselected in 2.12s"
+      ],
+      "above_threshold": false
+    },
+    "ef_default": {
+      "category": "configuration",
+      "bench": "search",
+      "expected": "large",
+      "ratio": 3.5572,
+      "ci95": [
+        3.4925,
+        3.6871
+      ],
+      "verdict": "regression",
+      "median_good_ms": 17.687,
+      "median_bad_ms": 62.917,
+      "rounds": 30,
+      "tests_pass_with_regression": true,
+      "tests_tail": [
+        "37 passed, 9 deselected in 1.82s"
+      ],
+      "above_threshold": true
+    },
+    "heapify_each": {
+      "category": "algorithmic",
+      "bench": "search",
+      "expected": "moderate",
+      "ratio": 1.0987,
+      "ci95": [
+        1.0571,
+        1.1399
+      ],
+      "verdict": "regression",
+      "median_good_ms": 18.092,
+      "median_bad_ms": 19.877,
+      "rounds": 45,
+      "tests_pass_with_regression": true,
+      "tests_tail": [
+        "37 passed, 9 deselected in 2.34s"
+      ],
+      "above_threshold": true
+    },
+    "pairwise_python": {
+      "category": "de-vectorization",
+      "bench": "build",
+      "expected": "large",
+      "ratio": 9.3813,
+      "ci95": [
+        8.6826,
+        10.0007
+      ],
+      "verdict": "regression",
+      "median_good_ms": 94.947,
+      "median_bad_ms": 890.726,
+      "rounds": 30,
+      "tests_pass_with_regression": true,
+      "tests_tail": [
+        "40 passed, 9 deselected in 7.07s"
+      ],
+      "above_threshold": true
+    },
+    "metric_lookup": {
+      "category": "lost caching",
+      "bench": "search",
+      "expected": "subtle",
+      "ratio": 0.9842,
+      "ci95": [
+        0.9418,
+        1.0541
+      ],
+      "verdict": "inconclusive",
+      "median_good_ms": 18.301,
+      "median_bad_ms": 18.012,
+      "rounds": 60,
+      "tests_pass_with_regression": true,
+      "tests_tail": [
+        "39 passed, 9 deselected in 1.88s"
+      ],
+      "above_threshold": false
+    },
+    "stop_check_scan": {
+      "category": "algorithmic",
+      "bench": "search",
+      "expected": "moderate",
+      "ratio": 1.0611,
+      "ci95": [
+        1.0486,
+        1.0675
+      ],
+      "verdict": "inconclusive",
+      "median_good_ms": 16.827,
+      "median_bad_ms": 17.856,
+      "rounds": 60,
+      "tests_pass_with_regression": true,
+      "tests_tail": [
+        "39 passed, 9 deselected in 2.17s"
+      ],
+      "above_threshold": false
+    },
+    "always_reprune": {
+      "category": "algorithmic",
+      "bench": "build",
+      "expected": "moderate",
+      "ratio": 1.2348,
+      "ci95": [
+        1.2259,
+        1.247
+      ],
+      "verdict": "regression",
+      "median_good_ms": 87.343,
+      "median_bad_ms": 107.85,
+      "rounds": 30,
+      "tests_pass_with_regression": true,
+      "tests_tail": [
+        "38 passed, 9 deselected in 2.16s"
+      ],
+      "above_threshold": true
+    },
+    "wide_descent": {
+      "category": "configuration",
+      "bench": "search",
+      "expected": "moderate",
+      "ratio": 1.5533,
+      "ci95": [
+        1.452,
+        1.6622
+      ],
+      "verdict": "regression",
+      "median_good_ms": 18.842,
+      "median_bad_ms": 29.267,
+      "rounds": 30,
+      "tests_pass_with_regression": true,
+      "tests_tail": [
+        "40 passed, 9 deselected in 1.77s"
+      ],
+      "above_threshold": true
+    },
+    "stack_gather": {
+      "category": "allocation churn",
+      "bench": "search",
+      "expected": "moderate",
+      "ratio": 1.5101,
+      "ci95": [
+        1.5007,
+        1.5151
+      ],
+      "verdict": "regression",
+      "median_good_ms": 16.708,
+      "median_bad_ms": 25.231,
+      "rounds": 30,
+      "tests_pass_with_regression": true,
+      "tests_tail": [
+        "38 passed, 9 deselected in 2.08s"
+      ],
+      "above_threshold": true
+    }
+  }
+}

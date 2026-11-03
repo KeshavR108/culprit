@@ -1,0 +1,150 @@
+{
+  "run": "agent-v3-3b",
+  "cases": {
+    "always_reprune-0": {
+      "category": "looped without progress",
+      "evidence": "propose_patch called 11x with identical arguments"
+    },
+    "always_reprune-1": {
+      "category": "right commit, wrong line",
+      "evidence": "claimed src/hnsw/index.py:175, planted src/hnsw/index.py:[218]"
+    },
+    "always_reprune-2": {
+      "category": "patch broke tests",
+      "evidence": "en_after_26_adds_1 - assert (2 == 3)\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 11 passed, 9 deselected in 0.49s"
+    },
+    "copy_vectors-0": {
+      "category": "budget exhausted",
+      "evidence": "13 tool calls: propose_patch, read_file, propose_patch, read_file, propose_patch"
+    },
+    "copy_vectors-1": {
+      "category": "patch failed to run",
+      "evidence": "patched benchmark failed: benchmark setup failed: Traceback (most recent call last):\n  File \"src/culprit/bench_worker.py\", line 62, in "
+    },
+    "debug_log-0": {
+      "category": "right commit, wrong line",
+      "evidence": "claimed src/hnsw/index.py:101, planted src/hnsw/index.py:[10, 11, 12, 14, 15, 16, 17, 18, 111, 112]"
+    },
+    "debug_log-2": {
+      "category": "patch failed to run",
+      "evidence": "patched benchmark failed: benchmark setup failed: Traceback (most recent call last):\n  File \"src/culprit/bench_worker.py\", line 62, in "
+    },
+    "devectorize_dists-0": {
+      "category": "looped without progress",
+      "evidence": "read_file called 5x with identical arguments"
+    },
+    "devectorize_dists-1": {
+      "category": "looped without progress",
+      "evidence": "read_file called 4x with identical arguments"
+    },
+    "devectorize_dists-2": {
+      "category": "patch didn't help",
+      "evidence": "bad->patched ratio 0.990"
+    },
+    "devectorize_l2-0": {
+      "category": "patch failed to run",
+      "evidence": "patched benchmark failed: benchmark setup failed: Traceback (most recent call last):\n  File \"src/culprit/bench_worker.py\", line 62, in "
+    },
+    "devectorize_l2-1": {
+      "category": "patch didn't help",
+      "evidence": "bad->patched ratio 1.006"
+    },
+    "devectorize_l2-2": {
+      "category": "patch failed to run",
+      "evidence": "patched benchmark failed: benchmark setup failed: Traceback (most recent call last):\n  File \"src/culprit/bench_worker.py\", line 62, in "
+    },
+    "ef_default-0": {
+      "category": "patch failed to run",
+      "evidence": "patched benchmark failed: benchmark setup failed: Traceback (most recent call last):\n  File \"src/culprit/bench_worker.py\", line 62, in "
+    },
+    "ef_default-1": {
+      "category": "patch didn't help",
+      "evidence": "bad->patched ratio 1.739"
+    },
+    "ef_default-2": {
+      "category": "patch didn't help",
+      "evidence": "bad->patched ratio 0.994"
+    },
+    "heapify_each-0": {
+      "category": "looped without progress",
+      "evidence": "propose_patch called 4x with identical arguments"
+    },
+    "heapify_each-1": {
+      "category": "patch broke tests",
+      "evidence": "r_beam_escapes_local_minimum - as...\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 30 passed, 9 deselected in 1.53s"
+    },
+    "heapify_each-2": {
+      "category": "patch didn't help",
+      "evidence": "bad->patched ratio 0.999"
+    },
+    "heuristic_recompute-0": {
+      "category": "patch failed to run",
+      "evidence": "patched benchmark failed: benchmark setup failed: Traceback (most recent call last):\n  File \"src/culprit/bench_worker.py\", line 62, in "
+    },
+    "heuristic_recompute-1": {
+      "category": "patch didn't help",
+      "evidence": "bad->patched ratio 1.001"
+    },
+    "heuristic_recompute-2": {
+      "category": "looped without progress",
+      "evidence": "propose_patch called 6x with identical arguments"
+    },
+    "pairwise_python-0": {
+      "category": "looped without progress",
+      "evidence": "propose_patch called 6x with identical arguments"
+    },
+    "pairwise_python-1": {
+      "category": "looped without progress",
+      "evidence": "read_file called 5x with identical arguments"
+    },
+    "pairwise_python-2": {
+      "category": "patch didn't help",
+      "evidence": "bad->patched ratio 1.006"
+    },
+    "stack_gather-0": {
+      "category": "patch failed to run",
+      "evidence": "patched benchmark failed: benchmark raised: Traceback (most recent call last):\n  File \"src/culprit/bench_worker.py\", line 76, in main\n "
+    },
+    "stack_gather-1": {
+      "category": "budget exhausted",
+      "evidence": "6 tool calls: show_diff, propose_patch, read_file, propose_patch, read_file"
+    },
+    "stack_gather-2": {
+      "category": "patch didn't help",
+      "evidence": "bad->patched ratio 1.026"
+    },
+    "visited_list-0": {
+      "category": "looped without progress",
+      "evidence": "read_file called 5x with identical arguments"
+    },
+    "visited_list-1": {
+      "category": "looped without progress",
+      "evidence": "propose_patch called 5x with identical arguments"
+    },
+    "visited_list-2": {
+      "category": "looped without progress",
+      "evidence": "propose_patch called 6x with identical arguments"
+    },
+    "wide_descent-0": {
+      "category": "patch didn't help",
+      "evidence": "bad->patched ratio 1.000"
+    },
+    "wide_descent-1": {
+      "category": "patch failed to run",
+      "evidence": "patched benchmark failed: benchmark raised: Traceback (most recent call last):\n  File \"src/culprit/bench_worker.py\", line 76, in main\n "
+    },
+    "wide_descent-2": {
+      "category": "patch didn't help",
+      "evidence": "bad->patched ratio 1.012"
+    }
+  },
+  "counts": {
+    "looped without progress": 10,
+    "budget exhausted": 2,
+    "right commit, wrong line": 2,
+    "patch failed to run": 8,
+    "patch didn't help": 10,
+    "patch broke tests": 2
+  },
+  "hallucinated_args_cases": 1
+}
