@@ -1,0 +1,10 @@
+.venv/
+__pycache__/
+*.egg-info/
+.pytest_cache/
+targets/
+perfbench/cases/*
+!perfbench/cases/index.json
+perfbench/.base_src/
+runs/
+playground/

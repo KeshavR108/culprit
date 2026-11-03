@@ -1,0 +1,31 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "culprit"
+version = "0.1.0"
+description = "A local AI agent that finds out why your code got slower, proves it with statistics, and measures how often it's right."
+requires-python = ">=3.11"
+dependencies = [
+    "numpy==2.1.3",
+    "scipy==1.15.3",
+    "pydantic==2.11.7",
+    "typer==0.16.0",
+    "rich==14.0.0",
+    "matplotlib==3.10.3",
+    "pillow==11.2.1",
+]
+
+[project.optional-dependencies]
+dev = ["pytest==8.3.3", "hypothesis==6.115.0"]   # hypothesis: needed by the HNSW target's tests
+
+[project.scripts]
+culprit = "culprit.cli:app"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+markers = ["slow: real subprocess / timing tests (deselect with -m 'not slow')"]
