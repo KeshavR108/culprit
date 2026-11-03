@@ -1,0 +1,2051 @@
+[
+ {
+  "id": "visited_list-0",
+  "kind": "regression",
+  "seed": 0,
+  "bench": "search",
+  "good": "d884153b6122523056545afd5a991221af1a3e5d",
+  "bad": "e75d9672d92c6c1823e2c9f4b4a31fb193177aba",
+  "n_commits_after_good": 27,
+  "test_args": "-q -x -k \"not ef200 and not 5k and not hnswlib and not non_decreasing and not better_connected\"",
+  "target": {
+   "repo": "https://github.com/keshavr108/semantic-paper-search",
+   "commit": "5cc47e0"
+  },
+  "regression": "visited_list",
+  "category": "algorithmic",
+  "expected": "large",
+  "culprit": "3fee7bb0781ffa02607cb6ee9ff1e6dbdda14d1f",
+  "culprit_message": "Simplify visited tracking in search_layer",
+  "position": 24,
+  "mixed": false,
+  "planted_culprit": {
+   "file": "src/hnsw/index.py",
+   "anchor_line": 96,
+   "lines": [
+    96,
+    115
+   ]
+  },
+  "planted_head": {
+   "file": "src/hnsw/index.py",
+   "anchor_line": 96,
+   "lines": [
+    96,
+    115
+   ]
+  }
+ },
+ {
+  "id": "visited_list-1",
+  "kind": "regression",
+  "seed": 1,
+  "bench": "search",
+  "good": "d884153b6122523056545afd5a991221af1a3e5d",
+  "bad": "581095457615937a84f5f96807dc1069e4cc6640",
+  "n_commits_after_good": 19,
+  "test_args": "-q -x -k \"not ef200 and not 5k and not hnswlib and not non_decreasing and not better_connected\"",
+  "target": {
+   "repo": "https://github.com/keshavr108/semantic-paper-search",
+   "commit": "5cc47e0"
+  },
+  "regression": "visited_list",
+  "category": "algorithmic",
+  "expected": "large",
+  "culprit": "581095457615937a84f5f96807dc1069e4cc6640",
+  "culprit_message": "Simplify visited tracking in search_layer",
+  "position": 18,
+  "mixed": false,
+  "planted_culprit": {
+   "file": "src/hnsw/index.py",
+   "anchor_line": 96,
+   "lines": [
+    96,
+    115
+   ]
+  },
+  "planted_head": {
+   "file": "src/hnsw/index.py",
+   "anchor_line": 96,
+   "lines": [
+    96,
+    115
+   ]
+  }
+ },
+ {
+  "id": "visited_list-2",
+  "kind": "regression",
+  "seed": 2,
+  "bench": "search",
+  "good": "d884153b6122523056545afd5a991221af1a3e5d",
+  "bad": "2003dfd8e728759882aeb8a8d58f5e006c87a49e",
+  "n_commits_after_good": 16,
+  "test_args": "-q -x -k \"not ef200 and not 5k and not hnswlib and not non_decreasing and not better_connected\"",
+  "target": {
+   "repo": "https://github.com/keshavr108/semantic-paper-search",
+   "commit": "5cc47e0"
+  },
+  "regression": "visited_list",
+  "category": "algorithmic",
+  "expected": "large",
+  "culprit": "566f7b8b823d81557d075e00b3e0ca8b685b0927",
+  "culprit_message": "Simplify visited tracking in search_layer; tidy comments",
+  "position": 2,
+  "mixed": true,
+  "planted_culprit": {
+   "file": "src/hnsw/index.py",
+   "anchor_line": 94,
+   "lines": [
+    94,
+    113
+   ]
+  },
+  "planted_head": {
+   "file": "src/hnsw/index.py",
+   "anchor_line": 97,
+   "lines": [
+    97,
+    116
+   ]
+  }
+ },
+ {
+  "id": "heap_to_sort-0",
+  "kind": "regression",
+  "seed": 1000,
+  "bench": "search",
+  "good": "d884153b6122523056545afd5a991221af1a3e5d",
+  "bad": "5a99ffedfee63ab11ff82cc58f48539ce0cc5e71",
+  "n_commits_after_good": 28,
+  "test_args": "-q -x -k \"not ef200 and not 5k and not hnswlib and not non_decreasing and not better_connected\"",
+  "target": {
+   "repo": "https://github.com/keshavr108/semantic-paper-search",
+   "commit": "5cc47e0"
+  },
+  "regression": "heap_to_sort",
+  "category": "algorithmic",
+  "expected": "moderate",
+  "culprit": "19a9a8b9be7c3bf610c810c274565370ad693cdb",
+  "culprit_message": "Keep result set ordered in search_layer",
+  "position": 21,
+  "mixed": false,
+  "planted_culprit": {
+   "file": "src/hnsw/index.py",
+   "anchor_line": 125,
+   "lines": [
+    124,
+    125,
+    126,
+    127
+   ]
+  },
+  "planted_head": {
+   "file": "src/hnsw/index.py",
+   "anchor_line": 125,
+   "lines": [
+    124,
+    125,
+    126,
+    127
+   ]
+  }
+ },
+ {
+  "id": "heap_to_sort-1",
+  "kind": "regression",
+  "seed": 1001,
+  "bench": "search",
+  "good": "d884153b6122523056545afd5a991221af1a3e5d",
+  "bad": "3f03a08cbaae6e82d0c72c500a5cd30f9fa26a16",
+  "n_commits_after_good": 16,
+  "test_args": "-q -x -k \"not ef200 and not 5k and not hnswlib and not non_decreasing and not better_connected\"",
+  "target": {
+   "repo": "https://github.com/keshavr108/semantic-paper-search",
+   "commit": "5cc47e0"
+  },
+  "regression": "heap_to_sort",
+  "category": "algorithmic",
+  "expected": "moderate",
+  "culprit": "61e84e7136cf68aecad98260fc69bce933b80895",
+  "culprit_message": "Keep result set ordered in search_layer",
+  "position": 6,
+  "mixed": false,
+  "planted_culprit": {
+   "file": "src/hnsw/index.py",
+   "anchor_line": 118,
+   "lines": [
+    117,
+    118,
+    119,
+    120
+   ]
+  },
+  "planted_head": {
+   "file": "src/hnsw/index.py",
+   "anchor_line": 123,
+   "lines": [
+    122,
+    123,
+    124,
+    125
+   ]
+  }
+ },
+ {
+  "id": "heap_to_sort-2",
+  "kind": "regression",
+  "seed": 1002,
+  "bench": "search",
+  "good": "d884153b6122523056545afd5a991221af1a3e5d",
+  "bad": "8b878cec50f4267672a420b429e9d52098373173",
+  "n_commits_after_good": 31,
+  "test_args": "-q -x -k \"not ef200 and not 5k and not hnswlib and not non_decreasing and not better_connected\"",
+  "target": {
+   "repo": "https://github.com/keshavr108/semantic-paper-search",
+   "commit": "5cc47e0"
+  },
+  "regression": "heap_to_sort",
+  "category": "algorithmic",
+  "expected": "moderate",
+  "culprit": "07b7aaf00d2a18b885b513dc499400e1065993a0",
+  "culprit_message": "Keep result set ordered in search_layer; tidy comments",
+  "position": 19,
+  "mixed": true,
+  "planted_culprit": {
+   "file": "src/hnsw/index.py",
+   "anchor_line": 126,
+   "lines": [
+    125,
+    126,
+    127,
+    128
+   ]
+  },
+  "planted_head": {
+   "file": "src/hnsw/index.py",
+   "anchor_line": 127,
+   "lines": [
+    126,
+    127,
+    128,
+    129
+   ]
+  }
+ },
+ {
+  "id": "devectorize_dists-0",
+  "kind": "regression",
+  "seed": 2000,
+  "bench": "search",
+  "good": "d884153b6122523056545afd5a991221af1a3e5d",
+  "bad": "022a3bcc984bb686546081aa3497963a7a95d396",
+  "n_commits_after_good": 29,
+  "test_args": "-q -x -k \"not ef200 and not 5k and not hnswlib and not non_decreasing and not better_connected\"",
+  "target": {
+   "repo": "https://github.com/keshavr108/semantic-paper-search",
+   "commit": "5cc47e0"
+  },
+  "regression": "devectorize_dists",
+  "category": "de-vectorization",
+  "expected": "large",
+  "culprit": "8cc201b6c82b5bf67e422886aba749ef9c9a1b43",
+  "culprit_message": "Compute distances node by node for readability",
+  "position": 1,
+  "mixed": false,
+  "planted_culprit": {
+   "file": "src/hnsw/index.py",
+   "anchor_line": 71,
+   "lines": [
+    71
+   ]
+  },
+  "planted_head": {
+   "file": "src/hnsw/index.py",
+   "anchor_line": 77,
+   "lines": [
+    77
+   ]
+  }
+ },
+ {
+  "id": "devectorize_dists-1",
+  "kind": "regression",
+  "seed": 2001,
+  "bench": "search",
+  "good": "d884153b6122523056545afd5a991221af1a3e5d",
+  "bad": "e73867e05be0e381eb83105173f7ef3843725a96",
+  "n_commits_after_good": 15,
+  "test_args": "-q -x -k \"not ef200 and not 5k and not hnswlib and not non_decreasing and not better_connected\"",
+  "target": {
+   "repo": "https://github.com/keshavr108/semantic-paper-search",
+   "commit": "5cc47e0"
+  },
+  "regression": "devectorize_dists",
+  "category": "de-vectorization",
+  "expected": "large",
+  "culprit": "2e8f2ca5f9f8e62a19a86bad46b636a13375ed83",
+  "culprit_message": "Compute distances node by node for readability",
+  "position": 5,
+  "mixed": false,
+  "planted_culprit": {
+   "file": "src/hnsw/index.py",
+   "anchor_line": 71,
+   "lines": [
+    71
+   ]
+  },
+  "planted_head": {
+   "file": "src/hnsw/index.py",
+   "anchor_line": 71,
+   "lines": [
+    71
+   ]
+  }
+ },
+ {
+  "id": "devectorize_dists-2",
+  "kind": "regression",
+  "seed": 2002,
+  "bench": "search",
+  "good": "d884153b6122523056545afd5a991221af1a3e5d",
+  "bad": "45932a25e3bfb77ba796dda30ee2e726e61021b2",
+  "n_commits_after_good": 15,
+  "test_args": "-q -x -k \"not ef200 and not 5k and not hnswlib and not non_decreasing and not better_connected\"",
+  "target": {
+   "repo": "https://github.com/keshavr108/semantic-paper-search",
+   "commit": "5cc47e0"
+  },
+  "regression": "devectorize_dists",
+  "category": "de-vectorization",
+  "expected": "large",
+  "culprit": "c690e1f0d184ca58f3d9108b72b0ab6a20702f16",
+  "culprit_message": "Compute distances node by node for readability; tidy comments",
+  "position": 8,
+  "mixed": true,
+  "planted_culprit": {
+   "file": "src/hnsw/index.py",
+   "anchor_line": 73,
+   "lines": [
+    73
+   ]
+  },
+  "planted_head": {
+   "file": "src/hnsw/index.py",
+   "anchor_line": 76,
+   "lines": [
+    76
+   ]
+  }
+ },
+ {
+  "id": "devectorize_l2-0",
+  "kind": "regression",
+  "seed": 3000,
+  "bench": "search",
+  "good": "d884153b6122523056545afd5a991221af1a3e5d",
+  "bad": "6583c9c9edfbfeb9f74992566be06130155b0eef",
+  "n_commits_after_good": 19,
+  "test_args": "-q -x -k \"not ef200 and not 5k and not hnswlib and not non_decreasing and not better_connected\"",
+  "target": {
+   "repo": "https://github.com/keshavr108/semantic-paper-search",
+   "commit": "5cc47e0"
+  },
+  "regression": "devectorize_l2",
+  "category": "de-vectorization",
+  "expected": "large",
+  "culprit": "5170804da31ba1dfd4847ce39510497f75a025d0",
+  "culprit_message": "Write l2 distance as an explicit loop; tidy comments",
+  "position": 9,
+  "mixed": true,
+  "planted_culprit": {
+   "file": "src/hnsw/distance.py",
+   "anchor_line": 42,
+   "lines": [
+    42
+   ]
+  },
+  "planted_head": {
+   "file": "src/hnsw/distance.py",
+   "anchor_line": 44,
+   "lines": [
+    44
+   ]
+  }
+ },
+ {
+  "id": "devectorize_l2-1",
+  "kind": "regression",
+  "seed": 3001,
+  "bench": "search",
+  "good": "d884153b6122523056545afd5a991221af1a3e5d",
+  "bad": "05b229f843d9dc9ff462ca3168b34b4db0d84d4d",
+  "n_commits_after_good": 24,
+  "test_args": "-q -x -k \"not ef200 and not 5k and not hnswlib and not non_decreasing and not better_connected\"",
+  "target": {
+   "repo": "https://github.com/keshavr108/semantic-paper-search",
+   "commit": "5cc47e0"
+  },
+  "regression": "devectorize_l2",
+  "category": "de-vectorization",
+  "expected": "large",
+  "culprit": "33c43ddae912c688f5802fba516f0d5bd1fc59e8",
+  "culprit_message": "Write l2 distance as an explicit loop; tidy comments",
+  "position": 22,
+  "mixed": true,
+  "planted_culprit": {
+   "file": "src/hnsw/distance.py",
+   "anchor_line": 44,
+   "lines": [
+    44
+   ]
+  },
+  "planted_head": {
+   "file": "src/hnsw/distance.py",
+   "anchor_line": 44,
+   "lines": [
+    44
+   ]
+  }
+ },
+ {
+  "id": "devectorize_l2-2",
+  "kind": "regression",
+  "seed": 3002,
+  "bench": "search",
+  "good": "d884153b6122523056545afd5a991221af1a3e5d",
+  "bad": "75d2ca706333e6a25cc757c755acbd8d11582c2d",
+  "n_commits_after_good": 21,
+  "test_args": "-q -x -k \"not ef200 and not 5k and not hnswlib and not non_decreasing and not better_connected\"",
+  "target": {
+   "repo": "https://github.com/keshavr108/semantic-paper-search",
+   "commit": "5cc47e0"
+  },
+  "regression": "devectorize_l2",
+  "category": "de-vectorization",
+  "expected": "large",
+  "culprit": "75d2ca706333e6a25cc757c755acbd8d11582c2d",
+  "culprit_message": "Write l2 distance as an explicit loop",
+  "position": 20,
+  "mixed": false,
+  "planted_culprit": {
+   "file": "src/hnsw/distance.py",
+   "anchor_line": 42,
+   "lines": [
+    42
+   ]
+  },
+  "planted_head": {
+   "file": "src/hnsw/distance.py",
+   "anchor_line": 42,
+   "lines": [
+    42
+   ]
+  }
+ },
+ {
+  "id": "copy_vectors-0",
+  "kind": "regression",
+  "seed": 4000,
+  "bench": "search",
+  "good": "d884153b6122523056545afd5a991221af1a3e5d",
+  "bad": "d9b32fa2f806984ad27c79ab9e74711350dc8088",
+  "n_commits_after_good": 28,
+  "test_args": "-q -x -k \"not ef200 and not 5k and not hnswlib and not non_decreasing and not better_connected\"",
+  "target": {
+   "repo": "https://github.com/keshavr108/semantic-paper-search",
+   "commit": "5cc47e0"
+  },
+  "regression": "copy_vectors",
+  "category": "copying",
+  "expected": "large",
+  "culprit": "6e189b7b71ef18b3157f25a918c66677605c6d46",
+  "culprit_message": "Avoid aliasing the vector storage in _dists",
+  "position": 13,
+  "mixed": false,
+  "planted_culprit": {
+   "file": "src/hnsw/index.py",
+   "anchor_line": 74,
+   "lines": [
+    74
+   ]
+  },
+  "planted_head": {
+   "file": "src/hnsw/index.py",
+   "anchor_line": 74,
+   "lines": [
+    74
+   ]
+  }
+ },
+ {
+  "id": "copy_vectors-1",
+  "kind": "regression",
+  "seed": 4001,
+  "bench": "search",
+  "good": "d884153b6122523056545afd5a991221af1a3e5d",
+  "bad": "16d2b64929dfecf5d194662648d999c12d64513c",
+  "n_commits_after_good": 28,
+  "test_args": "-q -x -k \"not ef200 and not 5k and not hnswlib and not non_decreasing and not better_connected\"",
+  "target": {
+   "repo": "https://github.com/keshavr108/semantic-paper-search",
+   "commit": "5cc47e0"
+  },
+  "regression": "copy_vectors",
+  "category": "copying",
+  "expected": "large",
+  "culprit": "fd8abb1b458e7c0611de92cbbd36029ef464e6bf",
+  "culprit_message": "Avoid aliasing the vector storage in _dists; tidy comments",
+  "position": 21,
+  "mixed": true,
+  "planted_culprit": {
+   "file": "src/hnsw/index.py",
+   "anchor_line": 76,
+   "lines": [
+    76
+   ]
+  },
+  "planted_head": {
+   "file": "src/hnsw/index.py",
+   "anchor_line": 77,
+   "lines": [
+    77
+   ]
+  }
+ },
+ {
+  "id": "copy_vectors-2",
+  "kind": "regression",
+  "seed": 4002,
+  "bench": "search",
+  "good": "d884153b6122523056545afd5a991221af1a3e5d",
+  "bad": "2e90740a28f5fb34c61ad71ce72058b563b14147",
+  "n_commits_after_good": 28,
+  "test_args": "-q -x -k \"not ef200 and not 5k and not hnswlib and not non_decreasing and not better_connected\"",
+  "target": {
+   "repo": "https://github.com/keshavr108/semantic-paper-search",
+   "commit": "5cc47e0"
+  },
+  "regression": "copy_vectors",
+  "category": "copying",
+  "expected": "large",
+  "culprit": "2002a912a07cc75365f22f388019682d82b70d2d",
+  "culprit_message": "Avoid aliasing the vector storage in _dists",
+  "position": 14,
+  "mixed": false,
+  "planted_culprit": {
+   "file": "src/hnsw/index.py",
+   "anchor_line": 74,
+   "lines": [
+    74
+   ]
+  },
+  "planted_head": {
+   "file": "src/hnsw/index.py",
+   "anchor_line": 74,
+   "lines": [
+    74
+   ]
+  }
+ },
+ {
+  "id": "heuristic_recompute-0",
+  "kind": "regression",
+  "seed": 5000,
+  "bench": "build",
+  "good": "d884153b6122523056545afd5a991221af1a3e5d",
+  "bad": "d4d29c967d689b15fff056edf0aa5a7991d87608",
+  "n_commits_after_good": 22,
+  "test_args": "-q -x -k \"not ef200 and not 5k and not hnswlib and not non_decreasing and not better_connected\"",
+  "target": {
+   "repo": "https://github.com/keshavr108/semantic-paper-search",
+   "commit": "5cc47e0"
+  },
+  "regression": "heuristic_recompute",
+  "category": "lost caching",
+  "expected": "large",
+  "culprit": "c70c4e35867a47d86edeeab8ac06b11359b1ec64",
+  "culprit_message": "Inline pairwise distance check in heuristic",
+  "position": 11,
+  "mixed": false,
+  "planted_culprit": {
+   "file": "src/hnsw/index.py",
+   "anchor_line": 155,
+   "lines": [
+    155
+   ]
+  },
+  "planted_head": {
+   "file": "src/hnsw/index.py",
+   "anchor_line": 155,
+   "lines": [
+    155
+   ]
+  }
+ },
+ {
+  "id": "heuristic_recompute-1",
+  "kind": "regression",
+  "seed": 5001,
+  "bench": "build",
+  "good": "d884153b6122523056545afd5a991221af1a3e5d",
+  "bad": "f23dc498637501fce84602019e704da004f91973",
+  "n_commits_after_good": 24,
+  "test_args": "-q -x -k \"not ef200 and not 5k and not hnswlib and not non_decreasing and not better_connected\"",
+  "target": {
+   "repo": "https://github.com/keshavr108/semantic-paper-search",
+   "commit": "5cc47e0"
+  },
+  "regression": "heuristic_recompute",
+  "category": "lost caching",
+  "expected": "large",
+  "culprit": "9ed011aa633dd58815c455e3d4c35fc9976a47d0",
+  "culprit_message": "Inline pairwise distance check in heuristic; tidy comments",
+  "position": 20,
+  "mixed": true,
+  "planted_culprit": {
+   "file": "src/hnsw/index.py",
+   "anchor_line": 156,
+   "lines": [
+    156
+   ]
+  },
+  "planted_head": {
+   "file": "src/hnsw/index.py",
+   "anchor_line": 156,
+   "lines": [
+    156
+   ]
+  }
+ },
+ {
+  "id": "heuristic_recompute-2",
+  "kind": "regression",
+  "seed": 5002,
+  "bench": "build",
+  "good": "d884153b6122523056545afd5a991221af1a3e5d",
+  "bad": "eb72f3dc2476d53b07534270e98b1d188b384685",
+  "n_commits_after_good": 23,
+  "test_args": "-q -x -k \"not ef200 and not 5k and not hnswlib and not non_decreasing and not better_connected\"",
+  "target": {
+   "repo": "https://github.com/keshavr108/semantic-paper-search",
+   "commit": "5cc47e0"
+  },
+  "regression": "heuristic_recompute",
+  "category": "lost caching",
+  "expected": "large",
+  "culprit": "5a539922e5357adf3bf5729afe111ac11d5f3382",
+  "culprit_message": "Inline pairwise distance check in heuristic; tidy comments",
+  "position": 1,
+  "mixed": true,
+  "planted_culprit": {
+   "file": "src/hnsw/index.py",
+   "anchor_line": 153,
+   "lines": [
+    153
+   ]
+  },
+  "planted_head": {
+   "file": "src/hnsw/index.py",
+   "anchor_line": 159,
+   "lines": [
+    159
+   ]
+  }
+ },
+ {
+  "id": "debug_log-0",
+  "kind": "regression",
+  "seed": 6000,
+  "bench": "search",
+  "good": "d884153b6122523056545afd5a991221af1a3e5d",
+  "bad": "90f65bdb2b3235084635ece6d45209023b17eada",
+  "n_commits_after_good": 20,
+  "test_args": "-q -x -k \"not ef200 and not 5k and not hnswlib and not non_decreasing and not better_connected\"",
+  "target": {
+   "repo": "https://github.com/keshavr108/semantic-paper-search",
+   "commit": "5cc47e0"
+  },
+  "regression": "debug_log",
+  "category": "logging in hot path",
+  "expected": "moderate",
+  "culprit": "6b9e66667858df4b6fb4d7e68349d23510f3f89f",
+  "culprit_message": "Add debug logging to search_layer; tidy comments",
+  "position": 8,
+  "mixed": true,
+  "planted_culprit": {
+   "file": "src/hnsw/index.py",
+   "anchor_line": 109,
+   "lines": [
+    10,
+    11,
+    12,
+    14,
+    15,
+    16,
+    17,
+    18,
+    108,
+    109
+   ]
+  },
+  "planted_head": {
+   "file": "src/hnsw/index.py",
+   "anchor_line": 112,
+   "lines": [
+    10,
+    11,
+    12,
+    14,
+    15,
+    16,
+    17,
+    18,
+    111,
+    112
+   ]
+  }
+ },
+ {
+  "id": "debug_log-1",
+  "kind": "regression",
+  "seed": 6001,
+  "bench": "search",
+  "good": "d884153b6122523056545afd5a991221af1a3e5d",
+  "bad": "4480edffa6b2fa495bd3db473bf4c2a2db5a99df",
+  "n_commits_after_good": 25,
+  "test_args": "-q -x -k \"not ef200 and not 5k and not hnswlib and not non_decreasing and not better_connected\"",
+  "target": {
+   "repo": "https://github.com/keshavr108/semantic-paper-search",
+   "commit": "5cc47e0"
+  },
+  "regression": "debug_log",
+  "category": "logging in hot path",
+  "expected": "moderate",
+  "culprit": "796e58b4446a8d0cc09c690c2c5e5ef7e9a7fcc7",
+  "culprit_message": "Add debug logging to search_layer",
+  "position": 23,
+  "mixed": false,
+  "planted_culprit": {
+   "file": "src/hnsw/index.py",
+   "anchor_line": 110,
+   "lines": [
+    8,
+    9,
+    10,
+    12,
+    13,
+    14,
+    15,
+    16,
+    109,
+    110
+   ]
+  },
+  "planted_head": {
+   "file": "src/hnsw/index.py",
+   "anchor_line": 110,
+   "lines": [
+    8,
+    9,
+    10,
+    12,
+    13,
+    14,
+    15,
+    16,
+    109,
+    110
+   ]
+  }
+ },
+ {
+  "id": "debug_log-2",
+  "kind": "regression",
+  "seed": 6002,
+  "bench": "search",
+  "good": "d884153b6122523056545afd5a991221af1a3e5d",
+  "bad": "747fbc0af3add71ea1953b7f61c0a50fe324fdb0",
+  "n_commits_after_good": 20,
+  "test_args": "-q -x -k \"not ef200 and not 5k and not hnswlib and not non_decreasing and not better_connected\"",
+  "target": {
+   "repo": "https://github.com/keshavr108/semantic-paper-search",
+   "commit": "5cc47e0"
+  },
+  "regression": "debug_log",
+  "category": "logging in hot path",
+  "expected": "moderate",
+  "culprit": "6601f3143d873b1940055911d7f69b82829074fb",
+  "culprit_message": "Add debug logging to search_layer",
+  "position": 3,
+  "mixed": false,
+  "planted_culprit": {
+   "file": "src/hnsw/index.py",
+   "anchor_line": 107,
+   "lines": [
+    8,
+    9,
+    10,
+    12,
+    13,
+    14,
+    15,
+    16,
+    106,
+    107
+   ]
+  },
+  "planted_head": {
+   "file": "src/hnsw/index.py",
+   "anchor_line": 112,
+   "lines": [
+    10,
+    11,
+    12,
+    14,
+    15,
+    16,
+    17,
+    18,
+    111,
+    112
+   ]
+  }
+ },
+ {
+  "id": "prepare_in_loop-0",
+  "kind": "regression",
+  "seed": 7000,
+  "bench": "search",
+  "good": "d884153b6122523056545afd5a991221af1a3e5d",
+  "bad": "b0d1bd13b0b518b76621f81000e077ec9fcda97f",
+  "n_commits_after_good": 25,
+  "test_args": "-q -x -k \"not ef200 and not 5k and not hnswlib and not non_decreasing and not better_connected\"",
+  "target": {
+   "repo": "https://github.com/keshavr108/semantic-paper-search",
+   "commit": "5cc47e0"
+  },
+  "regression": "prepare_in_loop",
+  "category": "lost caching",
+  "expected": "subtle",
+  "culprit": "19894056e21758442ef1f01df672ef6035c19741",
+  "culprit_message": "Normalize query defensively at each layer; tidy comments",
+  "position": 1,
+  "mixed": true,
+  "planted_culprit": {
+   "file": "src/hnsw/index.py",
+   "anchor_line": 246,
+   "lines": [
+    246,
+    247
+   ]
+  },
+  "planted_head": {
+   "file": "src/hnsw/index.py",
+   "anchor_line": 255,
+   "lines": [
+    255,
+    256
+   ]
+  }
+ },
+ {
+  "id": "prepare_in_loop-1",
+  "kind": "regression",
+  "seed": 7001,
+  "bench": "search",
+  "good": "d884153b6122523056545afd5a991221af1a3e5d",
+  "bad": "b2b845f91736ec9452eda3dadd2b9742ccf90377",
+  "n_commits_after_good": 18,
+  "test_args": "-q -x -k \"not ef200 and not 5k and not hnswlib and not non_decreasing and not better_connected\"",
+  "target": {
+   "repo": "https://github.com/keshavr108/semantic-paper-search",
+   "commit": "5cc47e0"
+  },
+  "regression": "prepare_in_loop",
+  "category": "lost caching",
+  "expected": "subtle",
+  "culprit": "c89000af9e9eb91f3f36d5919607031fa8bc0673",
+  "culprit_message": "Normalize query defensively at each layer",
+  "position": 10,
+  "mixed": false,
+  "planted_culprit": {
+   "file": "src/hnsw/index.py",
+   "anchor_line": 245,
+   "lines": [
+    245,
+    246
+   ]
+  },
+  "planted_head": {
+   "file": "src/hnsw/index.py",
+   "anchor_line": 246,
+   "lines": [
+    246,
+    247
+   ]
+  }
+ },
+ {
+  "id": "prepare_in_loop-2",
+  "kind": "regression",
+  "seed": 7002,
+  "bench": "search",
+  "good": "d884153b6122523056545afd5a991221af1a3e5d",
+  "bad": "4b4636b814137d4f257fc8668fc33f975e724ee8",
+  "n_commits_after_good": 31,
+  "test_args": "-q -x -k \"not ef200 and not 5k and not hnswlib and not non_decreasing and not better_connected\"",
+  "target": {
+   "repo": "https://github.com/keshavr108/semantic-paper-search",
+   "commit": "5cc47e0"
+  },
+  "regression": "prepare_in_loop",
+  "category": "lost caching",
+  "expected": "subtle",
+  "culprit": "84a9b48ba04d6a9dbb26fa390211af7aa1ff0a61",
+  "culprit_message": "Normalize query defensively at each layer",
+  "position": 0,
+  "mixed": false,
+  "planted_culprit": {
+   "file": "src/hnsw/index.py",
+   "anchor_line": 245,
+   "lines": [
+    245,
+    246
+   ]
+  },
+  "planted_head": {
+   "file": "src/hnsw/index.py",
+   "anchor_line": 250,
+   "lines": [
+    250,
+    251
+   ]
+  }
+ },
+ {
+  "id": "sorted_neighbors-0",
+  "kind": "regression",
+  "seed": 8000,
+  "bench": "search",
+  "good": "d884153b6122523056545afd5a991221af1a3e5d",
+  "bad": "dfe4cc4ecda5f15f12597171885048be1b344505",
+  "n_commits_after_good": 26,
+  "test_args": "-q -x -k \"not ef200 and not 5k and not hnswlib and not non_decreasing and not better_connected\"",
+  "target": {
+   "repo": "https://github.com/keshavr108/semantic-paper-search",
+   "commit": "5cc47e0"
+  },
+  "regression": "sorted_neighbors",
+  "category": "allocation churn",
+  "expected": "subtle",
+  "culprit": "8834c102b9cea3be370a8cbe56ad1e5204eddcfc",
+  "culprit_message": "Visit neighbors in deterministic order",
+  "position": 1,
+  "mixed": false,
+  "planted_culprit": {
+   "file": "src/hnsw/index.py",
+   "anchor_line": 109,
+   "lines": [
+    109
+   ]
+  },
+  "planted_head": {
+   "file": "src/hnsw/index.py",
+   "anchor_line": 115,
+   "lines": [
+    115
+   ]
+  }
+ },
+ {
+  "id": "sorted_neighbors-1",
+  "kind": "regression",
+  "seed": 8001,
+  "bench": "search",
+  "good": "d884153b6122523056545afd5a991221af1a3e5d",
+  "bad": "4ba9841bace2ec44d5a9b619f5460323e4f3a493",
+  "n_commits_after_good": 24,
+  "test_args": "-q -x -k \"not ef200 and not 5k and not hnswlib and not non_decreasing and not better_connected\"",
+  "target": {
+   "repo": "https://github.com/keshavr108/semantic-paper-search",
+   "commit": "5cc47e0"
+  },
+  "regression": "sorted_neighbors",
+  "category": "allocation churn",
+  "expected": "subtle",
+  "culprit": "546837403fd8a130d80f5cd008f34b6ba48bc246",
+  "culprit_message": "Visit neighbors in deterministic order",
+  "position": 6,
+  "mixed": false,
+  "planted_culprit": {
+   "file": "src/hnsw/index.py",
+   "anchor_line": 110,
+   "lines": [
+    110
+   ]
+  },
+  "planted_head": {
+   "file": "src/hnsw/index.py",
+   "anchor_line": 112,
+   "lines": [
+    112
+   ]
+  }
+ },
+ {
+  "id": "sorted_neighbors-2",
+  "kind": "regression",
+  "seed": 8002,
+  "bench": "search",
+  "good": "d884153b6122523056545afd5a991221af1a3e5d",
+  "bad": "6ff7b92de4438d264477ed8207d4cbad485c3741",
+  "n_commits_after_good": 22,
+  "test_args": "-q -x -k \"not ef200 and not 5k and not hnswlib and not non_decreasing and not better_connected\"",
+  "target": {
+   "repo": "https://github.com/keshavr108/semantic-paper-search",
+   "commit": "5cc47e0"
+  },
+  "regression": "sorted_neighbors",
+  "category": "allocation churn",
+  "expected": "subtle",
+  "culprit": "6ce7c30a9e000dc916fdcb65ea72d06551c12339",
+  "culprit_message": "Visit neighbors in deterministic order",
+  "position": 12,
+  "mixed": false,
+  "planted_culprit": {
+   "file": "src/hnsw/index.py",
+   "anchor_line": 109,
+   "lines": [
+    109
+   ]
+  },
+  "planted_head": {
+   "file": "src/hnsw/index.py",
+   "anchor_line": 112,
+   "lines": [
+    112
+   ]
+  }
+ },
+ {
+  "id": "ef_default-0",
+  "kind": "regression",
+  "seed": 9000,
+  "bench": "search",
+  "good": "d884153b6122523056545afd5a991221af1a3e5d",
+  "bad": "570fd545cb3c70410340560a02d106a3982b33c2",
+  "n_commits_after_good": 26,
+  "test_args": "-q -x -k \"not ef200 and not 5k and not hnswlib and not non_decreasing and not better_connected\"",
+  "target": {
+   "repo": "https://github.com/keshavr108/semantic-paper-search",
+   "commit": "5cc47e0"
+  },
+  "regression": "ef_default",
+  "category": "configuration",
+  "expected": "large",
+  "culprit": "8b869787804e751eb415b207b2b5fa2b66c9f331",
+  "culprit_message": "Raise default ef for better recall",
+  "position": 10,
+  "mixed": false,
+  "planted_culprit": {
+   "file": "src/hnsw/index.py",
+   "anchor_line": 240,
+   "lines": [
+    240
+   ]
+  },
+  "planted_head": {
+   "file": "src/hnsw/index.py",
+   "anchor_line": 241,
+   "lines": [
+    241
+   ]
+  }
+ },
+ {
+  "id": "ef_default-1",
+  "kind": "regression",
+  "seed": 9001,
+  "bench": "search",
+  "good": "d884153b6122523056545afd5a991221af1a3e5d",
+  "bad": "76685c289b043f834a4e48b89d1e4f4d50702139",
+  "n_commits_after_good": 16,
+  "test_args": "-q -x -k \"not ef200 and not 5k and not hnswlib and not non_decreasing and not better_connected\"",
+  "target": {
+   "repo": "https://github.com/keshavr108/semantic-paper-search",
+   "commit": "5cc47e0"
+  },
+  "regression": "ef_default",
+  "category": "configuration",
+  "expected": "large",
+  "culprit": "b70e661cb8720036a4437e24b686ab38603aa9da",
+  "culprit_message": "Raise default ef for better recall; tidy comments",
+  "position": 9,
+  "mixed": true,
+  "planted_culprit": {
+   "file": "src/hnsw/index.py",
+   "anchor_line": 240,
+   "lines": [
+    240
+   ]
+  },
+  "planted_head": {
+   "file": "src/hnsw/index.py",
+   "anchor_line": 240,
+   "lines": [
+    240
+   ]
+  }
+ },
+ {
+  "id": "ef_default-2",
+  "kind": "regression",
+  "seed": 9002,
+  "bench": "search",
+  "good": "d884153b6122523056545afd5a991221af1a3e5d",
+  "bad": "9e39bb8866be8735866d8fa3b50f0d8bbb43f092",
+  "n_commits_after_good": 23,
+  "test_args": "-q -x -k \"not ef200 and not 5k and not hnswlib and not non_decreasing and not better_connected\"",
+  "target": {
+   "repo": "https://github.com/keshavr108/semantic-paper-search",
+   "commit": "5cc47e0"
+  },
+  "regression": "ef_default",
+  "category": "configuration",
+  "expected": "large",
+  "culprit": "56ca3563c3b1b9e43c1731a80d3071f0d7dfec8a",
+  "culprit_message": "Raise default ef for better recall; tidy comments",
+  "position": 20,
+  "mixed": true,
+  "planted_culprit": {
+   "file": "src/hnsw/index.py",
+   "anchor_line": 246,
+   "lines": [
+    246
+   ]
+  },
+  "planted_head": {
+   "file": "src/hnsw/index.py",
+   "anchor_line": 246,
+   "lines": [
+    246
+   ]
+  }
+ },
+ {
+  "id": "heapify_each-0",
+  "kind": "regression",
+  "seed": 10000,
+  "bench": "search",
+  "good": "d884153b6122523056545afd5a991221af1a3e5d",
+  "bad": "e4de2af22b2084c54ce045464da29e06af081c1d",
+  "n_commits_after_good": 24,
+  "test_args": "-q -x -k \"not ef200 and not 5k and not hnswlib and not non_decreasing and not better_connected\"",
+  "target": {
+   "repo": "https://github.com/keshavr108/semantic-paper-search",
+   "commit": "5cc47e0"
+  },
+  "regression": "heapify_each",
+  "category": "algorithmic",
+  "expected": "moderate",
+  "culprit": "b5792e59e7d2d1d35d64a1b63f4310c82f075ecb",
+  "culprit_message": "Rebuild candidate heap after each insertion",
+  "position": 1,
+  "mixed": false,
+  "planted_culprit": {
+   "file": "src/hnsw/index.py",
+   "anchor_line": 117,
+   "lines": [
+    116,
+    117
+   ]
+  },
+  "planted_head": {
+   "file": "src/hnsw/index.py",
+   "anchor_line": 124,
+   "lines": [
+    123,
+    124
+   ]
+  }
+ },
+ {
+  "id": "heapify_each-1",
+  "kind": "regression",
+  "seed": 10001,
+  "bench": "search",
+  "good": "d884153b6122523056545afd5a991221af1a3e5d",
+  "bad": "4d9fd353d442f0ee7b3f762116888230c3f37e08",
+  "n_commits_after_good": 26,
+  "test_args": "-q -x -k \"not ef200 and not 5k and not hnswlib and not non_decreasing and not better_connected\"",
+  "target": {
+   "repo": "https://github.com/keshavr108/semantic-paper-search",
+   "commit": "5cc47e0"
+  },
+  "regression": "heapify_each",
+  "category": "algorithmic",
+  "expected": "moderate",
+  "culprit": "c1356bcdbddc9936d643af2201e561c48b59e41f",
+  "culprit_message": "Rebuild candidate heap after each insertion",
+  "position": 2,
+  "mixed": false,
+  "planted_culprit": {
+   "file": "src/hnsw/index.py",
+   "anchor_line": 117,
+   "lines": [
+    116,
+    117
+   ]
+  },
+  "planted_head": {
+   "file": "src/hnsw/index.py",
+   "anchor_line": 120,
+   "lines": [
+    119,
+    120
+   ]
+  }
+ },
+ {
+  "id": "heapify_each-2",
+  "kind": "regression",
+  "seed": 10002,
+  "bench": "search",
+  "good": "d884153b6122523056545afd5a991221af1a3e5d",
+  "bad": "fad8f3b6760171fb836bb6ea751381539286a60e",
+  "n_commits_after_good": 27,
+  "test_args": "-q -x -k \"not ef200 and not 5k and not hnswlib and not non_decreasing and not better_connected\"",
+  "target": {
+   "repo": "https://github.com/keshavr108/semantic-paper-search",
+   "commit": "5cc47e0"
+  },
+  "regression": "heapify_each",
+  "category": "algorithmic",
+  "expected": "moderate",
+  "culprit": "d31032381144d11086374667ee0390e613652bf4",
+  "culprit_message": "Rebuild candidate heap after each insertion; tidy comments",
+  "position": 7,
+  "mixed": true,
+  "planted_culprit": {
+   "file": "src/hnsw/index.py",
+   "anchor_line": 119,
+   "lines": [
+    118,
+    119
+   ]
+  },
+  "planted_head": {
+   "file": "src/hnsw/index.py",
+   "anchor_line": 123,
+   "lines": [
+    122,
+    123
+   ]
+  }
+ },
+ {
+  "id": "pairwise_python-0",
+  "kind": "regression",
+  "seed": 11000,
+  "bench": "build",
+  "good": "d884153b6122523056545afd5a991221af1a3e5d",
+  "bad": "ac2322dba25d70a543d24a7578cc53d39181b28a",
+  "n_commits_after_good": 16,
+  "test_args": "-q -x -k \"not ef200 and not 5k and not hnswlib and not non_decreasing and not better_connected\"",
+  "target": {
+   "repo": "https://github.com/keshavr108/semantic-paper-search",
+   "commit": "5cc47e0"
+  },
+  "regression": "pairwise_python",
+  "category": "de-vectorization",
+  "expected": "large",
+  "culprit": "92e04014b76301429d338b0b83102822c17e32da",
+  "culprit_message": "Write pairwise l2 as an explicit double loop",
+  "position": 12,
+  "mixed": false,
+  "planted_culprit": {
+   "file": "src/hnsw/distance.py",
+   "anchor_line": 59,
+   "lines": [
+    59
+   ]
+  },
+  "planted_head": {
+   "file": "src/hnsw/distance.py",
+   "anchor_line": 59,
+   "lines": [
+    59
+   ]
+  }
+ },
+ {
+  "id": "pairwise_python-1",
+  "kind": "regression",
+  "seed": 11001,
+  "bench": "build",
+  "good": "d884153b6122523056545afd5a991221af1a3e5d",
+  "bad": "329e882813dbef247fa87b18d8aa7c9cd17d5cc4",
+  "n_commits_after_good": 22,
+  "test_args": "-q -x -k \"not ef200 and not 5k and not hnswlib and not non_decreasing and not better_connected\"",
+  "target": {
+   "repo": "https://github.com/keshavr108/semantic-paper-search",
+   "commit": "5cc47e0"
+  },
+  "regression": "pairwise_python",
+  "category": "de-vectorization",
+  "expected": "large",
+  "culprit": "5df314e0c6658c27249230d6c7f47c2a6538e9f4",
+  "culprit_message": "Write pairwise l2 as an explicit double loop; tidy comments",
+  "position": 20,
+  "mixed": true,
+  "planted_culprit": {
+   "file": "src/hnsw/distance.py",
+   "anchor_line": 61,
+   "lines": [
+    61
+   ]
+  },
+  "planted_head": {
+   "file": "src/hnsw/distance.py",
+   "anchor_line": 61,
+   "lines": [
+    61
+   ]
+  }
+ },
+ {
+  "id": "pairwise_python-2",
+  "kind": "regression",
+  "seed": 11002,
+  "bench": "build",
+  "good": "d884153b6122523056545afd5a991221af1a3e5d",
+  "bad": "10d0d3022540a04e907833a3d58545c4510a38a4",
+  "n_commits_after_good": 25,
+  "test_args": "-q -x -k \"not ef200 and not 5k and not hnswlib and not non_decreasing and not better_connected\"",
+  "target": {
+   "repo": "https://github.com/keshavr108/semantic-paper-search",
+   "commit": "5cc47e0"
+  },
+  "regression": "pairwise_python",
+  "category": "de-vectorization",
+  "expected": "large",
+  "culprit": "63dc2fce81a90dac94d742e6a26311b2bb2838d2",
+  "culprit_message": "Write pairwise l2 as an explicit double loop",
+  "position": 21,
+  "mixed": false,
+  "planted_culprit": {
+   "file": "src/hnsw/distance.py",
+   "anchor_line": 61,
+   "lines": [
+    61
+   ]
+  },
+  "planted_head": {
+   "file": "src/hnsw/distance.py",
+   "anchor_line": 62,
+   "lines": [
+    62
+   ]
+  }
+ },
+ {
+  "id": "metric_lookup-0",
+  "kind": "regression",
+  "seed": 12000,
+  "bench": "search",
+  "good": "d884153b6122523056545afd5a991221af1a3e5d",
+  "bad": "6aafd512c3e1fae7b13ef846358ad4ae53e8fbc8",
+  "n_commits_after_good": 16,
+  "test_args": "-q -x -k \"not ef200 and not 5k and not hnswlib and not non_decreasing and not better_connected\"",
+  "target": {
+   "repo": "https://github.com/keshavr108/semantic-paper-search",
+   "commit": "5cc47e0"
+  },
+  "regression": "metric_lookup",
+  "category": "lost caching",
+  "expected": "subtle",
+  "culprit": "2045305044cf483aa08b83d3b7f106bce7a9a1dd",
+  "culprit_message": "Look up the metric function at call time; tidy comments",
+  "position": 6,
+  "mixed": true,
+  "planted_culprit": {
+   "file": "src/hnsw/index.py",
+   "anchor_line": 73,
+   "lines": [
+    73
+   ]
+  },
+  "planted_head": {
+   "file": "src/hnsw/index.py",
+   "anchor_line": 76,
+   "lines": [
+    76
+   ]
+  }
+ },
+ {
+  "id": "metric_lookup-1",
+  "kind": "regression",
+  "seed": 12001,
+  "bench": "search",
+  "good": "d884153b6122523056545afd5a991221af1a3e5d",
+  "bad": "f1fe7a014c58f2f43910e3f13993ca0bffee4e79",
+  "n_commits_after_good": 19,
+  "test_args": "-q -x -k \"not ef200 and not 5k and not hnswlib and not non_decreasing and not better_connected\"",
+  "target": {
+   "repo": "https://github.com/keshavr108/semantic-paper-search",
+   "commit": "5cc47e0"
+  },
+  "regression": "metric_lookup",
+  "category": "lost caching",
+  "expected": "subtle",
+  "culprit": "8caac6e69e988583fb5fb4ebfb88f544ed6b3482",
+  "culprit_message": "Look up the metric function at call time; tidy comments",
+  "position": 13,
+  "mixed": true,
+  "planted_culprit": {
+   "file": "src/hnsw/index.py",
+   "anchor_line": 75,
+   "lines": [
+    75
+   ]
+  },
+  "planted_head": {
+   "file": "src/hnsw/index.py",
+   "anchor_line": 75,
+   "lines": [
+    75
+   ]
+  }
+ },
+ {
+  "id": "metric_lookup-2",
+  "kind": "regression",
+  "seed": 12002,
+  "bench": "search",
+  "good": "d884153b6122523056545afd5a991221af1a3e5d",
+  "bad": "983e526645abc05b53996d9aab16f0b99a1b77f5",
+  "n_commits_after_good": 24,
+  "test_args": "-q -x -k \"not ef200 and not 5k and not hnswlib and not non_decreasing and not better_connected\"",
+  "target": {
+   "repo": "https://github.com/keshavr108/semantic-paper-search",
+   "commit": "5cc47e0"
+  },
+  "regression": "metric_lookup",
+  "category": "lost caching",
+  "expected": "subtle",
+  "culprit": "b6d0673a0422a081c3850042b3bf77176fa3d67d",
+  "culprit_message": "Look up the metric function at call time",
+  "position": 18,
+  "mixed": false,
+  "planted_culprit": {
+   "file": "src/hnsw/index.py",
+   "anchor_line": 74,
+   "lines": [
+    74
+   ]
+  },
+  "planted_head": {
+   "file": "src/hnsw/index.py",
+   "anchor_line": 74,
+   "lines": [
+    74
+   ]
+  }
+ },
+ {
+  "id": "stop_check_scan-0",
+  "kind": "regression",
+  "seed": 13000,
+  "bench": "search",
+  "good": "d884153b6122523056545afd5a991221af1a3e5d",
+  "bad": "cf90c0e0475cd936fa839766fc9cfdf862828c55",
+  "n_commits_after_good": 18,
+  "test_args": "-q -x -k \"not ef200 and not 5k and not hnswlib and not non_decreasing and not better_connected\"",
+  "target": {
+   "repo": "https://github.com/keshavr108/semantic-paper-search",
+   "commit": "5cc47e0"
+  },
+  "regression": "stop_check_scan",
+  "category": "algorithmic",
+  "expected": "moderate",
+  "culprit": "12f26200594621a47d53abcaadcce4129a532c0e",
+  "culprit_message": "Make the search stop condition explicit",
+  "position": 3,
+  "mixed": false,
+  "planted_culprit": {
+   "file": "src/hnsw/index.py",
+   "anchor_line": 106,
+   "lines": [
+    106
+   ]
+  },
+  "planted_head": {
+   "file": "src/hnsw/index.py",
+   "anchor_line": 111,
+   "lines": [
+    111
+   ]
+  }
+ },
+ {
+  "id": "stop_check_scan-1",
+  "kind": "regression",
+  "seed": 13001,
+  "bench": "search",
+  "good": "d884153b6122523056545afd5a991221af1a3e5d",
+  "bad": "b6e6a9eb52254d1bd9acd7467b02af0c76bc49cc",
+  "n_commits_after_good": 29,
+  "test_args": "-q -x -k \"not ef200 and not 5k and not hnswlib and not non_decreasing and not better_connected\"",
+  "target": {
+   "repo": "https://github.com/keshavr108/semantic-paper-search",
+   "commit": "5cc47e0"
+  },
+  "regression": "stop_check_scan",
+  "category": "algorithmic",
+  "expected": "moderate",
+  "culprit": "eda99346184a7d20ae0faf54f0916a84caf8d66c",
+  "culprit_message": "Make the search stop condition explicit",
+  "position": 5,
+  "mixed": false,
+  "planted_culprit": {
+   "file": "src/hnsw/index.py",
+   "anchor_line": 108,
+   "lines": [
+    108
+   ]
+  },
+  "planted_head": {
+   "file": "src/hnsw/index.py",
+   "anchor_line": 111,
+   "lines": [
+    111
+   ]
+  }
+ },
+ {
+  "id": "stop_check_scan-2",
+  "kind": "regression",
+  "seed": 13002,
+  "bench": "search",
+  "good": "d884153b6122523056545afd5a991221af1a3e5d",
+  "bad": "b8f3999937393444e5ed5722df643de1612a374c",
+  "n_commits_after_good": 29,
+  "test_args": "-q -x -k \"not ef200 and not 5k and not hnswlib and not non_decreasing and not better_connected\"",
+  "target": {
+   "repo": "https://github.com/keshavr108/semantic-paper-search",
+   "commit": "5cc47e0"
+  },
+  "regression": "stop_check_scan",
+  "category": "algorithmic",
+  "expected": "moderate",
+  "culprit": "7dfd6f747a0bec42af9c98a2e0cdc7d14115067a",
+  "culprit_message": "Make the search stop condition explicit",
+  "position": 4,
+  "mixed": false,
+  "planted_culprit": {
+   "file": "src/hnsw/index.py",
+   "anchor_line": 106,
+   "lines": [
+    106
+   ]
+  },
+  "planted_head": {
+   "file": "src/hnsw/index.py",
+   "anchor_line": 110,
+   "lines": [
+    110
+   ]
+  }
+ },
+ {
+  "id": "always_reprune-0",
+  "kind": "regression",
+  "seed": 14000,
+  "bench": "build",
+  "good": "d884153b6122523056545afd5a991221af1a3e5d",
+  "bad": "a0777cd6fb776be5c1dfff7408905a1f74708254",
+  "n_commits_after_good": 19,
+  "test_args": "-q -x -k \"not ef200 and not 5k and not hnswlib and not non_decreasing and not better_connected\"",
+  "target": {
+   "repo": "https://github.com/keshavr108/semantic-paper-search",
+   "commit": "5cc47e0"
+  },
+  "regression": "always_reprune",
+  "category": "algorithmic",
+  "expected": "moderate",
+  "culprit": "b2a85b417d9adfa29f84fcbcc376c8b2d0b9bd9f",
+  "culprit_message": "Keep reverse links well-chosen on every insert; tidy comments",
+  "position": 6,
+  "mixed": true,
+  "planted_culprit": {
+   "file": "src/hnsw/index.py",
+   "anchor_line": 214,
+   "lines": [
+    214
+   ]
+  },
+  "planted_head": {
+   "file": "src/hnsw/index.py",
+   "anchor_line": 217,
+   "lines": [
+    217
+   ]
+  }
+ },
+ {
+  "id": "always_reprune-1",
+  "kind": "regression",
+  "seed": 14001,
+  "bench": "build",
+  "good": "d884153b6122523056545afd5a991221af1a3e5d",
+  "bad": "cd37bf04269541143a576b6adbdc783148801aa6",
+  "n_commits_after_good": 27,
+  "test_args": "-q -x -k \"not ef200 and not 5k and not hnswlib and not non_decreasing and not better_connected\"",
+  "target": {
+   "repo": "https://github.com/keshavr108/semantic-paper-search",
+   "commit": "5cc47e0"
+  },
+  "regression": "always_reprune",
+  "category": "algorithmic",
+  "expected": "moderate",
+  "culprit": "2ea2bd359847cf935dd9be2f27701ba769d6a2d4",
+  "culprit_message": "Keep reverse links well-chosen on every insert; tidy comments",
+  "position": 8,
+  "mixed": true,
+  "planted_culprit": {
+   "file": "src/hnsw/index.py",
+   "anchor_line": 217,
+   "lines": [
+    217
+   ]
+  },
+  "planted_head": {
+   "file": "src/hnsw/index.py",
+   "anchor_line": 218,
+   "lines": [
+    218
+   ]
+  }
+ },
+ {
+  "id": "always_reprune-2",
+  "kind": "regression",
+  "seed": 14002,
+  "bench": "build",
+  "good": "d884153b6122523056545afd5a991221af1a3e5d",
+  "bad": "7d8ee0cda46894531e38a52ddef3d11a465f3a57",
+  "n_commits_after_good": 15,
+  "test_args": "-q -x -k \"not ef200 and not 5k and not hnswlib and not non_decreasing and not better_connected\"",
+  "target": {
+   "repo": "https://github.com/keshavr108/semantic-paper-search",
+   "commit": "5cc47e0"
+  },
+  "regression": "always_reprune",
+  "category": "algorithmic",
+  "expected": "moderate",
+  "culprit": "7e73b3b18391f12ddea1b4a65ce71a2c30224d77",
+  "culprit_message": "Keep reverse links well-chosen on every insert",
+  "position": 6,
+  "mixed": false,
+  "planted_culprit": {
+   "file": "src/hnsw/index.py",
+   "anchor_line": 214,
+   "lines": [
+    214
+   ]
+  },
+  "planted_head": {
+   "file": "src/hnsw/index.py",
+   "anchor_line": 214,
+   "lines": [
+    214
+   ]
+  }
+ },
+ {
+  "id": "wide_descent-0",
+  "kind": "regression",
+  "seed": 15000,
+  "bench": "search",
+  "good": "d884153b6122523056545afd5a991221af1a3e5d",
+  "bad": "632ce0b9701fee98d6b100e3d8969dcc954827ad",
+  "n_commits_after_good": 28,
+  "test_args": "-q -x -k \"not ef200 and not 5k and not hnswlib and not non_decreasing and not better_connected\"",
+  "target": {
+   "repo": "https://github.com/keshavr108/semantic-paper-search",
+   "commit": "5cc47e0"
+  },
+  "regression": "wide_descent",
+  "category": "configuration",
+  "expected": "moderate",
+  "culprit": "6e453bb46eb943ca1aa05a1ace9643b5660c74b9",
+  "culprit_message": "Use the full beam on upper layers too; tidy comments",
+  "position": 21,
+  "mixed": true,
+  "planted_culprit": {
+   "file": "src/hnsw/index.py",
+   "anchor_line": 249,
+   "lines": [
+    249,
+    250
+   ]
+  },
+  "planted_head": {
+   "file": "src/hnsw/index.py",
+   "anchor_line": 253,
+   "lines": [
+    253,
+    254
+   ]
+  }
+ },
+ {
+  "id": "wide_descent-1",
+  "kind": "regression",
+  "seed": 15001,
+  "bench": "search",
+  "good": "d884153b6122523056545afd5a991221af1a3e5d",
+  "bad": "e602dad92fec78a567d551540fc7f857fbd8700c",
+  "n_commits_after_good": 31,
+  "test_args": "-q -x -k \"not ef200 and not 5k and not hnswlib and not non_decreasing and not better_connected\"",
+  "target": {
+   "repo": "https://github.com/keshavr108/semantic-paper-search",
+   "commit": "5cc47e0"
+  },
+  "regression": "wide_descent",
+  "category": "configuration",
+  "expected": "moderate",
+  "culprit": "e602dad92fec78a567d551540fc7f857fbd8700c",
+  "culprit_message": "Use the full beam on upper layers too",
+  "position": 30,
+  "mixed": false,
+  "planted_culprit": {
+   "file": "src/hnsw/index.py",
+   "anchor_line": 248,
+   "lines": [
+    248,
+    249
+   ]
+  },
+  "planted_head": {
+   "file": "src/hnsw/index.py",
+   "anchor_line": 248,
+   "lines": [
+    248,
+    249
+   ]
+  }
+ },
+ {
+  "id": "wide_descent-2",
+  "kind": "regression",
+  "seed": 15002,
+  "bench": "search",
+  "good": "d884153b6122523056545afd5a991221af1a3e5d",
+  "bad": "992c5337675b6618a2fc9d5fefdc5c68fd55f9bb",
+  "n_commits_after_good": 31,
+  "test_args": "-q -x -k \"not ef200 and not 5k and not hnswlib and not non_decreasing and not better_connected\"",
+  "target": {
+   "repo": "https://github.com/keshavr108/semantic-paper-search",
+   "commit": "5cc47e0"
+  },
+  "regression": "wide_descent",
+  "category": "configuration",
+  "expected": "moderate",
+  "culprit": "e06fc9d8df53134b6ed8f5bc6c624ac1bb85e132",
+  "culprit_message": "Use the full beam on upper layers too",
+  "position": 28,
+  "mixed": false,
+  "planted_culprit": {
+   "file": "src/hnsw/index.py",
+   "anchor_line": 252,
+   "lines": [
+    252,
+    253
+   ]
+  },
+  "planted_head": {
+   "file": "src/hnsw/index.py",
+   "anchor_line": 252,
+   "lines": [
+    252,
+    253
+   ]
+  }
+ },
+ {
+  "id": "stack_gather-0",
+  "kind": "regression",
+  "seed": 16000,
+  "bench": "search",
+  "good": "d884153b6122523056545afd5a991221af1a3e5d",
+  "bad": "83441ed07a5d949fff36a398c418d735183443fa",
+  "n_commits_after_good": 22,
+  "test_args": "-q -x -k \"not ef200 and not 5k and not hnswlib and not non_decreasing and not better_connected\"",
+  "target": {
+   "repo": "https://github.com/keshavr108/semantic-paper-search",
+   "commit": "5cc47e0"
+  },
+  "regression": "stack_gather",
+  "category": "allocation churn",
+  "expected": "moderate",
+  "culprit": "661eee0a9f0c84b6e9ca1e558b6cd54092cb96a8",
+  "culprit_message": "Gather vectors explicitly in _dists",
+  "position": 3,
+  "mixed": false,
+  "planted_culprit": {
+   "file": "src/hnsw/index.py",
+   "anchor_line": 71,
+   "lines": [
+    71
+   ]
+  },
+  "planted_head": {
+   "file": "src/hnsw/index.py",
+   "anchor_line": 78,
+   "lines": [
+    78
+   ]
+  }
+ },
+ {
+  "id": "stack_gather-1",
+  "kind": "regression",
+  "seed": 16001,
+  "bench": "search",
+  "good": "d884153b6122523056545afd5a991221af1a3e5d",
+  "bad": "b92e2a2252df174798f288e969992d22fece0753",
+  "n_commits_after_good": 29,
+  "test_args": "-q -x -k \"not ef200 and not 5k and not hnswlib and not non_decreasing and not better_connected\"",
+  "target": {
+   "repo": "https://github.com/keshavr108/semantic-paper-search",
+   "commit": "5cc47e0"
+  },
+  "regression": "stack_gather",
+  "category": "allocation churn",
+  "expected": "moderate",
+  "culprit": "e779539266aa72769f2b09d3867d6c4da1899b8c",
+  "culprit_message": "Gather vectors explicitly in _dists",
+  "position": 2,
+  "mixed": false,
+  "planted_culprit": {
+   "file": "src/hnsw/index.py",
+   "anchor_line": 71,
+   "lines": [
+    71
+   ]
+  },
+  "planted_head": {
+   "file": "src/hnsw/index.py",
+   "anchor_line": 74,
+   "lines": [
+    74
+   ]
+  }
+ },
+ {
+  "id": "stack_gather-2",
+  "kind": "regression",
+  "seed": 16002,
+  "bench": "search",
+  "good": "d884153b6122523056545afd5a991221af1a3e5d",
+  "bad": "3783d471d7716a1be07462cc1c685c511ca97cdf",
+  "n_commits_after_good": 25,
+  "test_args": "-q -x -k \"not ef200 and not 5k and not hnswlib and not non_decreasing and not better_connected\"",
+  "target": {
+   "repo": "https://github.com/keshavr108/semantic-paper-search",
+   "commit": "5cc47e0"
+  },
+  "regression": "stack_gather",
+  "category": "allocation churn",
+  "expected": "moderate",
+  "culprit": "25960a788d04124861363182563fabce9e1b330c",
+  "culprit_message": "Gather vectors explicitly in _dists",
+  "position": 18,
+  "mixed": false,
+  "planted_culprit": {
+   "file": "src/hnsw/index.py",
+   "anchor_line": 75,
+   "lines": [
+    75
+   ]
+  },
+  "planted_head": {
+   "file": "src/hnsw/index.py",
+   "anchor_line": 75,
+   "lines": [
+    75
+   ]
+  }
+ },
+ {
+  "id": "control-00",
+  "kind": "control",
+  "seed": 90000,
+  "bench": "build",
+  "good": "d884153b6122523056545afd5a991221af1a3e5d",
+  "bad": "7797145856c981680ca2a3b14da585d8a4be6966",
+  "n_commits_after_good": 31,
+  "test_args": "-q -x -k \"not ef200 and not 5k and not hnswlib and not non_decreasing and not better_connected\"",
+  "target": {
+   "repo": "https://github.com/keshavr108/semantic-paper-search",
+   "commit": "5cc47e0"
+  }
+ },
+ {
+  "id": "control-01",
+  "kind": "control",
+  "seed": 90001,
+  "bench": "build",
+  "good": "d884153b6122523056545afd5a991221af1a3e5d",
+  "bad": "a16eeeeb73cd94f196f16e8bfd7542785c52cacd",
+  "n_commits_after_good": 29,
+  "test_args": "-q -x -k \"not ef200 and not 5k and not hnswlib and not non_decreasing and not better_connected\"",
+  "target": {
+   "repo": "https://github.com/keshavr108/semantic-paper-search",
+   "commit": "5cc47e0"
+  }
+ },
+ {
+  "id": "control-02",
+  "kind": "control",
+  "seed": 90002,
+  "bench": "build",
+  "good": "d884153b6122523056545afd5a991221af1a3e5d",
+  "bad": "5fb8631b469c436cf68bab68a5b2aa31ea95b9df",
+  "n_commits_after_good": 30,
+  "test_args": "-q -x -k \"not ef200 and not 5k and not hnswlib and not non_decreasing and not better_connected\"",
+  "target": {
+   "repo": "https://github.com/keshavr108/semantic-paper-search",
+   "commit": "5cc47e0"
+  }
+ },
+ {
+  "id": "control-03",
+  "kind": "control",
+  "seed": 90003,
+  "bench": "build",
+  "good": "d884153b6122523056545afd5a991221af1a3e5d",
+  "bad": "c9907a96e18541b4ed152c4f47cd84d51d5c90b8",
+  "n_commits_after_good": 26,
+  "test_args": "-q -x -k \"not ef200 and not 5k and not hnswlib and not non_decreasing and not better_connected\"",
+  "target": {
+   "repo": "https://github.com/keshavr108/semantic-paper-search",
+   "commit": "5cc47e0"
+  }
+ },
+ {
+  "id": "control-04",
+  "kind": "control",
+  "seed": 90004,
+  "bench": "search",
+  "good": "d884153b6122523056545afd5a991221af1a3e5d",
+  "bad": "5cd6eb2123f810294c3e8363923268fdcbbe6dfd",
+  "n_commits_after_good": 29,
+  "test_args": "-q -x -k \"not ef200 and not 5k and not hnswlib and not non_decreasing and not better_connected\"",
+  "target": {
+   "repo": "https://github.com/keshavr108/semantic-paper-search",
+   "commit": "5cc47e0"
+  }
+ },
+ {
+  "id": "control-05",
+  "kind": "control",
+  "seed": 90005,
+  "bench": "build",
+  "good": "d884153b6122523056545afd5a991221af1a3e5d",
+  "bad": "3a4e2bd429676be4177b160131d6d9ff2cab737a",
+  "n_commits_after_good": 26,
+  "test_args": "-q -x -k \"not ef200 and not 5k and not hnswlib and not non_decreasing and not better_connected\"",
+  "target": {
+   "repo": "https://github.com/keshavr108/semantic-paper-search",
+   "commit": "5cc47e0"
+  }
+ },
+ {
+  "id": "control-06",
+  "kind": "control",
+  "seed": 90006,
+  "bench": "build",
+  "good": "d884153b6122523056545afd5a991221af1a3e5d",
+  "bad": "5adcf37d81a75722824bc3e8b4ff97bcfe8ab95e",
+  "n_commits_after_good": 24,
+  "test_args": "-q -x -k \"not ef200 and not 5k and not hnswlib and not non_decreasing and not better_connected\"",
+  "target": {
+   "repo": "https://github.com/keshavr108/semantic-paper-search",
+   "commit": "5cc47e0"
+  }
+ },
+ {
+  "id": "control-07",
+  "kind": "control",
+  "seed": 90007,
+  "bench": "build",
+  "good": "d884153b6122523056545afd5a991221af1a3e5d",
+  "bad": "4c43e8e5e533c4685f06f7fb145f1e3b24bf76f2",
+  "n_commits_after_good": 20,
+  "test_args": "-q -x -k \"not ef200 and not 5k and not hnswlib and not non_decreasing and not better_connected\"",
+  "target": {
+   "repo": "https://github.com/keshavr108/semantic-paper-search",
+   "commit": "5cc47e0"
+  }
+ },
+ {
+  "id": "control-08",
+  "kind": "control",
+  "seed": 90008,
+  "bench": "build",
+  "good": "d884153b6122523056545afd5a991221af1a3e5d",
+  "bad": "fd45d1605c66caedcf7015f37e9921aede6734ff",
+  "n_commits_after_good": 31,
+  "test_args": "-q -x -k \"not ef200 and not 5k and not hnswlib and not non_decreasing and not better_connected\"",
+  "target": {
+   "repo": "https://github.com/keshavr108/semantic-paper-search",
+   "commit": "5cc47e0"
+  }
+ },
+ {
+  "id": "control-09",
+  "kind": "control",
+  "seed": 90009,
+  "bench": "search",
+  "good": "d884153b6122523056545afd5a991221af1a3e5d",
+  "bad": "b42e7f627144a0241a3584e331562ef3b63070ba",
+  "n_commits_after_good": 23,
+  "test_args": "-q -x -k \"not ef200 and not 5k and not hnswlib and not non_decreasing and not better_connected\"",
+  "target": {
+   "repo": "https://github.com/keshavr108/semantic-paper-search",
+   "commit": "5cc47e0"
+  }
+ },
+ {
+  "id": "control-10",
+  "kind": "control",
+  "seed": 90010,
+  "bench": "build",
+  "good": "d884153b6122523056545afd5a991221af1a3e5d",
+  "bad": "45ad606c6bd60691c9d24af9ca8230a1a1afe192",
+  "n_commits_after_good": 31,
+  "test_args": "-q -x -k \"not ef200 and not 5k and not hnswlib and not non_decreasing and not better_connected\"",
+  "target": {
+   "repo": "https://github.com/keshavr108/semantic-paper-search",
+   "commit": "5cc47e0"
+  }
+ },
+ {
+  "id": "control-11",
+  "kind": "control",
+  "seed": 90011,
+  "bench": "search",
+  "good": "d884153b6122523056545afd5a991221af1a3e5d",
+  "bad": "6e888be306740f50378a2f93f3f57b269e2fd5f8",
+  "n_commits_after_good": 22,
+  "test_args": "-q -x -k \"not ef200 and not 5k and not hnswlib and not non_decreasing and not better_connected\"",
+  "target": {
+   "repo": "https://github.com/keshavr108/semantic-paper-search",
+   "commit": "5cc47e0"
+  }
+ }
+]
