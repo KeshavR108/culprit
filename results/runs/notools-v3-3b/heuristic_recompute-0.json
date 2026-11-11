@@ -1,0 +1,40 @@
+{
+ "status": "handoff",
+ "initial": {
+  "verdict": "regression",
+  "ratio": 6.464986578033643,
+  "ci_low": 6.424932334711477,
+  "ci_high": 6.527452904090477,
+  "p_slower": 1.6959106954125473e-06,
+  "p_faster": 0.9999986139518094,
+  "median_a_ms": 87.589625,
+  "median_b_ms": 566.26575,
+  "n_rounds": 15,
+  "tau": 0.05,
+  "label_a": "d884153b",
+  "label_b": "d4d29c96"
+ },
+ "finding": {
+  "culprit_commit": "c70c4e35867a47d86edeeab8ac06b11359b1ec64",
+  "file": "src/hnsw/index.py",
+  "line": 152,
+  "explanation": "The new code uses a more complex pairwise distance check, which can be slower than the original code that checks each row individually.",
+  "patch": null,
+  "confidence": "medium"
+ },
+ "reasons": [
+  "patch invalid: old_code was not found in the file; copy it exactly from read_file (without the line-number prefix)"
+ ],
+ "llm_tokens": {
+  "prompt": 322,
+  "completion": 123,
+  "llm_seconds": 9.134148120880127
+ },
+ "benchmark_comparisons": 0,
+ "wall_time_s": 9.52,
+ "case": "heuristic_recompute-0",
+ "system": "notools",
+ "model": "qwen2.5-coder:3b",
+ "variant": null,
+ "run_seconds": 9.52
+}

@@ -1,0 +1,40 @@
+{
+ "status": "handoff",
+ "initial": {
+  "verdict": "regression",
+  "ratio": 1.1157237913594085,
+  "ci_low": 1.0696763827549947,
+  "ci_high": 1.1605601728964507,
+  "p_slower": 6.6473613813032315e-06,
+  "p_faster": 0.9999945039175993,
+  "median_a_ms": 17.516208,
+  "median_b_ms": 19.54325,
+  "n_rounds": 15,
+  "tau": 0.05,
+  "label_a": "d884153b",
+  "label_b": "fad8f3b6"
+ },
+ "finding": {
+  "culprit_commit": "d31032381144d11086374667ee0390e613652bf4",
+  "file": "src/hnsw/index.py",
+  "line": 113,
+  "explanation": "The use of `heapq.heappush` and `heapq.heapify` is inefficient here. The `heapify` operation is called after each insertion, which is unnecessary and can lead to performance degradation. Instead, we can maintain the heap in place by only updating the heap when necessary.",
+  "patch": null,
+  "confidence": "medium"
+ },
+ "reasons": [
+  "patch invalid: old_code was not found in the file; copy it exactly from read_file (without the line-number prefix)"
+ ],
+ "llm_tokens": {
+  "prompt": 431,
+  "completion": 204,
+  "llm_seconds": 5.263077974319458
+ },
+ "benchmark_comparisons": 0,
+ "wall_time_s": 5.41,
+ "case": "heapify_each-2",
+ "system": "notools",
+ "model": "qwen2.5-coder:3b",
+ "variant": null,
+ "run_seconds": 5.41
+}

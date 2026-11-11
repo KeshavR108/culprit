@@ -1,0 +1,108 @@
+{
+ "status": "handoff",
+ "reasons": [
+  "no valid patch proposed"
+ ],
+ "initial": {
+  "verdict": "regression",
+  "ratio": 1.4532052900117183,
+  "ci_low": 1.4243193412535609,
+  "ci_high": 1.470529924445669,
+  "p_slower": 1.6959106954125473e-06,
+  "p_faster": 0.9999986139518094,
+  "median_a_ms": 17.173875,
+  "median_b_ms": 24.957166,
+  "n_rounds": 15,
+  "tau": 0.05,
+  "env": {
+   "cpu": "Apple M4",
+   "cores": 10,
+   "python": "3.13.5",
+   "platform": "macOS-26.1-arm64-arm-64bit-Mach-O",
+   "load_avg_1m": 4.13232421875
+  },
+  "label_a": "d884153b",
+  "label_b": "d9b32fa2"
+ },
+ "bisect": {
+  "status": "found",
+  "first_bad_commit": "6e189b7b71",
+  "split": 1.205,
+  "subject": "Avoid aliasing the vector storage in _dists",
+  "commits_searched": 28,
+  "steps": 5,
+  "path": [
+   {
+    "commit": "6e189b7b71",
+    "side": "slow",
+    "ratio": 1.467,
+    "ci95": [
+     1.452,
+     1.475
+    ]
+   },
+   {
+    "commit": "f415b05d67",
+    "side": "fast",
+    "ratio": 0.988,
+    "ci95": [
+     0.977,
+     0.999
+    ]
+   },
+   {
+    "commit": "8f513e7201",
+    "side": "fast",
+    "ratio": 0.988,
+    "ci95": [
+     0.974,
+     0.997
+    ]
+   },
+   {
+    "commit": "4f9d25f34c",
+    "side": "fast",
+    "ratio": 0.98,
+    "ci95": [
+     0.971,
+     0.992
+    ]
+   },
+   {
+    "commit": "957a61de44",
+    "side": "fast",
+    "ratio": 0.991,
+    "ci95": [
+     0.972,
+     1.013
+    ]
+   }
+  ]
+ },
+ "profile": null,
+ "finding": {
+  "culprit_commit": "6e189b7b71",
+  "file": "src/knn.py",
+  "line": 100,
+  "explanation": "The change in `_dists` function may have introduced a performance overhead due to aliasing the vector storage, which can lead to slower execution times.",
+  "patch": null,
+  "confidence": "medium"
+ },
+ "patch": null,
+ "verification": null,
+ "steps": 2,
+ "tool_calls": 1,
+ "benchmark_comparisons": 0,
+ "llm_tokens": {
+  "prompt": 3842,
+  "completion": 91,
+  "llm_seconds": 4.166094064712524
+ },
+ "wall_time_s": 4.33,
+ "trace_path": "results/runs/agent-v1-3b/traces/copy_vectors-0.jsonl",
+ "case": "copy_vectors-0",
+ "system": "agent",
+ "model": "qwen2.5-coder:3b",
+ "variant": "v1",
+ "run_seconds": 4.35
+}

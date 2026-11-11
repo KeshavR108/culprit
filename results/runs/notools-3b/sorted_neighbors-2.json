@@ -1,0 +1,27 @@
+{
+ "status": "handoff",
+ "initial": {
+  "verdict": "inconclusive",
+  "ratio": 1.0431380275616458,
+  "ci_low": 1.0387174968584325,
+  "ci_high": 1.0523687552105687,
+  "p_slower": 1.6762343410740499e-13,
+  "p_faster": 0.9999999999998439,
+  "median_a_ms": 16.8123125,
+  "median_b_ms": 17.5375625,
+  "n_rounds": 40,
+  "tau": 0.05,
+  "label_a": "d884153b",
+  "label_b": "6ff7b92d"
+ },
+ "finding": null,
+ "reasons": [
+  "not run: no confirmed regression with a known culprit"
+ ],
+ "wall_time_s": 0.03,
+ "case": "sorted_neighbors-2",
+ "system": "notools",
+ "model": "qwen2.5-coder:3b",
+ "variant": null,
+ "run_seconds": 0.05
+}

@@ -1,0 +1,286 @@
+{
+ "status": "handoff",
+ "reasons": [
+  "agent did not produce a final answer within the step budget",
+  "patch could not be verified: patched benchmark failed: benchmark setup failed: Traceback (most recent call last):\n  File \"src/culprit/bench_worker.py\", line 62, in main\n    sp"
+ ],
+ "initial": {
+  "verdict": "regression",
+  "ratio": 1.1032094952540779,
+  "ci_low": 1.0808460890682687,
+  "ci_high": 1.1085703617264013,
+  "p_slower": 1.6959106954125473e-06,
+  "p_faster": 0.9999986139518094,
+  "median_a_ms": 16.833083,
+  "median_b_ms": 18.570417,
+  "n_rounds": 15,
+  "tau": 0.05,
+  "env": {
+   "cpu": "Apple M4",
+   "cores": 10,
+   "python": "3.13.5",
+   "platform": "macOS-26.1-arm64-arm-64bit-Mach-O",
+   "load_avg_1m": 4.35009765625
+  },
+  "label_a": "d884153b",
+  "label_b": "e4de2af2"
+ },
+ "bisect": {
+  "status": "found",
+  "first_bad_commit": "b5792e59e7",
+  "split": 1.05,
+  "subject": "Rebuild candidate heap after each insertion",
+  "commits_searched": 24,
+  "steps": 5,
+  "path": [
+   {
+    "commit": "b57443648b",
+    "side": "slow",
+    "ratio": 1.103,
+    "ci95": [
+     1.087,
+     1.124
+    ]
+   },
+   {
+    "commit": "4bf33653e0",
+    "side": "slow",
+    "ratio": 1.09,
+    "ci95": [
+     1.083,
+     1.101
+    ]
+   },
+   {
+    "commit": "38326a8b4c",
+    "side": "slow",
+    "ratio": 1.106,
+    "ci95": [
+     1.093,
+     1.122
+    ]
+   },
+   {
+    "commit": "e3b6d0355c",
+    "side": "fast",
+    "ratio": 1.008,
+    "ci95": [
+     0.994,
+     1.019
+    ]
+   },
+   {
+    "commit": "b5792e59e7",
+    "side": "slow",
+    "ratio": 1.106,
+    "ci95": [
+     1.099,
+     1.115
+    ]
+   }
+  ]
+ },
+ "profile": {
+  "commit_a": "d884153b61",
+  "commit_b": "e4de2af22b",
+  "top_on_b": [
+   {
+    "function": "src/hnsw/index.py:260(batch_search)",
+    "calls": 1,
+    "cum_ms": 32.022,
+    "self_ms": 0.174
+   },
+   {
+    "function": "src/hnsw/index.py:236(search)",
+    "calls": 200,
+    "cum_ms": 31.818,
+    "self_ms": 0.718
+   },
+   {
+    "function": "src/hnsw/index.py:90(search_layer)",
+    "calls": 800,
+    "cum_ms": 30.853,
+    "self_ms": 9.017
+   },
+   {
+    "function": "src/hnsw/index.py:76(_dists)",
+    "calls": 3949,
+    "cum_ms": 14.672,
+    "self_ms": 5.481
+   },
+   {
+    "function": "src/hnsw/distance.py:38(l2_sq_batch)",
+    "calls": 3949,
+    "cum_ms": 8.709,
+    "self_ms": 4.775
+   },
+   {
+    "function": "~:0(<built-in method numpy._core._multiarray_umath.c_einsum>)",
+    "calls": 3949,
+    "cum_ms": 2.611,
+    "self_ms": 2.611
+   },
+   {
+    "function": "~:0(<built-in method _heapq.heapify>)",
+    "calls": 8318,
+    "cum_ms": 2.286,
+    "self_ms": 2.286
+   },
+   {
+    "function": "~:0(<built-in method builtins.len>)",
+    "calls": 40678,
+    "cum_ms": 1.648,
+    "self_ms": 1.648
+   },
+   {
+    "function": "~:0(<built-in method _heapq.heappop>)",
+    "calls": 8603,
+    "cum_ms": 0.923,
+    "self_ms": 0.923
+   },
+   {
+    "function": "~:0(<method 'update' of 'set' objects>)",
+    "calls": 3149,
+    "cum_ms": 0.783,
+    "self_ms": 0.783
+   },
+   {
+    "function": "~:0(<built-in method builtins.sorted>)",
+    "calls": 800,
+    "cum_ms": 0.562,
+    "self_ms": 0.371
+   },
+   {
+    "function": "~:0(<built-in method _heapq.heappush>)",
+    "calls": 6718,
+    "cum_ms": 0.553,
+    "self_ms": 0.553
+   },
+   {
+    "function": "~:0(<method 'tolist' of 'numpy.ndarray' objects>)",
+    "calls": 3949,
+    "cum_ms": 0.482,
+    "self_ms": 0.482
+   },
+   {
+    "function": "~:0(<method 'append' of 'list' objects>)",
+    "calls": 6719,
+    "cum_ms": 0.432,
+    "self_ms": 0.432
+   },
+   {
+    "function": "src/hnsw/index.py:129(<genexpr>)",
+    "calls": 3400,
+    "cum_ms": 0.192,
+    "self_ms": 0.192
+   }
+  ],
+  "biggest_increases": [
+   {
+    "function": "~:0(<built-in method _heapq.heapify>)",
+    "self_ms_before": 0.087,
+    "self_ms_after": 2.286,
+    "cum_ms_before": 0.087,
+    "cum_ms_after": 2.286,
+    "calls_before": 1600,
+    "calls_after": 8318
+   },
+   {
+    "function": "src/hnsw/index.py:90(search_layer)",
+    "self_ms_before": 8.028,
+    "self_ms_after": 9.017,
+    "cum_ms_before": 26.979,
+    "cum_ms_after": 30.853,
+    "calls_before": 800,
+    "calls_after": 800
+   },
+   {
+    "function": "~:0(<method 'append' of 'list' objects>)",
+    "self_ms_before": 0.0,
+    "self_ms_after": 0.432,
+    "cum_ms_before": 0.0,
+    "cum_ms_after": 0.432,
+    "calls_before": 1,
+    "calls_after": 6719
+   },
+   {
+    "function": "src/hnsw/index.py:76(_dists)",
+    "self_ms_before": 5.208,
+    "self_ms_after": 5.481,
+    "cum_ms_before": 13.998,
+    "cum_ms_after": 14.672,
+    "calls_before": 3949,
+    "calls_after": 3949
+   },
+   {
+    "function": "~:0(<built-in method numpy._core._multiarray_umath.c_einsum>)",
+    "self_ms_before": 2.426,
+    "self_ms_after": 2.611,
+    "cum_ms_before": 2.426,
+    "cum_ms_after": 2.611,
+    "calls_before": 3949,
+    "calls_after": 3949
+   },
+   {
+    "function": "src/hnsw/distance.py:38(l2_sq_batch)",
+    "self_ms_before": 4.643,
+    "self_ms_after": 4.775,
+    "cum_ms_before": 8.345,
+    "cum_ms_after": 8.709,
+    "calls_before": 3949,
+    "calls_after": 3949
+   },
+   {
+    "function": ".venv/lib/python3.13/site-packages/numpy/_core/einsumfunc.py:1049(_einsum_dispatcher)",
+    "self_ms_before": 0.785,
+    "self_ms_after": 0.831,
+    "cum_ms_before": 0.785,
+    "cum_ms_after": 0.831,
+    "calls_before": 19745,
+    "calls_after": 19745
+   },
+   {
+    "function": "~:0(<method 'update' of 'set' objects>)",
+    "self_ms_before": 0.743,
+    "self_ms_after": 0.783,
+    "cum_ms_before": 0.743,
+    "cum_ms_after": 0.783,
+    "calls_before": 3149,
+    "calls_after": 3149
+   }
+  ]
+ },
+ "finding": null,
+ "patch": {
+  "diff": "--- a/src/hnsw/index.py\n+++ b/src/hnsw/index.py\n@@ -120,11 +120,6 @@\n \n             for d_e, e in zip(self._dists(q, unvisited), unvisited):\n                 if len(W) < ef or d_e < -W[0][0]:\n-                    C.append((d_e, e))\n-                    heapq.heapify(C)\n-                    heapq.heappush(W, (-d_e, e))\n-                    if len(W) > ef:\n-                        heapq.heappop(W)    # evict the farthest result\n \n         return sorted((-neg_d, e) for neg_d, e in W)\n \n",
+  "files": [
+   "src/hnsw/index.py"
+  ],
+  "lines_changed": 5
+ },
+ "verification": {
+  "applied": true,
+  "tests_passed": null,
+  "tests_output": "",
+  "speedup": null,
+  "vs_good": null,
+  "significant_speedup": false,
+  "verified": false,
+  "error": "patched benchmark failed: benchmark setup failed: Traceback (most recent call last):\n  File \"src/culprit/bench_worker.py\", line 62, in main\n    spec.loader.exec_module(mod)\n    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^\n  File \"<frozen importlib._bootstrap_external>\", line 1026, in exec_module\n  File \"<frozen importlib._bootstrap>\", line 488, in _call_with_frames_removed\n  File \"perfbench/cases/heapify_each-0/bench.py\", line 11, in <module>\n    from hnsw import HNSWIndex, load\n  File \"/private/var/folders/0j/jth79dy10kz68nyk4xr2cjy80000gn/T/culprit-fagi16_k/"
+ },
+ "steps": 15,
+ "tool_calls": 15,
+ "benchmark_comparisons": 0,
+ "llm_tokens": {
+  "prompt": 100562,
+  "completion": 1094,
+  "llm_seconds": 25.07469367980957
+ },
+ "wall_time_s": 26.0,
+ "trace_path": "results/runs/agent-v3-1.5b/traces/heapify_each-0.jsonl",
+ "case": "heapify_each-0",
+ "system": "agent",
+ "model": "qwen2.5-coder:1.5b",
+ "variant": "v3",
+ "run_seconds": 26.15
+}

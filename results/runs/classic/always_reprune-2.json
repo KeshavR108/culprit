@@ -1,0 +1,251 @@
+{
+ "status": "handoff",
+ "initial": {
+  "verdict": "regression",
+  "ratio": 1.2338911331537248,
+  "ci_low": 1.2264745240637474,
+  "ci_high": 1.2433348781971438,
+  "p_slower": 1.6959106954125473e-06,
+  "p_faster": 0.9999986139518094,
+  "median_a_ms": 86.873041,
+  "median_b_ms": 107.191875,
+  "n_rounds": 15,
+  "tau": 0.05,
+  "label_a": "d884153b",
+  "label_b": "7d8ee0cd"
+ },
+ "finding": {
+  "culprit_commit": "7e73b3b18391f12ddea1b4a65ce71a2c30224d77",
+  "file": "src/hnsw/index.py",
+  "line": 214,
+  "explanation": "",
+  "patch": null,
+  "confidence": "medium"
+ },
+ "reasons": [
+  "classic tooling gives no explanation or fix"
+ ],
+ "bisect": {
+  "status": "found",
+  "first_bad_commit": "7e73b3b183",
+  "split": 1.111,
+  "subject": "Keep reverse links well-chosen on every insert",
+  "commits_searched": 15,
+  "steps": 4,
+  "path": [
+   {
+    "commit": "7e73b3b183",
+    "side": "slow",
+    "ratio": 1.234,
+    "ci95": [
+     1.228,
+     1.242
+    ]
+   },
+   {
+    "commit": "69283b01f6",
+    "side": "fast",
+    "ratio": 1.003,
+    "ci95": [
+     0.993,
+     1.011
+    ]
+   },
+   {
+    "commit": "95a5a2ce85",
+    "side": "fast",
+    "ratio": 1.001,
+    "ci95": [
+     0.992,
+     1.012
+    ]
+   },
+   {
+    "commit": "892d7b3220",
+    "side": "fast",
+    "ratio": 1.002,
+    "ci95": [
+     0.985,
+     1.005
+    ]
+   }
+  ]
+ },
+ "profile": {
+  "commit_a": "892d7b3220",
+  "commit_b": "7e73b3b183",
+  "top_on_b": [
+   {
+    "function": "src/hnsw/index.py:226(add_batch)",
+    "calls": 1,
+    "cum_ms": 184.801,
+    "self_ms": 0.283
+   },
+   {
+    "function": "src/hnsw/index.py:175(add)",
+    "calls": 300,
+    "cum_ms": 184.518,
+    "self_ms": 4.148
+   },
+   {
+    "function": "src/hnsw/index.py:168(_select)",
+    "calls": 3087,
+    "cum_ms": 87.436,
+    "self_ms": 6.408
+   },
+   {
+    "function": "src/hnsw/index.py:132(select_neighbors_heuristic)",
+    "calls": 3087,
+    "cum_ms": 81.027,
+    "self_ms": 23.879
+   },
+   {
+    "function": "src/hnsw/index.py:86(search_layer)",
+    "calls": 866,
+    "cum_ms": 79.116,
+    "self_ms": 21.81
+   },
+   {
+    "function": "src/hnsw/index.py:72(_dists)",
+    "calls": 14719,
+    "cum_ms": 52.384,
+    "self_ms": 18.577
+   },
+   {
+    "function": "src/hnsw/distance.py:37(l2_sq_batch)",
+    "calls": 14719,
+    "cum_ms": 32.154,
+    "self_ms": 17.565
+   },
+   {
+    "function": "src/hnsw/distance.py:53(l2_sq_pairwise)",
+    "calls": 3087,
+    "cum_ms": 23.827,
+    "self_ms": 16.751
+   },
+   {
+    "function": "~:0(<built-in method builtins.all>)",
+    "calls": 50162,
+    "cum_ms": 16.62,
+    "self_ms": 10.823
+   },
+   {
+    "function": "~:0(<method 'tolist' of 'numpy.ndarray' objects>)",
+    "calls": 17806,
+    "cum_ms": 11.727,
+    "self_ms": 11.727
+   },
+   {
+    "function": "~:0(<built-in method numpy._core._multiarray_umath.c_einsum>)",
+    "calls": 17806,
+    "cum_ms": 11.694,
+    "self_ms": 11.694
+   },
+   {
+    "function": "~:0(<built-in method builtins.len>)",
+    "calls": 143940,
+    "cum_ms": 6.043,
+    "self_ms": 6.043
+   },
+   {
+    "function": "src/hnsw/index.py:155(<genexpr>)",
+    "calls": 154602,
+    "cum_ms": 5.797,
+    "self_ms": 5.797
+   },
+   {
+    "function": "~:0(<built-in method _heapq.heappush>)",
+    "calls": 52516,
+    "cum_ms": 4.475,
+    "self_ms": 4.475
+   },
+   {
+    "function": "~:0(<built-in method builtins.sorted>)",
+    "calls": 3601,
+    "cum_ms": 4.275,
+    "self_ms": 3.36
+   }
+  ],
+  "biggest_increases": [
+   {
+    "function": "src/hnsw/index.py:132(select_neighbors_heuristic)",
+    "self_ms_before": 15.231,
+    "self_ms_after": 23.879,
+    "cum_ms_before": 53.543,
+    "cum_ms_after": 81.027,
+    "calls_before": 1649,
+    "calls_after": 3087
+   },
+   {
+    "function": "src/hnsw/distance.py:53(l2_sq_pairwise)",
+    "self_ms_before": 9.863,
+    "self_ms_after": 16.751,
+    "cum_ms_before": 13.865,
+    "cum_ms_after": 23.827,
+    "calls_before": 1649,
+    "calls_after": 3087
+   },
+   {
+    "function": "src/hnsw/index.py:155(<genexpr>)",
+    "self_ms_before": 0.939,
+    "self_ms_after": 5.797,
+    "cum_ms_before": 0.939,
+    "cum_ms_after": 5.797,
+    "calls_before": 19735,
+    "calls_after": 154602
+   },
+   {
+    "function": "~:0(<built-in method builtins.all>)",
+    "self_ms_before": 7.308,
+    "self_ms_after": 10.823,
+    "cum_ms_before": 11.374,
+    "cum_ms_after": 16.62,
+    "calls_before": 33661,
+    "calls_after": 50162
+   },
+   {
+    "function": "src/hnsw/index.py:72(_dists)",
+    "self_ms_before": 16.39,
+    "self_ms_after": 18.577,
+    "cum_ms_before": 46.803,
+    "cum_ms_after": 52.384,
+    "calls_before": 13281,
+    "calls_after": 14719
+   },
+   {
+    "function": "~:0(<built-in method numpy._core._multiarray_umath.c_einsum>)",
+    "self_ms_before": 9.877,
+    "self_ms_after": 11.694,
+    "cum_ms_before": 9.877,
+    "cum_ms_after": 11.694,
+    "calls_before": 14930,
+    "calls_after": 17806
+   },
+   {
+    "function": "src/hnsw/distance.py:37(l2_sq_batch)",
+    "self_ms_before": 15.804,
+    "self_ms_after": 17.565,
+    "cum_ms_before": 28.999,
+    "cum_ms_after": 32.154,
+    "calls_before": 13281,
+    "calls_after": 14719
+   },
+   {
+    "function": "~:0(<method 'append' of 'list' objects>)",
+    "self_ms_before": 2.693,
+    "self_ms_after": 4.16,
+    "cum_ms_before": 2.693,
+    "cum_ms_after": 4.16,
+    "calls_before": 44983,
+    "calls_after": 69384
+   }
+  ]
+ },
+ "benchmark_comparisons": 5,
+ "wall_time_s": 18.55,
+ "case": "always_reprune-2",
+ "system": "classic",
+ "model": null,
+ "variant": null,
+ "run_seconds": 18.55
+}

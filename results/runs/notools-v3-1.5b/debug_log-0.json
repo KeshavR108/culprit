@@ -1,0 +1,40 @@
+{
+ "status": "handoff",
+ "initial": {
+  "verdict": "regression",
+  "ratio": 1.1677295903923235,
+  "ci_low": 1.1495855309179337,
+  "ci_high": 1.1769091333557895,
+  "p_slower": 1.6959106954125473e-06,
+  "p_faster": 0.9999986139518094,
+  "median_a_ms": 16.77825,
+  "median_b_ms": 19.592459,
+  "n_rounds": 15,
+  "tau": 0.05,
+  "label_a": "d884153b",
+  "label_b": "90f65bdb"
+ },
+ "finding": {
+  "culprit_commit": "6b9e66667858df4b6fb4d7e68349d23510f3f89f",
+  "file": "src/hnsw/index.py",
+  "line": 106,
+  "explanation": "The addition of debug logging to the `search_layer` function slows down the benchmark because it introduces additional overhead. Debugging statements can be expensive in terms of CPU time and memory usage, especially when running the benchmark multiple times.",
+  "patch": null,
+  "confidence": "low"
+ },
+ "reasons": [
+  "patch invalid: new_code is identical to old_code"
+ ],
+ "llm_tokens": {
+  "prompt": 460,
+  "completion": 160,
+  "llm_seconds": 2.2291219234466553
+ },
+ "benchmark_comparisons": 0,
+ "wall_time_s": 2.34,
+ "case": "debug_log-0",
+ "system": "notools",
+ "model": "qwen2.5-coder:1.5b",
+ "variant": null,
+ "run_seconds": 2.34
+}

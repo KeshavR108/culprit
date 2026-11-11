@@ -1,0 +1,99 @@
+{
+ "status": "handoff",
+ "reasons": [
+  "no valid patch proposed"
+ ],
+ "initial": {
+  "verdict": "regression",
+  "ratio": 1.5014878760201527,
+  "ci_low": 1.4878655943493362,
+  "ci_high": 1.5091939107732442,
+  "p_slower": 1.6959106954125473e-06,
+  "p_faster": 0.9999986139518094,
+  "median_a_ms": 16.9705,
+  "median_b_ms": 25.481,
+  "n_rounds": 15,
+  "tau": 0.05,
+  "env": {
+   "cpu": "Apple M4",
+   "cores": 10,
+   "python": "3.13.5",
+   "platform": "macOS-26.1-arm64-arm-64bit-Mach-O",
+   "load_avg_1m": 2.98681640625
+  },
+  "label_a": "d884153b",
+  "label_b": "632ce0b9"
+ },
+ "bisect": {
+  "status": "found",
+  "first_bad_commit": "6e453bb46e",
+  "split": 1.225,
+  "subject": "Use the full beam on upper layers too; tidy comments",
+  "commits_searched": 28,
+  "steps": 4,
+  "path": [
+   {
+    "commit": "623d25ec82",
+    "side": "fast",
+    "ratio": 0.98,
+    "ci95": [
+     0.97,
+     0.987
+    ]
+   },
+   {
+    "commit": "9b5e996bf4",
+    "side": "fast",
+    "ratio": 0.985,
+    "ci95": [
+     0.98,
+     0.994
+    ]
+   },
+   {
+    "commit": "c93f213ce7",
+    "side": "slow",
+    "ratio": 1.499,
+    "ci95": [
+     1.493,
+     1.509
+    ]
+   },
+   {
+    "commit": "6e453bb46e",
+    "side": "slow",
+    "ratio": 1.494,
+    "ci95": [
+     1.473,
+     1.503
+    ]
+   }
+  ]
+ },
+ "profile": null,
+ "finding": {
+  "culprit_commit": "6e453bb46e",
+  "file": "search.py",
+  "line": 100,
+  "explanation": "The commit introduces a comment above the `search_layer` function, which likely caused the slowdown by adding an extra line of code.",
+  "patch": null,
+  "confidence": "medium"
+ },
+ "patch": null,
+ "verification": null,
+ "steps": 2,
+ "tool_calls": 1,
+ "benchmark_comparisons": 0,
+ "llm_tokens": {
+  "prompt": 3801,
+  "completion": 84,
+  "llm_seconds": 3.928114652633667
+ },
+ "wall_time_s": 4.09,
+ "trace_path": "results/runs/agent-v1-3b/traces/wide_descent-0.jsonl",
+ "case": "wide_descent-0",
+ "system": "agent",
+ "model": "qwen2.5-coder:3b",
+ "variant": "v1",
+ "run_seconds": 4.11
+}

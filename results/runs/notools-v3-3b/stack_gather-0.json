@@ -1,0 +1,40 @@
+{
+ "status": "handoff",
+ "initial": {
+  "verdict": "regression",
+  "ratio": 1.5108321428281049,
+  "ci_low": 1.4857663197097626,
+  "ci_high": 1.5246771732175053,
+  "p_slower": 1.6959106954125473e-06,
+  "p_faster": 0.9999986139518094,
+  "median_a_ms": 16.726792,
+  "median_b_ms": 25.271375,
+  "n_rounds": 15,
+  "tau": 0.05,
+  "label_a": "d884153b",
+  "label_b": "83441ed0"
+ },
+ "finding": {
+  "culprit_commit": "661eee0a9f0c84b6e9ca1e558b6cd54092cb96a8",
+  "file": "src/hnsw/index.py",
+  "line": 68,
+  "explanation": "The new code creates a new NumPy array by stacking the vectors for the given ids, which is slower than the old code that directly uses the vectors from the index.",
+  "patch": null,
+  "confidence": "medium"
+ },
+ "reasons": [
+  "patch invalid: old_code was not found in the file; copy it exactly from read_file (without the line-number prefix)"
+ ],
+ "llm_tokens": {
+  "prompt": 350,
+  "completion": 121,
+  "llm_seconds": 464.19744515419006
+ },
+ "benchmark_comparisons": 0,
+ "wall_time_s": 464.51,
+ "case": "stack_gather-0",
+ "system": "notools",
+ "model": "qwen2.5-coder:3b",
+ "variant": null,
+ "run_seconds": 464.51
+}

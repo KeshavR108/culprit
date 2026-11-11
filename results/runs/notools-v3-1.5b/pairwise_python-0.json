@@ -1,0 +1,40 @@
+{
+ "status": "handoff",
+ "initial": {
+  "verdict": "regression",
+  "ratio": 9.456716193158718,
+  "ci_low": 9.38800162649095,
+  "ci_high": 9.509879249319333,
+  "p_slower": 1.6959106954125473e-06,
+  "p_faster": 0.9999986139518094,
+  "median_a_ms": 87.047958,
+  "median_b_ms": 823.187834,
+  "n_rounds": 15,
+  "tau": 0.05,
+  "label_a": "d884153b",
+  "label_b": "ac2322db"
+ },
+ "finding": {
+  "culprit_commit": "92e04014b76301429d338b0b83102822c17e32da",
+  "file": "src/hnsw/distance.py",
+  "line": 56,
+  "explanation": "The old code uses `np.einsum` to compute the pairwise squared Euclidean distances, which is more efficient than a double loop. However, the new code uses a list comprehension to compute the pairwise squared Euclidean distances, which is less efficient than a double loop.",
+  "patch": null,
+  "confidence": "low"
+ },
+ "reasons": [
+  "patch invalid: old_code was not found in the file; copy it exactly from read_file (without the line-number prefix)"
+ ],
+ "llm_tokens": {
+  "prompt": 417,
+  "completion": 198,
+  "llm_seconds": 2.6104180812835693
+ },
+ "benchmark_comparisons": 0,
+ "wall_time_s": 2.72,
+ "case": "pairwise_python-0",
+ "system": "notools",
+ "model": "qwen2.5-coder:1.5b",
+ "variant": null,
+ "run_seconds": 2.72
+}

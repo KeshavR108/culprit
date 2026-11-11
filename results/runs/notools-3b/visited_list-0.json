@@ -1,0 +1,40 @@
+{
+ "status": "handoff",
+ "initial": {
+  "verdict": "regression",
+  "ratio": 1.3559052919982308,
+  "ci_low": 1.341060730760782,
+  "ci_high": 1.3729606312131313,
+  "p_slower": 1.6959106954125473e-06,
+  "p_faster": 0.9999986139518094,
+  "median_a_ms": 16.972209,
+  "median_b_ms": 23.012708,
+  "n_rounds": 15,
+  "tau": 0.05,
+  "label_a": "d884153b",
+  "label_b": "e75d9672"
+ },
+ "finding": {
+  "culprit_commit": "3fee7bb0781ffa02607cb6ee9ff1e6dbdda14d1f",
+  "file": "src/hnsw/index.py",
+  "line": 93,
+  "explanation": "The use of a set for visited entries is slower than using a list. Sets in Python are implemented as hash tables, which have a time complexity of O(1) for lookups, insertions, and deletions. Lists, on the other hand, have a time complexity of O(n) for lookups, insertions, and deletions. This change will make the benchmark slower because it will require more time to check if an entry has already been visited.",
+  "patch": null,
+  "confidence": "medium"
+ },
+ "reasons": [
+  "patch invalid: old_code was not found in the file; copy it exactly from read_file (without the line-number prefix)"
+ ],
+ "llm_tokens": {
+  "prompt": 435,
+  "completion": 154,
+  "llm_seconds": 4.578388929367065
+ },
+ "benchmark_comparisons": 0,
+ "wall_time_s": 4.76,
+ "case": "visited_list-0",
+ "system": "notools",
+ "model": "qwen2.5-coder:3b",
+ "variant": null,
+ "run_seconds": 4.76
+}

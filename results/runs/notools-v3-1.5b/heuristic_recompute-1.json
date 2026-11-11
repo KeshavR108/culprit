@@ -1,0 +1,40 @@
+{
+ "status": "handoff",
+ "initial": {
+  "verdict": "regression",
+  "ratio": 6.521984387637803,
+  "ci_low": 6.423218301680557,
+  "ci_high": 6.724597713651117,
+  "p_slower": 1.6959106954125473e-06,
+  "p_faster": 0.9999986139518094,
+  "median_a_ms": 87.318625,
+  "median_b_ms": 569.490709,
+  "n_rounds": 15,
+  "tau": 0.05,
+  "label_a": "d884153b",
+  "label_b": "f23dc498"
+ },
+ "finding": {
+  "culprit_commit": "9ed011aa633dd58815c455e3d4c35fc9976a47d0",
+  "file": "src/hnsw/index.py",
+  "line": 153,
+  "explanation": "The current implementation of `_dist_pairwise` in the `HNSWIndex` class is inefficient. It uses a nested loop to compare each pair of vectors, which results in a time complexity of O(N^2), where N is the number of vectors. This is much slower than the optimized version using C++.",
+  "patch": null,
+  "confidence": "low"
+ },
+ "reasons": [
+  "patch invalid: old_code was not found in the file; copy it exactly from read_file (without the line-number prefix)"
+ ],
+ "llm_tokens": {
+  "prompt": 392,
+  "completion": 161,
+  "llm_seconds": 2.1859898567199707
+ },
+ "benchmark_comparisons": 0,
+ "wall_time_s": 2.29,
+ "case": "heuristic_recompute-1",
+ "system": "notools",
+ "model": "qwen2.5-coder:1.5b",
+ "variant": null,
+ "run_seconds": 2.29
+}

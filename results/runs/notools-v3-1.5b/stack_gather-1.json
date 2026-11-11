@@ -1,0 +1,40 @@
+{
+ "status": "handoff",
+ "initial": {
+  "verdict": "regression",
+  "ratio": 1.5019156149431254,
+  "ci_low": 1.4779086587191466,
+  "ci_high": 1.5189187240694793,
+  "p_slower": 1.6959106954125473e-06,
+  "p_faster": 0.9999986139518094,
+  "median_a_ms": 16.85725,
+  "median_b_ms": 25.318167,
+  "n_rounds": 15,
+  "tau": 0.05,
+  "label_a": "d884153b",
+  "label_b": "b92e2a22"
+ },
+ "finding": {
+  "culprit_commit": "e779539266aa72769f2b09d3867d6c4da1899b8c",
+  "file": "src/hnsw/index.py",
+  "line": 68,
+  "explanation": "The current implementation of `_dists` uses a list comprehension to iterate over the `ids` list and extract the corresponding vectors from `self.vectors`. This approach is inefficient because it involves multiple list comprehensions and can lead to performance issues, especially for large datasets.",
+  "patch": null,
+  "confidence": "low"
+ },
+ "reasons": [
+  "patch invalid: old_code was not found in the file; copy it exactly from read_file (without the line-number prefix)"
+ ],
+ "llm_tokens": {
+  "prompt": 352,
+  "completion": 145,
+  "llm_seconds": 1.937762975692749
+ },
+ "benchmark_comparisons": 0,
+ "wall_time_s": 2.04,
+ "case": "stack_gather-1",
+ "system": "notools",
+ "model": "qwen2.5-coder:1.5b",
+ "variant": null,
+ "run_seconds": 2.04
+}

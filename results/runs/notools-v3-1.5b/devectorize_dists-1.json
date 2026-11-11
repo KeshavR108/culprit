@@ -1,0 +1,40 @@
+{
+ "status": "handoff",
+ "initial": {
+  "verdict": "regression",
+  "ratio": 3.029566093211627,
+  "ci_low": 2.9778719111295717,
+  "ci_high": 3.076874641414404,
+  "p_slower": 1.6959106954125473e-06,
+  "p_faster": 0.9999986139518094,
+  "median_a_ms": 17.452458,
+  "median_b_ms": 52.873375,
+  "n_rounds": 15,
+  "tau": 0.05,
+  "label_a": "d884153b",
+  "label_b": "e73867e0"
+ },
+ "finding": {
+  "culprit_commit": "2e8f2ca5f9f8e62a19a86bad46b636a13375ed83",
+  "file": "src/hnsw/index.py",
+  "line": 68,
+  "explanation": "The current implementation of `_dists` uses a loop to compute distances for each node in the list `ids`. This approach is inefficient because it involves multiple function calls and list comprehensions, which can lead to a significant slowdown.",
+  "patch": null,
+  "confidence": "low"
+ },
+ "reasons": [
+  "patch invalid: old_code was not found in the file; copy it exactly from read_file (without the line-number prefix)"
+ ],
+ "llm_tokens": {
+  "prompt": 355,
+  "completion": 137,
+  "llm_seconds": 1.8710391521453857
+ },
+ "benchmark_comparisons": 0,
+ "wall_time_s": 1.98,
+ "case": "devectorize_dists-1",
+ "system": "notools",
+ "model": "qwen2.5-coder:1.5b",
+ "variant": null,
+ "run_seconds": 1.98
+}

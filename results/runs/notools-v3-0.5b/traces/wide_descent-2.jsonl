@@ -1,0 +1,2 @@
+{"t": 0.03, "kind": "measurement", "cached": true, "summary": "d884153b 16.87 ms -> 992c5337 25.01 ms, ratio 1.482 (95% CI 1.475-1.504), p_slower=1.7e-06, n=15 rounds -> regression"}
+{"t": 0.678, "kind": "llm", "content": "{\n  \"file\": \"src/hnsw/index.py\",\n  \"line\": 249,\n  \"explanation\": \"The commit made a benchmark slower because it used a full beam on upper layers instead of a greedy descent.\",\n  \"old_code\": \"ep = [self.entry_point]\",\n  \"new_code\": \"ep = [self.search_layer(x, ep, 1, layer)[0][1]]\",\n  \"confidence\": \"medium\"\n}"}

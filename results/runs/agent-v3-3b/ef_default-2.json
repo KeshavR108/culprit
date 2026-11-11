@@ -1,0 +1,154 @@
+{
+ "status": "handoff",
+ "reasons": [
+  "patch gives no significant speedup"
+ ],
+ "initial": {
+  "verdict": "regression",
+  "ratio": 3.643228935325531,
+  "ci_low": 3.6103343366442475,
+  "ci_high": 3.7005840256642264,
+  "p_slower": 1.6959106954125473e-06,
+  "p_faster": 0.9999986139518094,
+  "median_a_ms": 16.975292,
+  "median_b_ms": 61.844875,
+  "n_rounds": 15,
+  "tau": 0.05,
+  "env": {
+   "cpu": "Apple M4",
+   "cores": 10,
+   "python": "3.13.5",
+   "platform": "macOS-26.1-arm64-arm-64bit-Mach-O",
+   "load_avg_1m": 4.4677734375
+  },
+  "label_a": "d884153b",
+  "label_b": "9e39bb88"
+ },
+ "bisect": {
+  "status": "found",
+  "first_bad_commit": "56ca3563c3",
+  "split": 1.909,
+  "subject": "Raise default ef for better recall; tidy comments",
+  "commits_searched": 23,
+  "steps": 4,
+  "path": [
+   {
+    "commit": "0b5ab04742",
+    "side": "fast",
+    "ratio": 0.996,
+    "ci95": [
+     0.981,
+     1.003
+    ]
+   },
+   {
+    "commit": "1ec0806f47",
+    "side": "fast",
+    "ratio": 0.993,
+    "ci95": [
+     0.988,
+     1.006
+    ]
+   },
+   {
+    "commit": "fdc905dc2c",
+    "side": "fast",
+    "ratio": 0.996,
+    "ci95": [
+     0.981,
+     1.007
+    ]
+   },
+   {
+    "commit": "56ca3563c3",
+    "side": "slow",
+    "ratio": 3.697,
+    "ci95": [
+     3.65,
+     3.74
+    ]
+   }
+  ]
+ },
+ "profile": null,
+ "finding": {
+  "culprit_commit": "56ca3563c3",
+  "file": "src/hnsw/index.py",
+  "line": 246,
+  "explanation": "The commit increased the default ef value from 10 to 64, which is a significant change that could potentially increase the complexity of the search algorithm, leading to a slower execution time.",
+  "patch": null,
+  "confidence": "medium"
+ },
+ "patch": {
+  "diff": "--- a/src/hnsw/index.py\n+++ b/src/hnsw/index.py\n@@ -246,6 +246,8 @@\n             ef = max(k, 64)\n         if ef < k:\n             raise ValueError(f\"ef ({ef}) must be >= k ({k}): W never holds more than ef results\")\n+        if ef < k:\n+            raise ValueError(f\"ef ({ef}) must be >= k ({k}): W never holds more than ef results\")\n         if self.entry_point is None:\n             return np.empty(0, dtype=np.int64), np.empty(0, dtype=np.float32)\n \n",
+  "files": [
+   "src/hnsw/index.py"
+  ],
+  "lines_changed": 2
+ },
+ "verification": {
+  "applied": true,
+  "tests_passed": null,
+  "tests_output": "",
+  "speedup": {
+   "verdict": "no_regression",
+   "ratio": 0.9940497565701782,
+   "ci_low": 0.9657792551170061,
+   "ci_high": 1.0232533250044815,
+   "p_slower": 0.8144614839367428,
+   "p_faster": 0.18951815538696792,
+   "median_a_ms": 63.082041,
+   "median_b_ms": 62.7066875,
+   "n_rounds": 30,
+   "tau": 0.05,
+   "env": {
+    "cpu": "Apple M4",
+    "cores": 10,
+    "python": "3.13.5",
+    "platform": "macOS-26.1-arm64-arm-64bit-Mach-O",
+    "load_avg_1m": 3.17578125
+   },
+   "label_a": "9e39bb88",
+   "label_b": "patched"
+  },
+  "vs_good": {
+   "verdict": "regression",
+   "ratio": 3.644869477209302,
+   "ci_low": 3.5870649573460676,
+   "ci_high": 3.6902815139945284,
+   "p_slower": 1.6959106954125473e-06,
+   "p_faster": 0.9999986139518094,
+   "median_a_ms": 16.796875,
+   "median_b_ms": 61.222417,
+   "n_rounds": 15,
+   "tau": 0.05,
+   "env": {
+    "cpu": "Apple M4",
+    "cores": 10,
+    "python": "3.13.5",
+    "platform": "macOS-26.1-arm64-arm-64bit-Mach-O",
+    "load_avg_1m": 3.17578125
+   },
+   "label_a": "d884153b",
+   "label_b": "patched"
+  },
+  "significant_speedup": false,
+  "verified": false,
+  "error": null
+ },
+ "steps": 8,
+ "tool_calls": 4,
+ "benchmark_comparisons": 2,
+ "llm_tokens": {
+  "prompt": 19934,
+  "completion": 499,
+  "llm_seconds": 18.230777740478516
+ },
+ "wall_time_s": 25.53,
+ "trace_path": "results/runs/agent-v3-3b/traces/ef_default-2.jsonl",
+ "case": "ef_default-2",
+ "system": "agent",
+ "model": "qwen2.5-coder:3b",
+ "variant": "v3",
+ "run_seconds": 25.67
+}

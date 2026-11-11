@@ -1,0 +1,108 @@
+{
+ "status": "handoff",
+ "reasons": [
+  "no valid patch proposed"
+ ],
+ "initial": {
+  "verdict": "regression",
+  "ratio": 1.4823116696429233,
+  "ci_low": 1.4748545399111026,
+  "ci_high": 1.5042282052436444,
+  "p_slower": 1.6959106954125473e-06,
+  "p_faster": 0.9999986139518094,
+  "median_a_ms": 16.869625,
+  "median_b_ms": 25.006042,
+  "n_rounds": 15,
+  "tau": 0.05,
+  "env": {
+   "cpu": "Apple M4",
+   "cores": 10,
+   "python": "3.13.5",
+   "platform": "macOS-26.1-arm64-arm-64bit-Mach-O",
+   "load_avg_1m": 2.9150390625
+  },
+  "label_a": "d884153b",
+  "label_b": "992c5337"
+ },
+ "bisect": {
+  "status": "found",
+  "first_bad_commit": "e06fc9d8df",
+  "split": 1.218,
+  "subject": "Use the full beam on upper layers too",
+  "commits_searched": 31,
+  "steps": 5,
+  "path": [
+   {
+    "commit": "f7e9891df9",
+    "side": "fast",
+    "ratio": 0.998,
+    "ci95": [
+     0.991,
+     1.009
+    ]
+   },
+   {
+    "commit": "ff1be84afe",
+    "side": "fast",
+    "ratio": 0.998,
+    "ci95": [
+     0.986,
+     1.005
+    ]
+   },
+   {
+    "commit": "8b48f06df5",
+    "side": "fast",
+    "ratio": 0.979,
+    "ci95": [
+     0.965,
+     0.995
+    ]
+   },
+   {
+    "commit": "e06fc9d8df",
+    "side": "slow",
+    "ratio": 1.497,
+    "ci95": [
+     1.481,
+     1.512
+    ]
+   },
+   {
+    "commit": "1771409564",
+    "side": "fast",
+    "ratio": 1.0,
+    "ci95": [
+     0.991,
+     1.01
+    ]
+   }
+  ]
+ },
+ "profile": null,
+ "finding": {
+  "culprit_commit": "e06fc9d8df",
+  "file": "search.py",
+  "line": 10,
+  "explanation": "The addition of a comment above the save function in commit e06fc9d8df caused the benchmark to slow down. The comment likely increased the time taken to execute the save function, which is now called multiple times during the benchmark.",
+  "patch": null,
+  "confidence": "medium"
+ },
+ "patch": null,
+ "verification": null,
+ "steps": 2,
+ "tool_calls": 1,
+ "benchmark_comparisons": 0,
+ "llm_tokens": {
+  "prompt": 3891,
+  "completion": 105,
+  "llm_seconds": 4.307335138320923
+ },
+ "wall_time_s": 4.47,
+ "trace_path": "results/runs/agent-v1-3b/traces/wide_descent-2.jsonl",
+ "case": "wide_descent-2",
+ "system": "agent",
+ "model": "qwen2.5-coder:3b",
+ "variant": "v1",
+ "run_seconds": 4.49
+}

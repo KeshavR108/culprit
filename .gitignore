@@ -6,5 +6,5 @@ targets/
 perfbench/cases/*
 !perfbench/cases/index.json
 perfbench/.base_src/
-runs/
-playground/
+/runs/
+/playground/

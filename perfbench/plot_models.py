@@ -87,6 +87,7 @@ def main(variant: str = None):
         ax.set_xlabel("model size (qwen2.5-coder, parameters, log scale)")
         ax.grid(axis="y", color=GRID, linewidth=0.8)
         ax.set_facecolor(SURFACE)
+        ax.set_axisbelow(True)
         for side in ("top", "right"):
             ax.spines[side].set_visible(False)
         ax.minorticks_off()

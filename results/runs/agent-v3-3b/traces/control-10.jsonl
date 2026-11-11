@@ -1,0 +1,3 @@
+{"t": 0.067, "kind": "measurement", "cached": true, "summary": "d884153b 86.61 ms -> 45ad606c 87.22 ms, ratio 1.007 (95% CI 0.996-1.016), p_slower=0.11, n=15 rounds -> no_regression"}
+{"t": 0.068, "kind": "initial_measurement", "verdict": "no_regression", "ratio": 1.0070024198238516, "ci_low": 0.9964633908324582, "ci_high": 1.0164627312053474, "p_slower": 0.10668685354655921, "p_faster": 0.9007470734230562, "median_a_ms": 86.612916, "median_b_ms": 87.219416, "n_rounds": 15, "tau": 0.05, "label_a": "d884153b", "label_b": "45ad606c"}
+{"t": 0.068, "kind": "report", "status": "no_regression", "reasons": ["benchmark is not significantly slower (CI below threshold)"]}

@@ -1,0 +1,8 @@
+{"t": 0.035, "kind": "measurement", "cached": true, "summary": "d884153b 17.19 ms -> 05b229f8 43.32 ms, ratio 2.519 (95% CI 2.498-2.535), p_slower=1.7e-06, n=15 rounds -> regression"}
+{"t": 3.547, "kind": "llm", "content": "{\n  \"file\": \"src/hnsw/distance.py\",\n  \"line\": 41,\n  \"explanation\": \"The new code introduces an explicit loop, which can be slower than the original einsum operation because it involves more explicit operations and potentially more overhead.\",\n  \"old_code\": \"return np.array([np.einsum(\\\"j,j->\\\", row, row) for row in diff], dtype=diff.dtype)\",\n  \"new_code\": \"return np.einsum(\\\"ij,ij->i\\\", diff, diff)\",\n  \"confidence\": \"medium\"\n}"}
+{"t": 3.765, "kind": "worker_started", "key": "patch:9556022e5777acbe", "setup_s": 0.05490724998526275}
+{"t": 3.832, "kind": "worker_started", "key": "05b229f843d9dc9ff462ca3168b34b4db0d84d4d", "setup_s": 0.03604812500998378}
+{"t": 4.996, "kind": "measurement", "cached": false, "summary": "05b229f8 42.49 ms -> patched 16.85 ms, ratio 0.397 (95% CI 0.393-0.402), p_slower=1, n=15 rounds -> no_regression"}
+{"t": 5.087, "kind": "worker_started", "key": "d884153b6122523056545afd5a991221af1a3e5d", "setup_s": 0.035763374995440245}
+{"t": 5.78, "kind": "measurement", "cached": false, "summary": "d884153b 17.29 ms -> patched 17.36 ms, ratio 1.004 (95% CI 0.957-1.038), p_slower=0.61, n=15 rounds -> no_regression"}
+{"t": 7.716, "kind": "verification", "verified": true, "tests_passed": true, "speedup": "05b229f8 42.49 ms -> patched 16.85 ms, ratio 0.397 (95% CI 0.393-0.402), p_slower=1, n=15 rounds -> no_regression", "vs_good": "d884153b 17.29 ms -> patched 17.36 ms, ratio 1.004 (95% CI 0.957-1.038), p_slower=0.61, n=15 rounds -> no_regression"}

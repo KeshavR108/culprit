@@ -1,0 +1,2 @@
+{"t": 0.031, "kind": "measurement", "cached": true, "summary": "d884153b 87.59 ms -> d4d29c96 566.27 ms, ratio 6.465 (95% CI 6.425-6.527), p_slower=1.7e-06, n=15 rounds -> regression"}
+{"t": 0.628, "kind": "llm", "content": "{\n  \"file\": \"src/hnsw/index.py\",\n  \"line\": 152,\n  \"explanation\": \"The inline pairwise distance check in the heuristic is slower than the current implementation.\",\n  \"old_code\": \"for i, (d, _) in enumerate(candidates):\",\n  \"new_code\": \"for i, (d, _) in enumerate(candidates):\",\n  \"confidence\": \"medium\"\n}"}

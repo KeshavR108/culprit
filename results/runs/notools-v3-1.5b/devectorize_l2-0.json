@@ -1,0 +1,40 @@
+{
+ "status": "handoff",
+ "initial": {
+  "verdict": "regression",
+  "ratio": 2.406474569517854,
+  "ci_low": 2.3462124527157977,
+  "ci_high": 2.4677316870366464,
+  "p_slower": 1.6959106954125473e-06,
+  "p_faster": 0.9999986139518094,
+  "median_a_ms": 17.553167,
+  "median_b_ms": 42.24125,
+  "n_rounds": 15,
+  "tau": 0.05,
+  "label_a": "d884153b",
+  "label_b": "6583c9c9"
+ },
+ "finding": {
+  "culprit_commit": "5170804da31ba1dfd4847ce39510497f75a025d0",
+  "file": "src/hnsw/distance.py",
+  "line": 40,
+  "explanation": "The new implementation uses a list comprehension to compute the row-wise dot product of each row in the difference matrix, which is more efficient than using einsum for large datasets.",
+  "patch": null,
+  "confidence": "high"
+ },
+ "reasons": [
+  "patch invalid: old_code was not found in the file; copy it exactly from read_file (without the line-number prefix)"
+ ],
+ "llm_tokens": {
+  "prompt": 438,
+  "completion": 130,
+  "llm_seconds": 1.8596570491790771
+ },
+ "benchmark_comparisons": 0,
+ "wall_time_s": 1.97,
+ "case": "devectorize_l2-0",
+ "system": "notools",
+ "model": "qwen2.5-coder:1.5b",
+ "variant": null,
+ "run_seconds": 1.97
+}

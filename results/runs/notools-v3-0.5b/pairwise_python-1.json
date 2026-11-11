@@ -1,0 +1,33 @@
+{
+ "status": "handoff",
+ "initial": {
+  "verdict": "regression",
+  "ratio": 9.596956472777364,
+  "ci_low": 9.579200911898837,
+  "ci_high": 9.626109468448627,
+  "p_slower": 1.6959106954125473e-06,
+  "p_faster": 0.9999986139518094,
+  "median_a_ms": 86.420584,
+  "median_b_ms": 829.374583,
+  "n_rounds": 15,
+  "tau": 0.05,
+  "label_a": "d884153b",
+  "label_b": "329e8828"
+ },
+ "finding": null,
+ "reasons": [
+  "no parsable JSON answer"
+ ],
+ "llm_tokens": {
+  "prompt": 546,
+  "completion": 228,
+  "llm_seconds": 1.3996250629425049
+ },
+ "benchmark_comparisons": 0,
+ "wall_time_s": 1.46,
+ "case": "pairwise_python-1",
+ "system": "notools",
+ "model": "qwen2.5-coder:0.5b",
+ "variant": null,
+ "run_seconds": 1.46
+}

@@ -1,0 +1,123 @@
+{
+ "status": "handoff",
+ "reasons": [
+  "patch could not be verified: patched benchmark failed: benchmark setup failed: Traceback (most recent call last):\n  File \"src/culprit/bench_worker.py\", line 62, in main\n    sp"
+ ],
+ "initial": {
+  "verdict": "regression",
+  "ratio": 1.066861085064335,
+  "ci_low": 1.0551087653405236,
+  "ci_high": 1.0832784027977445,
+  "p_slower": 1.6916697063271094e-06,
+  "p_faster": 0.9999986174776383,
+  "median_a_ms": 16.730584,
+  "median_b_ms": 17.849209,
+  "n_rounds": 15,
+  "tau": 0.05,
+  "env": {
+   "cpu": "Apple M4",
+   "cores": 10,
+   "python": "3.13.5",
+   "platform": "macOS-26.1-arm64-arm-64bit-Mach-O",
+   "load_avg_1m": 3.4189453125
+  },
+  "label_a": "d884153b",
+  "label_b": "b8f39999"
+ },
+ "bisect": {
+  "status": "found",
+  "first_bad_commit": "7dfd6f747a",
+  "split": 1.033,
+  "subject": "Make the search stop condition explicit",
+  "commits_searched": 29,
+  "steps": 5,
+  "path": [
+   {
+    "commit": "9521efa7e8",
+    "side": "slow",
+    "ratio": 1.07,
+    "ci95": [
+     1.054,
+     1.087
+    ]
+   },
+   {
+    "commit": "084923eae4",
+    "side": "slow",
+    "ratio": 1.064,
+    "ci95": [
+     1.052,
+     1.072
+    ]
+   },
+   {
+    "commit": "40382dff8d",
+    "side": "fast",
+    "ratio": 1.012,
+    "ci95": [
+     1.0,
+     1.024
+    ]
+   },
+   {
+    "commit": "7dfd6f747a",
+    "side": "slow",
+    "ratio": 1.07,
+    "ci95": [
+     1.059,
+     1.088
+    ]
+   },
+   {
+    "commit": "163bba5d4c",
+    "side": "fast",
+    "ratio": 1.019,
+    "ci95": [
+     1.011,
+     1.031
+    ]
+   }
+  ]
+ },
+ "profile": null,
+ "finding": {
+  "culprit_commit": "7dfd6f747a",
+  "file": "src/hnsw/index.py",
+  "line": 103,
+  "explanation": "The change to make the search stop condition explicit introduces a new condition `if len(W) >= ef and d_c > max(-w for w, _ in W)` that checks if the number of elements in the list `W` is greater than or equal to `ef` and if the distance `d_c` is greater than the maximum negative value in `W`. This condition is likely more expensive to evaluate, causing the overall search to take longer.",
+  "patch": null,
+  "confidence": "medium"
+ },
+ "patch": {
+  "diff": "--- a/src/hnsw/index.py\n+++ b/src/hnsw/index.py\n@@ -103,8 +103,8 @@\n         while len(W) > ef:              # more entry points than ef: keep the best ef\n             heapq.heappop(W)\n \n-        while C:\n-            d_c, c = heapq.heappop(C)\n+       while C:\n+           d_c, c = heapq.heappop(C)\n             # The nearest unexpanded candidate is already worse than our worst\n             # result, and W is full, so expanding further cannot help: stop.\n             if len(W) >= ef and d_c > max(-w for w, _ in W):\n",
+  "files": [
+   "src/hnsw/index.py"
+  ],
+  "lines_changed": 4
+ },
+ "verification": {
+  "applied": true,
+  "tests_passed": null,
+  "tests_output": "",
+  "speedup": null,
+  "vs_good": null,
+  "significant_speedup": false,
+  "verified": false,
+  "error": "patched benchmark failed: benchmark setup failed: Traceback (most recent call last):\n  File \"src/culprit/bench_worker.py\", line 62, in main\n    spec.loader.exec_module(mod)\n    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^\n  File \"<frozen importlib._bootstrap_external>\", line 1026, in exec_module\n  File \"<frozen importlib._bootstrap>\", line 488, in _call_with_frames_removed\n  File \"perfbench/cases/stop_check_scan-2/bench.py\", line 11, in <module>\n    from hnsw import HNSWIndex, load\n  File \"/private/var/folders/0j/jth79dy10kz68nyk4xr2cjy80000gn/T/culprit-pgf1j6"
+ },
+ "steps": 10,
+ "tool_calls": 6,
+ "benchmark_comparisons": 0,
+ "llm_tokens": {
+  "prompt": 27757,
+  "completion": 794,
+  "llm_seconds": 26.889024257659912
+ },
+ "wall_time_s": 27.48,
+ "trace_path": "results/runs/agent-v3-3b/traces/stop_check_scan-2.jsonl",
+ "case": "stop_check_scan-2",
+ "system": "agent",
+ "model": "qwen2.5-coder:3b",
+ "variant": "v3",
+ "run_seconds": 27.56
+}

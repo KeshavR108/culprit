@@ -1,0 +1,40 @@
+{
+ "status": "handoff",
+ "initial": {
+  "verdict": "regression",
+  "ratio": 1.4709117860520355,
+  "ci_low": 1.454029783540383,
+  "ci_high": 1.4914820573868917,
+  "p_slower": 1.6959106954125473e-06,
+  "p_faster": 0.9999986139518094,
+  "median_a_ms": 17.050875,
+  "median_b_ms": 25.080333,
+  "n_rounds": 15,
+  "tau": 0.05,
+  "label_a": "d884153b",
+  "label_b": "16d2b649"
+ },
+ "finding": {
+  "culprit_commit": "fd8abb1b458e7c0611de92cbbd36029ef464e6bf",
+  "file": "src/hnsw/index.py",
+  "line": 73,
+  "explanation": "The current implementation of `_dists` modifies the input `ids` list by copying it before passing it to `_dist_batch`. This can lead to aliasing, where the original `ids` list is modified by the `_dist_batch` function, which can cause unexpected behavior in the `_dists` function. By copying the `ids` list before passing it to `_dist_batch`, we avoid aliasing and ensure that the original `ids` list remains unchanged.",
+  "patch": null,
+  "confidence": "high"
+ },
+ "reasons": [
+  "patch invalid: old_code was not found in the file; copy it exactly from read_file (without the line-number prefix)"
+ ],
+ "llm_tokens": {
+  "prompt": 431,
+  "completion": 179,
+  "llm_seconds": 2.433583974838257
+ },
+ "benchmark_comparisons": 0,
+ "wall_time_s": 2.54,
+ "case": "copy_vectors-1",
+ "system": "notools",
+ "model": "qwen2.5-coder:1.5b",
+ "variant": null,
+ "run_seconds": 2.54
+}

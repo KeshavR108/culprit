@@ -1,0 +1,99 @@
+{
+ "status": "handoff",
+ "reasons": [
+  "no valid patch proposed"
+ ],
+ "initial": {
+  "verdict": "regression",
+  "ratio": 6.464986578033643,
+  "ci_low": 6.424932334711477,
+  "ci_high": 6.527452904090477,
+  "p_slower": 1.6959106954125473e-06,
+  "p_faster": 0.9999986139518094,
+  "median_a_ms": 87.589625,
+  "median_b_ms": 566.26575,
+  "n_rounds": 15,
+  "tau": 0.05,
+  "env": {
+   "cpu": "Apple M4",
+   "cores": 10,
+   "python": "3.13.5",
+   "platform": "macOS-26.1-arm64-arm-64bit-Mach-O",
+   "load_avg_1m": 4.0517578125
+  },
+  "label_a": "d884153b",
+  "label_b": "d4d29c96"
+ },
+ "bisect": {
+  "status": "found",
+  "first_bad_commit": "c70c4e3586",
+  "split": 2.543,
+  "subject": "Inline pairwise distance check in heuristic",
+  "commits_searched": 22,
+  "steps": 4,
+  "path": [
+   {
+    "commit": "45a8572e6a",
+    "side": "fast",
+    "ratio": 1.005,
+    "ci95": [
+     0.996,
+     1.011
+    ]
+   },
+   {
+    "commit": "5f777b622a",
+    "side": "slow",
+    "ratio": 6.423,
+    "ci95": [
+     6.395,
+     6.657
+    ]
+   },
+   {
+    "commit": "ba5623edb1",
+    "side": "slow",
+    "ratio": 6.44,
+    "ci95": [
+     6.402,
+     6.497
+    ]
+   },
+   {
+    "commit": "c70c4e3586",
+    "side": "slow",
+    "ratio": 6.672,
+    "ci95": [
+     6.362,
+     7.353
+    ]
+   }
+  ]
+ },
+ "profile": null,
+ "finding": {
+  "culprit_commit": "c70c4e3586",
+  "file": "heuristic.py",
+  "line": 100,
+  "explanation": "The change to inline the pairwise distance check in the heuristic function caused the benchmark to slow down significantly. This is likely due to the overhead of repeated function calls and the increased complexity of the code.",
+  "patch": null,
+  "confidence": "medium"
+ },
+ "patch": null,
+ "verification": null,
+ "steps": 2,
+ "tool_calls": 1,
+ "benchmark_comparisons": 0,
+ "llm_tokens": {
+  "prompt": 3636,
+  "completion": 99,
+  "llm_seconds": 3.9465017318725586
+ },
+ "wall_time_s": 4.13,
+ "trace_path": "results/runs/agent-v1-3b/traces/heuristic_recompute-0.jsonl",
+ "case": "heuristic_recompute-0",
+ "system": "agent",
+ "model": "qwen2.5-coder:3b",
+ "variant": "v1",
+ "run_seconds": 4.16
+}

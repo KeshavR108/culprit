@@ -1,0 +1,114 @@
+{
+ "status": "handoff",
+ "reasons": [
+  "patch could not be verified: patched benchmark failed: benchmark setup failed: Traceback (most recent call last):\n  File \"src/culprit/bench_worker.py\", line 62, in main\n    sp"
+ ],
+ "initial": {
+  "verdict": "regression",
+  "ratio": 6.464986578033643,
+  "ci_low": 6.424932334711477,
+  "ci_high": 6.527452904090477,
+  "p_slower": 1.6959106954125473e-06,
+  "p_faster": 0.9999986139518094,
+  "median_a_ms": 87.589625,
+  "median_b_ms": 566.26575,
+  "n_rounds": 15,
+  "tau": 0.05,
+  "env": {
+   "cpu": "Apple M4",
+   "cores": 10,
+   "python": "3.13.5",
+   "platform": "macOS-26.1-arm64-arm-64bit-Mach-O",
+   "load_avg_1m": 4.0517578125
+  },
+  "label_a": "d884153b",
+  "label_b": "d4d29c96"
+ },
+ "bisect": {
+  "status": "found",
+  "first_bad_commit": "c70c4e3586",
+  "split": 2.543,
+  "subject": "Inline pairwise distance check in heuristic",
+  "commits_searched": 22,
+  "steps": 4,
+  "path": [
+   {
+    "commit": "45a8572e6a",
+    "side": "fast",
+    "ratio": 1.005,
+    "ci95": [
+     0.996,
+     1.011
+    ]
+   },
+   {
+    "commit": "5f777b622a",
+    "side": "slow",
+    "ratio": 6.423,
+    "ci95": [
+     6.395,
+     6.657
+    ]
+   },
+   {
+    "commit": "ba5623edb1",
+    "side": "slow",
+    "ratio": 6.44,
+    "ci95": [
+     6.402,
+     6.497
+    ]
+   },
+   {
+    "commit": "c70c4e3586",
+    "side": "slow",
+    "ratio": 6.672,
+    "ci95": [
+     6.362,
+     7.353
+    ]
+   }
+  ]
+ },
+ "profile": null,
+ "finding": {
+  "culprit_commit": "c70c4e3586",
+  "file": "src/hnsw/index.py",
+  "line": 152,
+  "explanation": "The change to inline the pairwise distance check in the heuristic function caused the benchmark to slow down significantly. This is likely due to the overhead of repeated function calls and the increased complexity of the code.",
+  "patch": null,
+  "confidence": "medium"
+ },
+ "patch": {
+  "diff": "--- a/src/hnsw/index.py\n+++ b/src/hnsw/index.py\n@@ -150,6 +150,7 @@\n         selected: list[int] = []        # positions into `candidates`\n         discarded: list[int] = []\n         for i, (d, _) in enumerate(candidates):\n+            if all(self._dist_pairwise(self.vectors[[ids[i], ids[j]]])[0][1] > d for j in selected):\n             if len(selected) >= M:\n                 break\n             if all(self._dist_pairwise(self.vectors[[ids[i], ids[j]]])[0][1] > d for j in selected):\n",
+  "files": [
+   "src/hnsw/index.py"
+  ],
+  "lines_changed": 1
+ },
+ "verification": {
+  "applied": true,
+  "tests_passed": null,
+  "tests_output": "",
+  "speedup": null,
+  "vs_good": null,
+  "significant_speedup": false,
+  "verified": false,
+  "error": "patched benchmark failed: benchmark setup failed: Traceback (most recent call last):\n  File \"src/culprit/bench_worker.py\", line 62, in main\n    spec.loader.exec_module(mod)\n    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^\n  File \"<frozen importlib._bootstrap_external>\", line 1026, in exec_module\n  File \"<frozen importlib._bootstrap>\", line 488, in _call_with_frames_removed\n  File \"perfbench/cases/heuristic_recompute-0/bench.py\", line 11, in <module>\n    from hnsw import HNSWIndex, load\n  File \"/private/var/folders/0j/jth79dy10kz68nyk4xr2cjy80000gn/T/culprit-pe"
+ },
+ "steps": 10,
+ "tool_calls": 6,
+ "benchmark_comparisons": 0,
+ "llm_tokens": {
+  "prompt": 25971,
+  "completion": 628,
+  "llm_seconds": 18.86167049407959
+ },
+ "wall_time_s": 19.4,
+ "trace_path": "results/runs/agent-v3-3b/traces/heuristic_recompute-0.jsonl",
+ "case": "heuristic_recompute-0",
+ "system": "agent",
+ "model": "qwen2.5-coder:3b",
+ "variant": "v3",
+ "run_seconds": 19.48
+}

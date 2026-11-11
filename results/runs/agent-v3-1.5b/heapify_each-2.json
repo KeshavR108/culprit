@@ -1,0 +1,102 @@
+{
+ "status": "handoff",
+ "reasons": [
+  "agent did not produce a final answer within the step budget",
+  "no valid patch proposed"
+ ],
+ "initial": {
+  "verdict": "regression",
+  "ratio": 1.1157237913594085,
+  "ci_low": 1.0696763827549947,
+  "ci_high": 1.1605601728964507,
+  "p_slower": 6.6473613813032315e-06,
+  "p_faster": 0.9999945039175993,
+  "median_a_ms": 17.516208,
+  "median_b_ms": 19.54325,
+  "n_rounds": 15,
+  "tau": 0.05,
+  "env": {
+   "cpu": "Apple M4",
+   "cores": 10,
+   "python": "3.13.5",
+   "platform": "macOS-26.1-arm64-arm-64bit-Mach-O",
+   "load_avg_1m": 4.388671875
+  },
+  "label_a": "d884153b",
+  "label_b": "fad8f3b6"
+ },
+ "bisect": {
+  "status": "found",
+  "first_bad_commit": "d310323811",
+  "split": 1.056,
+  "subject": "Rebuild candidate heap after each insertion; tidy comments",
+  "commits_searched": 27,
+  "steps": 5,
+  "path": [
+   {
+    "commit": "e5a43f45f9",
+    "side": "slow",
+    "ratio": 1.089,
+    "ci95": [
+     1.084,
+     1.092
+    ]
+   },
+   {
+    "commit": "372ada9b4d",
+    "side": "fast",
+    "ratio": 0.983,
+    "ci95": [
+     0.97,
+     0.993
+    ]
+   },
+   {
+    "commit": "0276e096e0",
+    "side": "slow",
+    "ratio": 1.095,
+    "ci95": [
+     1.078,
+     1.108
+    ]
+   },
+   {
+    "commit": "cefa070735",
+    "side": "fast",
+    "ratio": 0.996,
+    "ci95": [
+     0.979,
+     1.012
+    ]
+   },
+   {
+    "commit": "d310323811",
+    "side": "slow",
+    "ratio": 1.107,
+    "ci95": [
+     1.097,
+     1.113
+    ]
+   }
+  ]
+ },
+ "profile": null,
+ "finding": null,
+ "patch": null,
+ "verification": null,
+ "steps": 15,
+ "tool_calls": 3,
+ "benchmark_comparisons": 0,
+ "llm_tokens": {
+  "prompt": 137873,
+  "completion": 12486,
+  "llm_seconds": 223.27445197105408
+ },
+ "wall_time_s": 223.54,
+ "trace_path": "results/runs/agent-v3-1.5b/traces/heapify_each-2.jsonl",
+ "case": "heapify_each-2",
+ "system": "agent",
+ "model": "qwen2.5-coder:1.5b",
+ "variant": "v3",
+ "run_seconds": 223.6
+}

@@ -1,0 +1,40 @@
+{
+ "status": "handoff",
+ "initial": {
+  "verdict": "regression",
+  "ratio": 1.4791584537519256,
+  "ci_low": 1.4539685062208492,
+  "ci_high": 1.4944643156594242,
+  "p_slower": 1.6959106954125473e-06,
+  "p_faster": 0.9999986139518094,
+  "median_a_ms": 17.04125,
+  "median_b_ms": 25.206709,
+  "n_rounds": 15,
+  "tau": 0.05,
+  "label_a": "d884153b",
+  "label_b": "2e90740a"
+ },
+ "finding": {
+  "culprit_commit": "2002a912a07cc75365f22f388019682d82b70d2d",
+  "file": "src/hnsw/index.py",
+  "line": 71,
+  "explanation": "Copying the vectors array before slicing it can lead to slower performance because it involves creating a new array and copying data, which is more expensive than simply slicing the existing array.",
+  "patch": null,
+  "confidence": "medium"
+ },
+ "reasons": [
+  "patch invalid: old_code was not found in the file; copy it exactly from read_file (without the line-number prefix)"
+ ],
+ "llm_tokens": {
+  "prompt": 351,
+  "completion": 114,
+  "llm_seconds": 8.24500298500061
+ },
+ "benchmark_comparisons": 0,
+ "wall_time_s": 8.7,
+ "case": "copy_vectors-2",
+ "system": "notools",
+ "model": "qwen2.5-coder:3b",
+ "variant": null,
+ "run_seconds": 8.7
+}

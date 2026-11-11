@@ -1,0 +1,99 @@
+{
+ "status": "handoff",
+ "reasons": [
+  "no valid patch proposed"
+ ],
+ "initial": {
+  "verdict": "regression",
+  "ratio": 3.0175298425129844,
+  "ci_low": 3.003070231650539,
+  "ci_high": 3.0552436055867713,
+  "p_slower": 1.6959106954125473e-06,
+  "p_faster": 0.9999986139518094,
+  "median_a_ms": 17.168209,
+  "median_b_ms": 51.805583,
+  "n_rounds": 15,
+  "tau": 0.05,
+  "env": {
+   "cpu": "Apple M4",
+   "cores": 10,
+   "python": "3.13.5",
+   "platform": "macOS-26.1-arm64-arm-64bit-Mach-O",
+   "load_avg_1m": 3.998046875
+  },
+  "label_a": "d884153b",
+  "label_b": "45932a25"
+ },
+ "bisect": {
+  "status": "found",
+  "first_bad_commit": "c690e1f0d1",
+  "split": 1.737,
+  "subject": "Compute distances node by node for readability; tidy comments",
+  "commits_searched": 15,
+  "steps": 4,
+  "path": [
+   {
+    "commit": "a888b15778",
+    "side": "fast",
+    "ratio": 0.991,
+    "ci95": [
+     0.982,
+     1.001
+    ]
+   },
+   {
+    "commit": "0db7a589b3",
+    "side": "slow",
+    "ratio": 3.033,
+    "ci95": [
+     3.009,
+     3.059
+    ]
+   },
+   {
+    "commit": "c690e1f0d1",
+    "side": "slow",
+    "ratio": 3.011,
+    "ci95": [
+     3.001,
+     3.031
+    ]
+   },
+   {
+    "commit": "946d932f83",
+    "side": "fast",
+    "ratio": 0.994,
+    "ci95": [
+     0.986,
+     1.002
+    ]
+   }
+  ]
+ },
+ "profile": null,
+ "finding": {
+  "culprit_commit": "c690e1f0d1",
+  "file": "search.py",
+  "line": 100,
+  "explanation": "The commit introduces a change to compute distances node by node, which likely increases the time complexity of the search operation, causing it to slow down.",
+  "patch": null,
+  "confidence": "medium"
+ },
+ "patch": null,
+ "verification": null,
+ "steps": 2,
+ "tool_calls": 1,
+ "benchmark_comparisons": 0,
+ "llm_tokens": {
+  "prompt": 3465,
+  "completion": 88,
+  "llm_seconds": 3.293765068054199
+ },
+ "wall_time_s": 3.44,
+ "trace_path": "results/runs/agent-v1-3b/traces/devectorize_dists-2.jsonl",
+ "case": "devectorize_dists-2",
+ "system": "agent",
+ "model": "qwen2.5-coder:3b",
+ "variant": "v1",
+ "run_seconds": 3.47
+}

@@ -1,0 +1,43 @@
+{
+ "status": "handoff",
+ "reasons": [
+  "measurements too noisy to confirm a regression"
+ ],
+ "initial": {
+  "verdict": "inconclusive",
+  "ratio": 1.0465978527670456,
+  "ci_low": 0.9893183875990188,
+  "ci_high": 1.1119900128676794,
+  "p_slower": 0.03635895882489648,
+  "p_faster": 0.9644015553623742,
+  "median_a_ms": 17.7695205,
+  "median_b_ms": 18.597542,
+  "n_rounds": 40,
+  "tau": 0.05,
+  "env": {
+   "cpu": "Apple M4",
+   "cores": 10,
+   "python": "3.13.5",
+   "platform": "macOS-26.1-arm64-arm-64bit-Mach-O",
+   "load_avg_1m": 4.38720703125
+  },
+  "label_a": "d884153b",
+  "label_b": "3f03a08c"
+ },
+ "bisect": null,
+ "profile": null,
+ "finding": null,
+ "patch": null,
+ "verification": null,
+ "steps": 0,
+ "tool_calls": 0,
+ "benchmark_comparisons": 0,
+ "llm_tokens": {},
+ "wall_time_s": 0.03,
+ "trace_path": "results/runs/agent-v3-0.5b/traces/heap_to_sort-1.jsonl",
+ "case": "heap_to_sort-1",
+ "system": "agent",
+ "model": "qwen2.5-coder:0.5b",
+ "variant": "v3",
+ "run_seconds": 0.05
+}

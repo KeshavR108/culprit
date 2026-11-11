@@ -1,0 +1,40 @@
+{
+ "status": "handoff",
+ "initial": {
+  "verdict": "regression",
+  "ratio": 1.3673281239637225,
+  "ci_low": 1.3400997073014065,
+  "ci_high": 1.3760813765680153,
+  "p_slower": 1.6959106954125473e-06,
+  "p_faster": 0.9999986139518094,
+  "median_a_ms": 16.872291,
+  "median_b_ms": 23.069958,
+  "n_rounds": 15,
+  "tau": 0.05,
+  "label_a": "d884153b",
+  "label_b": "2003dfd8"
+ },
+ "finding": {
+  "culprit_commit": "566f7b8b823d81557d075e00b3e0ca8b685b0927",
+  "file": "src/hnsw/index.py",
+  "line": 109,
+  "explanation": "The old code uses a set for visited entries, which is slower than a list for appending new entries. This change reduces the time complexity of adding new entries to the visited set.",
+  "patch": null,
+  "confidence": "medium"
+ },
+ "reasons": [
+  "patch invalid: old_code was not found in the file; copy it exactly from read_file (without the line-number prefix)"
+ ],
+ "llm_tokens": {
+  "prompt": 522,
+  "completion": 95,
+  "llm_seconds": 6.926815986633301
+ },
+ "benchmark_comparisons": 0,
+ "wall_time_s": 7.29,
+ "case": "visited_list-2",
+ "system": "notools",
+ "model": "qwen2.5-coder:3b",
+ "variant": null,
+ "run_seconds": 7.29
+}

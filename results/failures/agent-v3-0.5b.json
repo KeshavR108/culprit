@@ -1,0 +1,153 @@
+{
+  "run": "agent-v3-0.5b",
+  "cases": {
+    "always_reprune-0": {
+      "category": "budget exhausted",
+      "evidence": "0 tool calls: "
+    },
+    "always_reprune-1": {
+      "category": "budget exhausted",
+      "evidence": "0 tool calls: "
+    },
+    "always_reprune-2": {
+      "category": "budget exhausted",
+      "evidence": "0 tool calls: "
+    },
+    "copy_vectors-0": {
+      "category": "budget exhausted",
+      "evidence": "0 tool calls: "
+    },
+    "copy_vectors-1": {
+      "category": "budget exhausted",
+      "evidence": "0 tool calls: "
+    },
+    "copy_vectors-2": {
+      "category": "budget exhausted",
+      "evidence": "0 tool calls: "
+    },
+    "debug_log-0": {
+      "category": "budget exhausted",
+      "evidence": "0 tool calls: "
+    },
+    "debug_log-1": {
+      "category": "budget exhausted",
+      "evidence": "0 tool calls: "
+    },
+    "debug_log-2": {
+      "category": "budget exhausted",
+      "evidence": "0 tool calls: "
+    },
+    "devectorize_dists-0": {
+      "category": "budget exhausted",
+      "evidence": "0 tool calls: "
+    },
+    "devectorize_dists-1": {
+      "category": "budget exhausted",
+      "evidence": "0 tool calls: "
+    },
+    "devectorize_dists-2": {
+      "category": "budget exhausted",
+      "evidence": "0 tool calls: "
+    },
+    "devectorize_l2-0": {
+      "category": "budget exhausted",
+      "evidence": "0 tool calls: "
+    },
+    "devectorize_l2-1": {
+      "category": "budget exhausted",
+      "evidence": "0 tool calls: "
+    },
+    "devectorize_l2-2": {
+      "category": "budget exhausted",
+      "evidence": "0 tool calls: "
+    },
+    "ef_default-0": {
+      "category": "budget exhausted",
+      "evidence": "0 tool calls: "
+    },
+    "ef_default-1": {
+      "category": "budget exhausted",
+      "evidence": "1 tool calls: bisect_commits"
+    },
+    "ef_default-2": {
+      "category": "budget exhausted",
+      "evidence": "0 tool calls: "
+    },
+    "heapify_each-0": {
+      "category": "budget exhausted",
+      "evidence": "0 tool calls: "
+    },
+    "heapify_each-1": {
+      "category": "budget exhausted",
+      "evidence": "0 tool calls: "
+    },
+    "heapify_each-2": {
+      "category": "budget exhausted",
+      "evidence": "0 tool calls: "
+    },
+    "heuristic_recompute-0": {
+      "category": "budget exhausted",
+      "evidence": "0 tool calls: "
+    },
+    "heuristic_recompute-1": {
+      "category": "budget exhausted",
+      "evidence": "0 tool calls: "
+    },
+    "heuristic_recompute-2": {
+      "category": "budget exhausted",
+      "evidence": "0 tool calls: "
+    },
+    "pairwise_python-0": {
+      "category": "budget exhausted",
+      "evidence": "0 tool calls: "
+    },
+    "pairwise_python-1": {
+      "category": "budget exhausted",
+      "evidence": "0 tool calls: "
+    },
+    "pairwise_python-2": {
+      "category": "budget exhausted",
+      "evidence": "0 tool calls: "
+    },
+    "stack_gather-0": {
+      "category": "budget exhausted",
+      "evidence": "0 tool calls: "
+    },
+    "stack_gather-1": {
+      "category": "budget exhausted",
+      "evidence": "0 tool calls: "
+    },
+    "stack_gather-2": {
+      "category": "budget exhausted",
+      "evidence": "0 tool calls: "
+    },
+    "visited_list-0": {
+      "category": "budget exhausted",
+      "evidence": "0 tool calls: "
+    },
+    "visited_list-1": {
+      "category": "budget exhausted",
+      "evidence": "0 tool calls: "
+    },
+    "visited_list-2": {
+      "category": "budget exhausted",
+      "evidence": "0 tool calls: "
+    },
+    "wide_descent-0": {
+      "category": "budget exhausted",
+      "evidence": "0 tool calls: "
+    },
+    "wide_descent-1": {
+      "category": "budget exhausted",
+      "evidence": "0 tool calls: "
+    },
+    "wide_descent-2": {
+      "category": "budget exhausted",
+      "evidence": "0 tool calls: "
+    }
+  },
+  "counts": {
+    "budget exhausted": 36
+  },
+  "hallucinated_args_cases": 0
+}

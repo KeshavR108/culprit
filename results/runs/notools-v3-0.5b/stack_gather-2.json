@@ -1,0 +1,40 @@
+{
+ "status": "handoff",
+ "initial": {
+  "verdict": "regression",
+  "ratio": 1.5048768045230485,
+  "ci_low": 1.482594239157922,
+  "ci_high": 1.5194761434091113,
+  "p_slower": 1.6959106954125473e-06,
+  "p_faster": 0.9999986139518094,
+  "median_a_ms": 16.797167,
+  "median_b_ms": 25.277667,
+  "n_rounds": 15,
+  "tau": 0.05,
+  "label_a": "d884153b",
+  "label_b": "3783d471"
+ },
+ "finding": {
+  "culprit_commit": "25960a788d04124861363182563fabce9e1b330c",
+  "file": "src/hnsw/index.py",
+  "line": 72,
+  "explanation": "The current implementation of the `_dists` method is inefficient because it performs a batched computation for each query, which can be computationally expensive for large datasets.",
+  "patch": null,
+  "confidence": "low"
+ },
+ "reasons": [
+  "patch invalid: new_code is identical to old_code"
+ ],
+ "llm_tokens": {
+  "prompt": 379,
+  "completion": 123,
+  "llm_seconds": 0.7722671031951904
+ },
+ "benchmark_comparisons": 0,
+ "wall_time_s": 0.88,
+ "case": "stack_gather-2",
+ "system": "notools",
+ "model": "qwen2.5-coder:0.5b",
+ "variant": null,
+ "run_seconds": 0.88
+}

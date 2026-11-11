@@ -1,0 +1,27 @@
+{
+ "status": "no_regression",
+ "initial": {
+  "verdict": "no_regression",
+  "ratio": 1.0402186763436827,
+  "ci_low": 1.0312915956077324,
+  "ci_high": 1.0490130447481916,
+  "p_slower": 9.097884950755612e-13,
+  "p_faster": 0.9999999999991639,
+  "median_a_ms": 17.000833,
+  "median_b_ms": 17.684584,
+  "n_rounds": 35,
+  "tau": 0.05,
+  "label_a": "d884153b",
+  "label_b": "dfe4cc4e"
+ },
+ "finding": null,
+ "reasons": [
+  "not run: no confirmed regression with a known culprit"
+ ],
+ "wall_time_s": 0.03,
+ "case": "sorted_neighbors-0",
+ "system": "notools",
+ "model": "qwen2.5-coder:3b",
+ "variant": null,
+ "run_seconds": 0.05
+}

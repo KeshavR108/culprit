@@ -1,0 +1,123 @@
+{
+  "variant": "v3",
+  "sizes": {
+    "0.5b": {
+      "params_b": 0.49,
+      "culprit_commit": {
+        "k": 0,
+        "n": 36,
+        "rate": 0.0,
+        "ci95": [
+          0,
+          0.096
+        ]
+      },
+      "root_cause_line_strict": {
+        "k": 0,
+        "n": 36,
+        "rate": 0.0,
+        "ci95": [
+          0,
+          0.096
+        ]
+      },
+      "verified_fix": {
+        "k": 0,
+        "n": 36,
+        "rate": 0.0,
+        "ci95": [
+          0,
+          0.096
+        ]
+      },
+      "false_fix": {
+        "cases": [],
+        "k": 0,
+        "n": 0,
+        "rate": null
+      },
+      "wall_time_s": 14.73,
+      "verified_per_minute": 0.0
+    },
+    "1.5b": {
+      "params_b": 1.54,
+      "culprit_commit": {
+        "k": 0,
+        "n": 36,
+        "rate": 0.0,
+        "ci95": [
+          0,
+          0.096
+        ]
+      },
+      "root_cause_line_strict": {
+        "k": 0,
+        "n": 36,
+        "rate": 0.0,
+        "ci95": [
+          0,
+          0.096
+        ]
+      },
+      "verified_fix": {
+        "k": 0,
+        "n": 36,
+        "rate": 0.0,
+        "ci95": [
+          0,
+          0.096
+        ]
+      },
+      "false_fix": {
+        "cases": [],
+        "k": 0,
+        "n": 0,
+        "rate": null
+      },
+      "wall_time_s": 180.8,
+      "verified_per_minute": 0.0
+    },
+    "3b": {
+      "params_b": 3.09,
+      "culprit_commit": {
+        "k": 24,
+        "n": 36,
+        "rate": 0.667,
+        "ci95": [
+          0.503,
+          0.798
+        ]
+      },
+      "root_cause_line_strict": {
+        "k": 4,
+        "n": 36,
+        "rate": 0.111,
+        "ci95": [
+          0.044,
+          0.253
+        ]
+      },
+      "verified_fix": {
+        "k": 2,
+        "n": 36,
+        "rate": 0.056,
+        "ci95": [
+          0.015,
+          0.181
+        ]
+      },
+      "false_fix": {
+        "cases": [],
+        "k": 0,
+        "n": 2,
+        "rate": 0.0,
+        "ci95": [
+          0,
+          0.658
+        ]
+      },
+      "wall_time_s": 70.16,
+      "verified_per_minute": 0.048
+    }
+  }
+}

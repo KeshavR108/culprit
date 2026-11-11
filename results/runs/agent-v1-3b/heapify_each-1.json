@@ -1,0 +1,108 @@
+{
+ "status": "handoff",
+ "reasons": [
+  "no valid patch proposed"
+ ],
+ "initial": {
+  "verdict": "regression",
+  "ratio": 1.0970875454873328,
+  "ci_low": 1.0705810360046404,
+  "ci_high": 1.1250003584854775,
+  "p_slower": 4.638978392297252e-05,
+  "p_faster": 0.9999585379161275,
+  "median_a_ms": 17.4277915,
+  "median_b_ms": 19.119813,
+  "n_rounds": 20,
+  "tau": 0.05,
+  "env": {
+   "cpu": "Apple M4",
+   "cores": 10,
+   "python": "3.13.5",
+   "platform": "macOS-26.1-arm64-arm-64bit-Mach-O",
+   "load_avg_1m": 4.16162109375
+  },
+  "label_a": "d884153b",
+  "label_b": "4d9fd353"
+ },
+ "bisect": {
+  "status": "found",
+  "first_bad_commit": "c1356bcdbd",
+  "split": 1.047,
+  "subject": "Rebuild candidate heap after each insertion",
+  "commits_searched": 26,
+  "steps": 5,
+  "path": [
+   {
+    "commit": "8f855e2be8",
+    "side": "slow",
+    "ratio": 1.088,
+    "ci95": [
+     1.058,
+     1.118
+    ]
+   },
+   {
+    "commit": "611585009f",
+    "side": "slow",
+    "ratio": 1.087,
+    "ci95": [
+     1.069,
+     1.104
+    ]
+   },
+   {
+    "commit": "c1356bcdbd",
+    "side": "slow",
+    "ratio": 1.111,
+    "ci95": [
+     1.088,
+     1.125
+    ]
+   },
+   {
+    "commit": "45d3258137",
+    "side": "fast",
+    "ratio": 0.993,
+    "ci95": [
+     0.964,
+     1.018
+    ]
+   },
+   {
+    "commit": "14a715a014",
+    "side": "fast",
+    "ratio": 0.995,
+    "ci95": [
+     0.983,
+     1.007
+    ]
+   }
+  ]
+ },
+ "profile": null,
+ "finding": {
+  "culprit_commit": "c1356bcdbd",
+  "file": "src/search.py",
+  "line": 144,
+  "explanation": "The commit 'Rebuild candidate heap after each insertion' introduced a change that affects the performance of the `knn` function. This change likely involves rebuilding the heap after each insertion, which can be more costly in terms of time complexity compared to maintaining the heap in a more efficient manner. The change may have introduced a bug or inefficiency that is causing the `knn` function to run slower.",
+  "patch": null,
+  "confidence": "medium"
+ },
+ "patch": null,
+ "verification": null,
+ "steps": 2,
+ "tool_calls": 1,
+ "benchmark_comparisons": 0,
+ "llm_tokens": {
+  "prompt": 3768,
+  "completion": 139,
+  "llm_seconds": 4.977759599685669
+ },
+ "wall_time_s": 5.13,
+ "trace_path": "results/runs/agent-v1-3b/traces/heapify_each-1.jsonl",
+ "case": "heapify_each-1",
+ "system": "agent",
+ "model": "qwen2.5-coder:3b",
+ "variant": "v1",
+ "run_seconds": 5.16
+}

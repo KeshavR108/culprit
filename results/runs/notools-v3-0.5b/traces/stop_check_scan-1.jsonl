@@ -1,0 +1,2 @@
+{"t": 0.03, "kind": "measurement", "cached": true, "summary": "d884153b 16.70 ms -> b6e6a9eb 17.71 ms, ratio 1.061 (95% CI 1.053-1.070), p_slower=1.7e-06, n=15 rounds -> regression"}
+{"t": 0.701, "kind": "llm", "content": "{\n  \"file\": \"src/hnsw/index.py\",\n  \"line\": 105,\n  \"explanation\": \"The search stop condition is not explicit in the current version of the file.\",\n  \"old_code\": \"if d_c > -W[0][0] and len(W) >= ef:\",\n  \"new_code\": \"if len(W) >= ef and d_c > max(-w for w, _ in W):\",\n  \"confidence\": \"medium\"\n}"}

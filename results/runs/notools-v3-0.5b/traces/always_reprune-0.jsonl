@@ -1,0 +1,4 @@
+{"t": 0.03, "kind": "measurement", "cached": true, "summary": "d884153b 87.59 ms -> a0777cd6 107.76 ms, ratio 1.230 (95% CI 1.220-1.239), p_slower=2.9e-05, n=15 rounds -> regression"}
+{"t": 0.664, "kind": "llm", "content": "{\n  \"file\": \"src/hnsw/index.py\",\n  \"line\": 209,\n  \"explanation\": \"The commit made a benchmark slower because the `links` list is being modified in place, which can lead to unnecessary memory usage and potentially slower performance.\",\n  \"old_code\": \"for _, e in neighbors:\",\n  \"new_code\": \"for e, links in neighbors:\",\n  \"confidence\": \"medium\"\n}"}
+{"t": 0.842, "kind": "worker_started", "key": "patch:ae26cbc65a7eb30d", "setup_s": 0.04238137509673834}
+{"t": 0.897, "kind": "worker_started", "key": "a0777cd6fb776be5c1dfff7408905a1f74708254", "setup_s": 0.02494620787911117}

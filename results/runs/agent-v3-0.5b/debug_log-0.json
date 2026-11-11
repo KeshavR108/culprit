@@ -1,0 +1,102 @@
+{
+ "status": "handoff",
+ "reasons": [
+  "agent did not produce a final answer within the step budget",
+  "no valid patch proposed"
+ ],
+ "initial": {
+  "verdict": "regression",
+  "ratio": 1.1677295903923235,
+  "ci_low": 1.1495855309179337,
+  "ci_high": 1.1769091333557895,
+  "p_slower": 1.6959106954125473e-06,
+  "p_faster": 0.9999986139518094,
+  "median_a_ms": 16.77825,
+  "median_b_ms": 19.592459,
+  "n_rounds": 15,
+  "tau": 0.05,
+  "env": {
+   "cpu": "Apple M4",
+   "cores": 10,
+   "python": "3.13.5",
+   "platform": "macOS-26.1-arm64-arm-64bit-Mach-O",
+   "load_avg_1m": 5.29736328125
+  },
+  "label_a": "d884153b",
+  "label_b": "90f65bdb"
+ },
+ "bisect": {
+  "status": "found",
+  "first_bad_commit": "6b9e666678",
+  "split": 1.081,
+  "subject": "Add debug logging to search_layer; tidy comments",
+  "commits_searched": 20,
+  "steps": 5,
+  "path": [
+   {
+    "commit": "3b76c5b358",
+    "side": "slow",
+    "ratio": 1.136,
+    "ci95": [
+     1.127,
+     1.15
+    ]
+   },
+   {
+    "commit": "5b155738ca",
+    "side": "fast",
+    "ratio": 1.009,
+    "ci95": [
+     0.995,
+     1.022
+    ]
+   },
+   {
+    "commit": "fbc1799138",
+    "side": "fast",
+    "ratio": 1.024,
+    "ci95": [
+     1.006,
+     1.033
+    ]
+   },
+   {
+    "commit": "b4298ff556",
+    "side": "fast",
+    "ratio": 0.99,
+    "ci95": [
+     0.975,
+     0.995
+    ]
+   },
+   {
+    "commit": "6b9e666678",
+    "side": "slow",
+    "ratio": 1.158,
+    "ci95": [
+     1.144,
+     1.18
+    ]
+   }
+  ]
+ },
+ "profile": null,
+ "finding": null,
+ "patch": null,
+ "verification": null,
+ "steps": 15,
+ "tool_calls": 0,
+ "benchmark_comparisons": 0,
+ "llm_tokens": {
+  "prompt": 45465,
+  "completion": 2640,
+  "llm_seconds": 16.321043491363525
+ },
+ "wall_time_s": 16.42,
+ "trace_path": "results/runs/agent-v3-0.5b/traces/debug_log-0.jsonl",
+ "case": "debug_log-0",
+ "system": "agent",
+ "model": "qwen2.5-coder:0.5b",
+ "variant": "v3",
+ "run_seconds": 16.43
+}

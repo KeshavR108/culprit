@@ -1,0 +1,108 @@
+{
+ "status": "handoff",
+ "reasons": [
+  "no valid patch proposed"
+ ],
+ "initial": {
+  "verdict": "regression",
+  "ratio": 3.6104813387928543,
+  "ci_low": 3.575171444002824,
+  "ci_high": 3.661306517323691,
+  "p_slower": 1.6959106954125473e-06,
+  "p_faster": 0.9999986139518094,
+  "median_a_ms": 16.955334,
+  "median_b_ms": 61.216917,
+  "n_rounds": 15,
+  "tau": 0.05,
+  "env": {
+   "cpu": "Apple M4",
+   "cores": 10,
+   "python": "3.13.5",
+   "platform": "macOS-26.1-arm64-arm-64bit-Mach-O",
+   "load_avg_1m": 4.87060546875
+  },
+  "label_a": "d884153b",
+  "label_b": "570fd545"
+ },
+ "bisect": {
+  "status": "found",
+  "first_bad_commit": "8b86978780",
+  "split": 1.9,
+  "subject": "Raise default ef for better recall",
+  "commits_searched": 26,
+  "steps": 5,
+  "path": [
+   {
+    "commit": "d7bf4942c3",
+    "side": "slow",
+    "ratio": 3.609,
+    "ci95": [
+     3.564,
+     3.642
+    ]
+   },
+   {
+    "commit": "d2ee9d93c1",
+    "side": "fast",
+    "ratio": 0.982,
+    "ci95": [
+     0.977,
+     1.002
+    ]
+   },
+   {
+    "commit": "98d58c0e5f",
+    "side": "fast",
+    "ratio": 0.996,
+    "ci95": [
+     0.987,
+     1.005
+    ]
+   },
+   {
+    "commit": "8b86978780",
+    "side": "slow",
+    "ratio": 3.64,
+    "ci95": [
+     3.593,
+     3.666
+    ]
+   },
+   {
+    "commit": "c519b2a632",
+    "side": "fast",
+    "ratio": 0.993,
+    "ci95": [
+     0.98,
+     1.003
+    ]
+   }
+  ]
+ },
+ "profile": null,
+ "finding": {
+  "culprit_commit": "8b86978780",
+  "file": "src/search.py",
+  "line": 100,
+  "explanation": "The commit 'Raise default ef for better recall' introduced a change to the `knn` function, which likely increased the number of nearest neighbors considered during the search, leading to a slower execution time. This change may have affected the performance of the `search` function, which relies on the `knn` function to find the nearest neighbors.",
+  "patch": null,
+  "confidence": "medium"
+ },
+ "patch": null,
+ "verification": null,
+ "steps": 2,
+ "tool_calls": 1,
+ "benchmark_comparisons": 0,
+ "llm_tokens": {
+  "prompt": 3758,
+  "completion": 130,
+  "llm_seconds": 4.7691810131073
+ },
+ "wall_time_s": 4.92,
+ "trace_path": "results/runs/agent-v1-3b/traces/ef_default-0.jsonl",
+ "case": "ef_default-0",
+ "system": "agent",
+ "model": "qwen2.5-coder:3b",
+ "variant": "v1",
+ "run_seconds": 4.95
+}

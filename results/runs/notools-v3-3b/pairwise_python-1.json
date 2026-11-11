@@ -1,0 +1,40 @@
+{
+ "status": "handoff",
+ "initial": {
+  "verdict": "regression",
+  "ratio": 9.596956472777364,
+  "ci_low": 9.579200911898837,
+  "ci_high": 9.626109468448627,
+  "p_slower": 1.6959106954125473e-06,
+  "p_faster": 0.9999986139518094,
+  "median_a_ms": 86.420584,
+  "median_b_ms": 829.374583,
+  "n_rounds": 15,
+  "tau": 0.05,
+  "label_a": "d884153b",
+  "label_b": "329e8828"
+ },
+ "finding": {
+  "culprit_commit": "5df314e0c6658c27249230d6c7f47c2a6538e9f4",
+  "file": "src/hnsw/distance.py",
+  "line": 57,
+  "explanation": "The new implementation uses a nested list comprehension to compute pairwise L2 distances, which is slower than the original implementation that uses a single matrix multiplication. The nested list comprehension creates a new list for each element in the input array, which is inefficient and results in a higher memory usage.",
+  "patch": null,
+  "confidence": "medium"
+ },
+ "reasons": [
+  "patch invalid: old_code was not found in the file; copy it exactly from read_file (without the line-number prefix)"
+ ],
+ "llm_tokens": {
+  "prompt": 546,
+  "completion": 195,
+  "llm_seconds": 13.800832986831665
+ },
+ "benchmark_comparisons": 0,
+ "wall_time_s": 14.09,
+ "case": "pairwise_python-1",
+ "system": "notools",
+ "model": "qwen2.5-coder:3b",
+ "variant": null,
+ "run_seconds": 14.1
+}

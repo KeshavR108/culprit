@@ -1,0 +1,40 @@
+{
+ "status": "handoff",
+ "initial": {
+  "verdict": "regression",
+  "ratio": 2.4795915100399273,
+  "ci_low": 2.461135419993957,
+  "ci_high": 2.494220240485748,
+  "p_slower": 1.6959106954125473e-06,
+  "p_faster": 0.9999986139518094,
+  "median_a_ms": 16.991458,
+  "median_b_ms": 42.131875,
+  "n_rounds": 15,
+  "tau": 0.05,
+  "label_a": "d884153b",
+  "label_b": "75d2ca70"
+ },
+ "finding": {
+  "culprit_commit": "75d2ca706333e6a25cc757c755acbd8d11582c2d",
+  "file": "src/hnsw/distance.py",
+  "line": 40,
+  "explanation": "The new code introduces an explicit loop, which can be slower than the original einsum operation because it involves more explicit operations and potentially more overhead.",
+  "patch": null,
+  "confidence": "medium"
+ },
+ "reasons": [
+  "patch invalid: old_code was not found in the file; copy it exactly from read_file (without the line-number prefix)"
+ ],
+ "llm_tokens": {
+  "prompt": 369,
+  "completion": 121,
+  "llm_seconds": 881.5739760398865
+ },
+ "benchmark_comparisons": 0,
+ "wall_time_s": 881.71,
+ "case": "devectorize_l2-2",
+ "system": "notools",
+ "model": "qwen2.5-coder:3b",
+ "variant": null,
+ "run_seconds": 881.71
+}

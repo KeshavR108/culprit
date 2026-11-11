@@ -1,0 +1,40 @@
+{
+ "status": "handoff",
+ "initial": {
+  "verdict": "regression",
+  "ratio": 2.5192629348130984,
+  "ci_low": 2.4976547515143674,
+  "ci_high": 2.5353108810875224,
+  "p_slower": 1.6959106954125473e-06,
+  "p_faster": 0.9999986139518094,
+  "median_a_ms": 17.194083,
+  "median_b_ms": 43.316416,
+  "n_rounds": 15,
+  "tau": 0.05,
+  "label_a": "d884153b",
+  "label_b": "05b229f8"
+ },
+ "finding": {
+  "culprit_commit": "33c43ddae912c688f5802fba516f0d5bd1fc59e8",
+  "file": "src/hnsw/distance.py",
+  "line": 6,
+  "explanation": "The current implementation of the L2 distance is inefficient because it computes the row-wise dot product for each query, which is not necessary for the L2 distance calculation.",
+  "patch": null,
+  "confidence": "medium"
+ },
+ "reasons": [
+  "patch invalid: new_code is identical to old_code"
+ ],
+ "llm_tokens": {
+  "prompt": 459,
+  "completion": 119,
+  "llm_seconds": 0.7788450717926025
+ },
+ "benchmark_comparisons": 0,
+ "wall_time_s": 0.89,
+ "case": "devectorize_l2-1",
+ "system": "notools",
+ "model": "qwen2.5-coder:0.5b",
+ "variant": null,
+ "run_seconds": 0.89
+}

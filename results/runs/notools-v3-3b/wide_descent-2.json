@@ -1,0 +1,97 @@
+{
+ "status": "handoff",
+ "initial": {
+  "verdict": "regression",
+  "ratio": 1.4823116696429233,
+  "ci_low": 1.4748545399111026,
+  "ci_high": 1.5042282052436444,
+  "p_slower": 1.6959106954125473e-06,
+  "p_faster": 0.9999986139518094,
+  "median_a_ms": 16.869625,
+  "median_b_ms": 25.006042,
+  "n_rounds": 15,
+  "tau": 0.05,
+  "label_a": "d884153b",
+  "label_b": "992c5337"
+ },
+ "finding": {
+  "culprit_commit": "e06fc9d8df53134b6ed8f5bc6c624ac1bb85e132",
+  "file": "src/hnsw/index.py",
+  "line": 249,
+  "explanation": "The change from `1` to `ef` in the `search_layer` function call in the `for` loop means that the beam search on the upper layers is now using a smaller number of neighbors (`ef`) instead of the full beam (`1`). This can lead to a slower search as it reduces the diversity of neighbors considered in each layer.",
+  "patch": null,
+  "confidence": "medium"
+ },
+ "reasons": [
+  "fix not verified"
+ ],
+ "llm_tokens": {
+  "prompt": 361,
+  "completion": 159,
+  "llm_seconds": 11.648128032684326
+ },
+ "patch": {
+  "diff": "--- a/src/hnsw/index.py\n+++ b/src/hnsw/index.py\n@@ -202,7 +202,7 @@\n         # point for the layer below (greedy, ef=1).\n         ep = [self.entry_point]\n         for layer in range(self.max_level, level, -1):\n-            ep = [self.search_layer(x, ep, 1, layer)[0][1]]\n+            ep = [self.search_layer(x, ep, ef, layer)[0][1]]\n \n         # Phase 2: on each layer the new node lives on, find candidates, pick\n         # neighbors, and link both ways.\n",
+  "files": [
+   "src/hnsw/index.py"
+  ],
+  "lines_changed": 2
+ },
+ "verification": {
+  "applied": true,
+  "tests_passed": null,
+  "tests_output": "",
+  "speedup": {
+   "verdict": "no_regression",
+   "ratio": 1.01244076071977,
+   "ci_low": 0.9997611047862418,
+   "ci_high": 1.0177311855023186,
+   "p_slower": 0.009033311499456189,
+   "p_faster": 0.9919298600531982,
+   "median_a_ms": 25.397,
+   "median_b_ms": 25.712958,
+   "n_rounds": 15,
+   "tau": 0.05,
+   "env": {
+    "cpu": "Apple M4",
+    "cores": 10,
+    "python": "3.13.5",
+    "platform": "macOS-26.1-arm64-arm-64bit-Mach-O",
+    "load_avg_1m": 6.16357421875
+   },
+   "label_a": "992c5337",
+   "label_b": "patched"
+  },
+  "vs_good": {
+   "verdict": "regression",
+   "ratio": 1.5419806009555914,
+   "ci_low": 1.5185432555788028,
+   "ci_high": 1.5540810405504186,
+   "p_slower": 1.6959106954125473e-06,
+   "p_faster": 0.9999986139518094,
+   "median_a_ms": 16.649583,
+   "median_b_ms": 25.673334,
+   "n_rounds": 15,
+   "tau": 0.05,
+   "env": {
+    "cpu": "Apple M4",
+    "cores": 10,
+    "python": "3.13.5",
+    "platform": "macOS-26.1-arm64-arm-64bit-Mach-O",
+    "load_avg_1m": 6.16357421875
+   },
+   "label_a": "d884153b",
+   "label_b": "patched"
+  },
+  "significant_speedup": false,
+  "verified": false,
+  "error": null
+ },
+ "benchmark_comparisons": 0,
+ "wall_time_s": 12.42,
+ "case": "wide_descent-2",
+ "system": "notools",
+ "model": "qwen2.5-coder:3b",
+ "variant": null,
+ "run_seconds": 12.42
+}

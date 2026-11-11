@@ -1,0 +1,99 @@
+{
+ "status": "handoff",
+ "reasons": [
+  "no valid patch proposed"
+ ],
+ "initial": {
+  "verdict": "regression",
+  "ratio": 3.611374690864533,
+  "ci_low": 3.5843786710418377,
+  "ci_high": 3.6623511969572675,
+  "p_slower": 1.6959106954125473e-06,
+  "p_faster": 0.9999986139518094,
+  "median_a_ms": 16.730125,
+  "median_b_ms": 60.41875,
+  "n_rounds": 15,
+  "tau": 0.05,
+  "env": {
+   "cpu": "Apple M4",
+   "cores": 10,
+   "python": "3.13.5",
+   "platform": "macOS-26.1-arm64-arm-64bit-Mach-O",
+   "load_avg_1m": 4.640625
+  },
+  "label_a": "d884153b",
+  "label_b": "76685c28"
+ },
+ "bisect": {
+  "status": "found",
+  "first_bad_commit": "b70e661cb8",
+  "split": 1.9,
+  "subject": "Raise default ef for better recall; tidy comments",
+  "commits_searched": 16,
+  "steps": 4,
+  "path": [
+   {
+    "commit": "2d3db6d728",
+    "side": "fast",
+    "ratio": 1.008,
+    "ci95": [
+     1.0,
+     1.014
+    ]
+   },
+   {
+    "commit": "3b75b3648c",
+    "side": "slow",
+    "ratio": 3.654,
+    "ci95": [
+     3.585,
+     3.682
+    ]
+   },
+   {
+    "commit": "b70e661cb8",
+    "side": "slow",
+    "ratio": 3.666,
+    "ci95": [
+     3.623,
+     3.685
+    ]
+   },
+   {
+    "commit": "6c6e8eede0",
+    "side": "fast",
+    "ratio": 1.005,
+    "ci95": [
+     0.984,
+     1.012
+    ]
+   }
+  ]
+ },
+ "profile": null,
+ "finding": {
+  "culprit_commit": "b70e661cb8",
+  "file": "search.py",
+  "line": 100,
+  "explanation": "The commit 'Raise default ef for better recall; tidy comments' introduced a change that increased the time taken by the `search` function. This is likely due to the addition of comments and the potential for more complex logic in the function, which could have increased the execution time.",
+  "patch": null,
+  "confidence": "medium"
+ },
+ "patch": null,
+ "verification": null,
+ "steps": 2,
+ "tool_calls": 1,
+ "benchmark_comparisons": 0,
+ "llm_tokens": {
+  "prompt": 3474,
+  "completion": 114,
+  "llm_seconds": 4.061666488647461
+ },
+ "wall_time_s": 4.22,
+ "trace_path": "results/runs/agent-v1-3b/traces/ef_default-1.jsonl",
+ "case": "ef_default-1",
+ "system": "agent",
+ "model": "qwen2.5-coder:3b",
+ "variant": "v1",
+ "run_seconds": 4.24
+}

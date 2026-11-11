@@ -1,0 +1,28 @@
+{
+ "status": "no_regression",
+ "initial": {
+  "verdict": "no_regression",
+  "ratio": 0.9882937749100054,
+  "ci_low": 0.9840487040219708,
+  "ci_high": 1.0011440865726353,
+  "p_slower": 0.9809558578968539,
+  "p_faster": 0.02105530839590351,
+  "median_a_ms": 87.481916,
+  "median_b_ms": 86.457833,
+  "n_rounds": 15,
+  "tau": 0.05,
+  "label_a": "d884153b",
+  "label_b": "c9907a96"
+ },
+ "finding": null,
+ "reasons": [
+  "classic tooling gives no explanation or fix"
+ ],
+ "benchmark_comparisons": 1,
+ "wall_time_s": 3.49,
+ "case": "control-03",
+ "system": "classic",
+ "model": null,
+ "variant": null,
+ "run_seconds": 3.49
+}

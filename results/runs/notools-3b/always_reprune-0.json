@@ -1,0 +1,40 @@
+{
+ "status": "handoff",
+ "initial": {
+  "verdict": "regression",
+  "ratio": 1.230252594619675,
+  "ci_low": 1.2204511019420061,
+  "ci_high": 1.2388265464264536,
+  "p_slower": 2.868531504244278e-05,
+  "p_faster": 0.9999759683847469,
+  "median_a_ms": 87.590583,
+  "median_b_ms": 107.758542,
+  "n_rounds": 15,
+  "tau": 0.05,
+  "label_a": "d884153b",
+  "label_b": "a0777cd6"
+ },
+ "finding": {
+  "culprit_commit": "b2a85b417d9adfa29f84fcbcc376c8b2d0b9bd9f",
+  "file": "src/hnsw/index.py",
+  "line": 211,
+  "explanation": "The change in the code makes the algorithm less efficient by re-selecting neighbors for every insert, which can lead to slower performance, especially for large datasets.",
+  "patch": null,
+  "confidence": "medium"
+ },
+ "reasons": [
+  "patch invalid: old_code was not found in the file; copy it exactly from read_file (without the line-number prefix)"
+ ],
+ "llm_tokens": {
+  "prompt": 440,
+  "completion": 115,
+  "llm_seconds": 3.389810085296631
+ },
+ "benchmark_comparisons": 0,
+ "wall_time_s": 3.54,
+ "case": "always_reprune-0",
+ "system": "notools",
+ "model": "qwen2.5-coder:3b",
+ "variant": null,
+ "run_seconds": 3.54
+}

@@ -1,0 +1,154 @@
+{
+  "run": "agent-v3-1.5b",
+  "cases": {
+    "always_reprune-0": {
+      "category": "looped without progress",
+      "evidence": "read_file called 13x with identical arguments"
+    },
+    "always_reprune-1": {
+      "category": "looped without progress",
+      "evidence": "verify_patch called 9x with identical arguments"
+    },
+    "always_reprune-2": {
+      "category": "looped without progress",
+      "evidence": "read_file called 13x with identical arguments"
+    },
+    "copy_vectors-0": {
+      "category": "budget exhausted",
+      "evidence": "3 tool calls: bisect_commits, show_diff, read_file"
+    },
+    "copy_vectors-1": {
+      "category": "looped without progress",
+      "evidence": "propose_patch called 5x with identical arguments"
+    },
+    "copy_vectors-2": {
+      "category": "budget exhausted",
+      "evidence": "3 tool calls: bisect_commits, show_diff, read_file"
+    },
+    "debug_log-0": {
+      "category": "budget exhausted",
+      "evidence": "4 tool calls: bisect_commits, show_diff, profile, read_file"
+    },
+    "debug_log-1": {
+      "category": "budget exhausted",
+      "evidence": "5 tool calls: bisect_commits, show_diff, read_file, profile, read_file"
+    },
+    "debug_log-2": {
+      "category": "looped without progress",
+      "evidence": "propose_patch called 5x with identical arguments"
+    },
+    "devectorize_dists-0": {
+      "category": "budget exhausted",
+      "evidence": "3 tool calls: bisect_commits, show_diff, read_file"
+    },
+    "devectorize_dists-1": {
+      "category": "budget exhausted",
+      "evidence": "3 tool calls: bisect_commits, profile, read_file"
+    },
+    "devectorize_dists-2": {
+      "category": "budget exhausted",
+      "evidence": "4 tool calls: bisect_commits, profile, show_diff, read_file"
+    },
+    "devectorize_l2-0": {
+      "category": "budget exhausted",
+      "evidence": "4 tool calls: bisect_commits, profile, show_diff, read_file"
+    },
+    "devectorize_l2-1": {
+      "category": "looped without progress",
+      "evidence": "verify_patch called 10x with identical arguments"
+    },
+    "devectorize_l2-2": {
+      "category": "looped without progress",
+      "evidence": "verify_patch called 10x with identical arguments"
+    },
+    "ef_default-0": {
+      "category": "budget exhausted",
+      "evidence": "3 tool calls: bisect_commits, profile, read_file"
+    },
+    "ef_default-1": {
+      "category": "looped without progress",
+      "evidence": "propose_patch called 6x with identical arguments"
+    },
+    "ef_default-2": {
+      "category": "looped without progress",
+      "evidence": "verify_patch called 11x with identical arguments"
+    },
+    "heapify_each-0": {
+      "category": "looped without progress",
+      "evidence": "verify_patch called 9x with identical arguments"
+    },
+    "heapify_each-1": {
+      "category": "looped without progress",
+      "evidence": "verify_patch called 10x with identical arguments"
+    },
+    "heapify_each-2": {
+      "category": "budget exhausted",
+      "evidence": "3 tool calls: bisect_commits, show_diff, read_file"
+    },
+    "heuristic_recompute-0": {
+      "category": "looped without progress",
+      "evidence": "propose_patch called 6x with identical arguments"
+    },
+    "heuristic_recompute-1": {
+      "category": "budget exhausted",
+      "evidence": "5 tool calls: bisect_commits, show_diff, read_file, profile, read_file"
+    },
+    "heuristic_recompute-2": {
+      "category": "budget exhausted",
+      "evidence": "5 tool calls: bisect_commits, show_diff, read_file, profile, read_file"
+    },
+    "pairwise_python-0": {
+      "category": "budget exhausted",
+      "evidence": "3 tool calls: bisect_commits, profile, read_file"
+    },
+    "pairwise_python-1": {
+      "category": "looped without progress",
+      "evidence": "verify_patch called 10x with identical arguments"
+    },
+    "pairwise_python-2": {
+      "category": "looped without progress",
+      "evidence": "read_file called 4x with identical arguments"
+    },
+    "stack_gather-0": {
+      "category": "budget exhausted",
+      "evidence": "4 tool calls: bisect_commits, show_diff, profile, read_file"
+    },
+    "stack_gather-1": {
+      "category": "budget exhausted",
+      "evidence": "3 tool calls: bisect_commits, show_diff, read_file"
+    },
+    "stack_gather-2": {
+      "category": "looped without progress",
+      "evidence": "read_file called 7x with identical arguments"
+    },
+    "visited_list-0": {
+      "category": "budget exhausted",
+      "evidence": "3 tool calls: bisect_commits, show_diff, read_file"
+    },
+    "visited_list-1": {
+      "category": "budget exhausted",
+      "evidence": "4 tool calls: bisect_commits, show_diff, profile, read_file"
+    },
+    "visited_list-2": {
+      "category": "looped without progress",
+      "evidence": "verify_patch called 11x with identical arguments"
+    },
+    "wide_descent-0": {
+      "category": "looped without progress",
+      "evidence": "verify_patch called 11x with identical arguments"
+    },
+    "wide_descent-1": {
+      "category": "looped without progress",
+      "evidence": "verify_patch called 11x with identical arguments"
+    },
+    "wide_descent-2": {
+      "category": "budget exhausted",
+      "evidence": "3 tool calls: bisect_commits, show_diff, read_file"
+    }
+  },
+  "counts": {
+    "looped without progress": 18,
+    "budget exhausted": 18
+  },
+  "hallucinated_args_cases": 3
+}

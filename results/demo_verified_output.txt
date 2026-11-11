@@ -1,0 +1,109 @@
+$ culprit demo --model qwen2.5-coder:3b --case debug_log-1
+Culprit: investigating `search` with qwen2.5-coder:3b (local, via Ollama)
+   0.9s measure  d884153b 16.81 ms -> 4480edff 19.51 ms, ratio 1.161 (95% CI 1.144-1.174), 
+p_slower=1.7e-06, n=15 rounds -> regression
+   2.2s LLM step 1 -> bisect_commits()
+   3.0s measure  d884153b 16.74 ms -> e499871a 16.76 ms, ratio 1.001 (95% CI 0.994-1.008), 
+p_slower=0.24, n=15 rounds -> no_regression
+   3.8s measure  d884153b 16.90 ms -> 785aedd9 16.79 ms, ratio 0.994 (95% CI 0.988-1.003), 
+p_slower=0.9, n=15 rounds -> no_regression
+   4.6s measure  d884153b 16.90 ms -> 1e3916f8 16.74 ms, ratio 0.991 (95% CI 0.985-1.006), 
+p_slower=0.94, n=15 rounds -> no_regression
+   5.3s measure  d884153b 16.87 ms -> 4f1b4863 16.46 ms, ratio 0.976 (95% CI 0.967-0.983), 
+p_slower=1, n=15 rounds -> no_regression
+   6.1s measure  d884153b 16.99 ms -> 796e58b4 19.41 ms, ratio 1.143 (95% CI 1.135-1.150), 
+p_slower=1.7e-06, n=15 rounds -> regression
+   6.1s   bisect_commits -> {"status": "found", "first_bad_commit": "796e58b444", "split": 1.077, 
+"subject": "Add debug logging to search_
+   8.8s LLM step 2 -> final answer
+   9.5s LLM step 3 -> show_diff(commit='796e58b444')
+   9.6s   show_diff -> {"diff": "commit 796e58b4446a8d0cc09c690c2c5e5ef7e9a7fcc7\nSubject: Add debug
+logging to search_layer\n\n---\n
+  12.5s LLM step 4 -> final answer
+  14.8s LLM step 5 -> propose_patch(file='src/hnsw/index.py', old_code='            d_c, c = 
+heapq.hea, new_code='            d_c, c = heapq.hea)
+  14.8s   propose_patch -> {"valid": true, "files": ["src/hnsw/index.py"], "lines_changed": 1, 
+"diff": "--- a/src/hnsw/index.py\n+++ b/sr
+  17.1s LLM step 6 -> final answer
+  17.4s LLM step 7 -> verify_patch()
+  18.3s measure  4480edff 19.41 ms -> patched 16.90 ms, ratio 0.871 (95% CI 0.863-0.879), 
+p_slower=1, n=15 rounds -> no_regression
+  18.9s measure  d884153b 16.74 ms -> patched 16.88 ms, ratio 1.008 (95% CI 1.003-1.011), 
+p_slower=0.00053, n=15 rounds -> no_regression
+  20.9s verify   verified=True tests_passed=True
+  20.9s   verify_patch -> {"verified": true, "significant_speedup": true, "tests_passed": true, 
+"bad_vs_patched": "4480edff 19.41 ms -> 
+  23.2s LLM step 8 -> final answer
+  23.2s VERIFIED 
+
+┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+┃                                     Culprit report: VERIFIED                                     ┃
+┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
+
+
+                            1. Is it really slower? (measurement engine)                            
+
+d884153b 16.81 ms -> 4480edff 19.51 ms, ratio 1.161 (95% CI 1.144-1.174), p_slower=1.7e-06, n=15    
+rounds -> regression                                                                                
+
+
+                                     2. Which commit? (bisect)                                      
+
+First bad commit 796e58b444: Add debug logging to search_layer (25 commits searched in 5 measured   
+steps)                                                                                              
+
+Each step: is the commit's CI above or below the split point sqrt(full slowdown) = 1.077?           
+
+                                                          
+  step   commit       ratio vs good   95% CI        side  
+ ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 
+  1      e499871a68   1.001           0.994-1.008   fast  
+  2      785aedd930   0.994           0.988-1.003   fast  
+  3      1e3916f84c   0.991           0.985-1.006   fast  
+  4      4f1b48635d   0.976           0.967-0.983   fast  
+  5      796e58b444   1.143           1.135-1.150   slow  
+                                                          
+
+
+                                         4. Diagnosis (LLM)                                         
+
+ • Culprit commit: 796e58b444                                                                       
+ • Root cause: src/hnsw/index.py:107                                                                
+ • Confidence: high                                                                                 
+
+▌ The removal of the debug logging statement at line 107 resolved the slowdown in the search      
+▌ benchmark. The benchmark now runs faster, with a significant speedup.                           
+
+
+                                   5. Proposed fix (not applied)                                    
+
+                                                                                                    
+ --- a/src/hnsw/index.py                                                                            
+ +++ b/src/hnsw/index.py                                                                            
+ @@ -107,7 +107,6 @@                                                                                
+                                                                                                    
+          while C:                                                                                  
+              d_c, c = heapq.heappop(C)                                                             
+ -            log.debug(f"layer {layer}: expand node {c} at distance {d_c:.4f}, |W|={len(W)}")      
+              # The nearest unexpanded candidate is already worse than our worst                    
+              # result, and W is full, so expanding further cannot help: stop.                      
+              if d_c > -W[0][0] and len(W) >= ef:                                                   
+                                                                                                    
+
+
+                              6. Verification (patched copy, measured)                              
+
+ • bad vs patched: 4480edff 19.41 ms -> patched 16.90 ms, ratio 0.871 (95% CI 0.863-0.879),         
+   p_slower=1, n=15 rounds -> no_regression                                                         
+ • good vs patched: d884153b 16.74 ms -> patched 16.88 ms, ratio 1.008 (95% CI 1.003-1.011),        
+   p_slower=0.00053, n=15 rounds -> no_regression                                                   
+ • significant speedup: True; tests passed: True                                                    
+
+
+                                                Cost                                                
+
+8 LLM steps, 4 tool calls, 8 measured comparisons, 20508 prompt + 497 completion tokens, 23 s total.
+
+Full step trace: runs/demo-20261103-183010/trace.jsonl                     
+
+Saved: runs/demo-20261103-183010/report.md

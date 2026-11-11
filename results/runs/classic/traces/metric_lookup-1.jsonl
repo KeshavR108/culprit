@@ -1,0 +1,3 @@
+{"t": 0.127, "kind": "worker_started", "key": "d884153b6122523056545afd5a991221af1a3e5d", "setup_s": 0.03785504098050296}
+{"t": 0.217, "kind": "worker_started", "key": "f1fe7a014c58f2f43910e3f13993ca0bffee4e79", "setup_s": 0.035742499865591526}
+{"t": 0.906, "kind": "measurement", "cached": false, "summary": "d884153b 17.32 ms -> f1fe7a01 17.05 ms, ratio 0.984 (95% CI 0.970-0.992), p_slower=1, n=15 rounds -> no_regression"}

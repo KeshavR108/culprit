@@ -1,0 +1,102 @@
+{
+ "status": "handoff",
+ "reasons": [
+  "agent did not produce a final answer within the step budget",
+  "no valid patch proposed"
+ ],
+ "initial": {
+  "verdict": "regression",
+  "ratio": 9.596956472777364,
+  "ci_low": 9.579200911898837,
+  "ci_high": 9.626109468448627,
+  "p_slower": 1.6959106954125473e-06,
+  "p_faster": 0.9999986139518094,
+  "median_a_ms": 86.420584,
+  "median_b_ms": 829.374583,
+  "n_rounds": 15,
+  "tau": 0.05,
+  "env": {
+   "cpu": "Apple M4",
+   "cores": 10,
+   "python": "3.13.5",
+   "platform": "macOS-26.1-arm64-arm-64bit-Mach-O",
+   "load_avg_1m": 3.134765625
+  },
+  "label_a": "d884153b",
+  "label_b": "329e8828"
+ },
+ "bisect": {
+  "status": "found",
+  "first_bad_commit": "5df314e0c6",
+  "split": 3.098,
+  "subject": "Write pairwise l2 as an explicit double loop; tidy comments",
+  "commits_searched": 22,
+  "steps": 5,
+  "path": [
+   {
+    "commit": "4ea9bb61d5",
+    "side": "fast",
+    "ratio": 1.006,
+    "ci95": [
+     1.001,
+     1.016
+    ]
+   },
+   {
+    "commit": "e40c9bf2bb",
+    "side": "fast",
+    "ratio": 1.007,
+    "ci95": [
+     1.0,
+     1.014
+    ]
+   },
+   {
+    "commit": "bda1bf158e",
+    "side": "fast",
+    "ratio": 1.017,
+    "ci95": [
+     1.005,
+     1.02
+    ]
+   },
+   {
+    "commit": "a327392715",
+    "side": "fast",
+    "ratio": 1.004,
+    "ci95": [
+     0.997,
+     1.012
+    ]
+   },
+   {
+    "commit": "5df314e0c6",
+    "side": "slow",
+    "ratio": 9.513,
+    "ci95": [
+     9.459,
+     9.558
+    ]
+   }
+  ]
+ },
+ "profile": null,
+ "finding": null,
+ "patch": null,
+ "verification": null,
+ "steps": 15,
+ "tool_calls": 0,
+ "benchmark_comparisons": 0,
+ "llm_tokens": {
+  "prompt": 45735,
+  "completion": 2625,
+  "llm_seconds": 16.278445720672607
+ },
+ "wall_time_s": 16.37,
+ "trace_path": "results/runs/agent-v3-0.5b/traces/pairwise_python-1.jsonl",
+ "case": "pairwise_python-1",
+ "system": "agent",
+ "model": "qwen2.5-coder:0.5b",
+ "variant": "v3",
+ "run_seconds": 16.38
+}

@@ -1,0 +1,40 @@
+{
+ "status": "handoff",
+ "initial": {
+  "verdict": "regression",
+  "ratio": 2.406474569517854,
+  "ci_low": 2.3462124527157977,
+  "ci_high": 2.4677316870366464,
+  "p_slower": 1.6959106954125473e-06,
+  "p_faster": 0.9999986139518094,
+  "median_a_ms": 17.553167,
+  "median_b_ms": 42.24125,
+  "n_rounds": 15,
+  "tau": 0.05,
+  "label_a": "d884153b",
+  "label_b": "6583c9c9"
+ },
+ "finding": {
+  "culprit_commit": "5170804da31ba1dfd4847ce39510497f75a025d0",
+  "file": "src/hnsw/distance.py",
+  "line": 39,
+  "explanation": "The current implementation uses a loop to compute the squared L2 distance, which is slower than a more efficient method.",
+  "patch": null,
+  "confidence": "medium"
+ },
+ "reasons": [
+  "patch invalid: new_code is identical to old_code"
+ ],
+ "llm_tokens": {
+  "prompt": 438,
+  "completion": 110,
+  "llm_seconds": 0.7191319465637207
+ },
+ "benchmark_comparisons": 0,
+ "wall_time_s": 0.83,
+ "case": "devectorize_l2-0",
+ "system": "notools",
+ "model": "qwen2.5-coder:0.5b",
+ "variant": null,
+ "run_seconds": 0.83
+}

@@ -1,0 +1,40 @@
+{
+ "status": "handoff",
+ "initial": {
+  "verdict": "regression",
+  "ratio": 1.2338911331537248,
+  "ci_low": 1.2264745240637474,
+  "ci_high": 1.2433348781971438,
+  "p_slower": 1.6959106954125473e-06,
+  "p_faster": 0.9999986139518094,
+  "median_a_ms": 86.873041,
+  "median_b_ms": 107.191875,
+  "n_rounds": 15,
+  "tau": 0.05,
+  "label_a": "d884153b",
+  "label_b": "7d8ee0cd"
+ },
+ "finding": {
+  "culprit_commit": "7e73b3b18391f12ddea1b4a65ce71a2c30224d77",
+  "file": "src/hnsw/index.py",
+  "line": 211,
+  "explanation": "The change in the code makes the algorithm less efficient by re-selecting links for every new node, which can lead to a slower performance. The new code should ensure that links are chosen in a way that maintains diversity and efficiency.",
+  "patch": null,
+  "confidence": "medium"
+ },
+ "reasons": [
+  "patch invalid: old_code was not found in the file; copy it exactly from read_file (without the line-number prefix)"
+ ],
+ "llm_tokens": {
+  "prompt": 356,
+  "completion": 230,
+  "llm_seconds": 82.87950897216797
+ },
+ "benchmark_comparisons": 0,
+ "wall_time_s": 83.17,
+ "case": "always_reprune-2",
+ "system": "notools",
+ "model": "qwen2.5-coder:3b",
+ "variant": null,
+ "run_seconds": 83.17
+}

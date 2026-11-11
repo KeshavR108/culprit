@@ -1,0 +1,262 @@
+{
+ "status": "handoff",
+ "reasons": [
+  "agent did not produce a final answer within the step budget",
+  "no valid patch proposed"
+ ],
+ "initial": {
+  "verdict": "regression",
+  "ratio": 6.453227057498369,
+  "ci_low": 6.38728907764223,
+  "ci_high": 6.516948240459805,
+  "p_slower": 1.6959106954125473e-06,
+  "p_faster": 0.9999986139518094,
+  "median_a_ms": 86.971041,
+  "median_b_ms": 561.243875,
+  "n_rounds": 15,
+  "tau": 0.05,
+  "env": {
+   "cpu": "Apple M4",
+   "cores": 10,
+   "python": "3.13.5",
+   "platform": "macOS-26.1-arm64-arm-64bit-Mach-O",
+   "load_avg_1m": 3.68212890625
+  },
+  "label_a": "d884153b",
+  "label_b": "eb72f3dc"
+ },
+ "bisect": {
+  "status": "found",
+  "first_bad_commit": "5a539922e5",
+  "split": 2.54,
+  "subject": "Inline pairwise distance check in heuristic; tidy comments",
+  "commits_searched": 23,
+  "steps": 4,
+  "path": [
+   {
+    "commit": "2aae677350",
+    "side": "slow",
+    "ratio": 6.474,
+    "ci95": [
+     6.376,
+     6.664
+    ]
+   },
+   {
+    "commit": "5658c952d1",
+    "side": "slow",
+    "ratio": 6.608,
+    "ci95": [
+     6.561,
+     6.645
+    ]
+   },
+   {
+    "commit": "5a539922e5",
+    "side": "slow",
+    "ratio": 6.398,
+    "ci95": [
+     6.322,
+     6.481
+    ]
+   },
+   {
+    "commit": "a94416be6b",
+    "side": "fast",
+    "ratio": 1.021,
+    "ci95": [
+     1.011,
+     1.026
+    ]
+   }
+  ]
+ },
+ "profile": {
+  "commit_a": "d884153b61",
+  "commit_b": "5a539922e5",
+  "top_on_b": [
+   {
+    "function": "src/hnsw/index.py:224(add_batch)",
+    "calls": 1,
+    "cum_ms": 789.121,
+    "self_ms": 0.291
+   },
+   {
+    "function": "src/hnsw/index.py:173(add)",
+    "calls": 300,
+    "cum_ms": 788.83,
+    "self_ms": 3.211
+   },
+   {
+    "function": "src/hnsw/index.py:166(_select)",
+    "calls": 1649,
+    "cum_ms": 696.608,
+    "self_ms": 5.693
+   },
+   {
+    "function": "src/hnsw/index.py:131(select_neighbors_heuristic)",
+    "calls": 1649,
+    "cum_ms": 690.916,
+    "self_ms": 18.166
+   },
+   {
+    "function": "~:0(<built-in method builtins.all>)",
+    "calls": 33661,
+    "cum_ms": 645.316,
+    "self_ms": 8.781
+   },
+   {
+    "function": "src/hnsw/index.py:153(<genexpr>)",
+    "calls": 105391,
+    "cum_ms": 636.535,
+    "self_ms": 111.915
+   },
+   {
+    "function": "src/hnsw/distance.py:53(l2_sq_pairwise)",
+    "calls": 94158,
+    "cum_ms": 538.11,
+    "self_ms": 357.842
+   },
+   {
+    "function": "src/hnsw/index.py:85(search_layer)",
+    "calls": 866,
+    "cum_ms": 81.41,
+    "self_ms": 22.43
+   },
+   {
+    "function": "~:0(<built-in method numpy._core._multiarray_umath.c_einsum>)",
+    "calls": 107439,
+    "cum_ms": 68.238,
+    "self_ms": 68.238
+   },
+   {
+    "function": "src/hnsw/index.py:71(_dists)",
+    "calls": 13281,
+    "cum_ms": 48.148,
+    "self_ms": 17.065
+   },
+   {
+    "function": "src/hnsw/distance.py:19(_quiet_matmul)",
+    "calls": 94158,
+    "cum_ms": 30.453,
+    "self_ms": 25.33
+   },
+   {
+    "function": "src/hnsw/distance.py:37(l2_sq_batch)",
+    "calls": 13281,
+    "cum_ms": 29.49,
+    "self_ms": 16.366
+   },
+   {
+    "function": "~:0(<method 'tolist' of 'numpy.ndarray' objects>)",
+    "calls": 14930,
+    "cum_ms": 10.46,
+    "self_ms": 10.46
+   },
+   {
+    "function": "~:0(<built-in method numpy._core._multiarray_umath._make_extobj>)",
+    "calls": 94159,
+    "cum_ms": 9.806,
+    "self_ms": 9.806
+   },
+   {
+    "function": "~:0(<method 'reset' of '_contextvars.ContextVar' objects>)",
+    "calls": 94159,
+    "cum_ms": 8.659,
+    "self_ms": 8.659
+   }
+  ],
+  "biggest_increases": [
+   {
+    "function": "src/hnsw/distance.py:53(l2_sq_pairwise)",
+    "self_ms_before": 10.292,
+    "self_ms_after": 357.842,
+    "cum_ms_before": 14.487,
+    "cum_ms_after": 538.11,
+    "calls_before": 1649,
+    "calls_after": 94158
+   },
+   {
+    "function": "src/hnsw/index.py:153(<genexpr>)",
+    "self_ms_before": 0.948,
+    "self_ms_after": 111.915,
+    "cum_ms_before": 0.948,
+    "cum_ms_after": 636.535,
+    "calls_before": 19735,
+    "calls_after": 105391
+   },
+   {
+    "function": "~:0(<built-in method numpy._core._multiarray_umath.c_einsum>)",
+    "self_ms_before": 10.162,
+    "self_ms_after": 68.238,
+    "cum_ms_before": 10.162,
+    "cum_ms_after": 68.238,
+    "calls_before": 14930,
+    "calls_after": 107439
+   },
+   {
+    "function": "src/hnsw/distance.py:19(_quiet_matmul)",
+    "self_ms_before": 0.61,
+    "self_ms_after": 25.33,
+    "cum_ms_before": 0.727,
+    "cum_ms_after": 30.453,
+    "calls_before": 1649,
+    "calls_after": 94158
+   },
+   {
+    "function": ".venv/lib/python3.13/site-packages/numpy/_core/_ufunc_config.py:441(__enter__)",
+    "self_ms_before": 0.565,
+    "self_ms_after": 21.357,
+    "cum_ms_before": 0.988,
+    "cum_ms_after": 39.136,
+    "calls_before": 1649,
+    "calls_after": 94158
+   },
+   {
+    "function": ".venv/lib/python3.13/site-packages/numpy/_core/einsumfunc.py:1049(_einsum_dispatcher)",
+    "self_ms_before": 3.367,
+    "self_ms_after": 21.452,
+    "cum_ms_before": 3.367,
+    "cum_ms_after": 21.452,
+    "calls_before": 74650,
+    "calls_after": 537195
+   },
+   {
+    "function": ".venv/lib/python3.13/site-packages/numpy/_core/einsumfunc.py:1057(einsum)",
+    "self_ms_before": 2.012,
+    "self_ms_after": 13.606,
+    "cum_ms_before": 12.174,
+    "cum_ms_after": 81.844,
+    "calls_before": 14930,
+    "calls_after": 107439
+   },
+   {
+    "function": ".venv/lib/python3.13/site-packages/numpy/_core/_ufunc_config.py:457(__exit__)",
+    "self_ms_before": 0.306,
+    "self_ms_after": 11.849,
+    "cum_ms_before": 0.531,
+    "cum_ms_after": 20.507,
+    "calls_before": 1649,
+    "calls_after": 94158
+   }
+  ]
+ },
+ "finding": null,
+ "patch": null,
+ "verification": null,
+ "steps": 15,
+ "tool_calls": 5,
+ "benchmark_comparisons": 0,
+ "llm_tokens": {
+  "prompt": 119743,
+  "completion": 7595,
+  "llm_seconds": 117.26528525352478
+ },
+ "wall_time_s": 120.65,
+ "trace_path": "results/runs/agent-v3-1.5b/traces/heuristic_recompute-2.jsonl",
+ "case": "heuristic_recompute-2",
+ "system": "agent",
+ "model": "qwen2.5-coder:1.5b",
+ "variant": "v3",
+ "run_seconds": 120.79
+}

@@ -1,0 +1,271 @@
+{
+ "status": "handoff",
+ "reasons": [
+  "agent did not produce a final answer within the step budget",
+  "no valid patch proposed"
+ ],
+ "initial": {
+  "verdict": "regression",
+  "ratio": 9.596956472777364,
+  "ci_low": 9.579200911898837,
+  "ci_high": 9.626109468448627,
+  "p_slower": 1.6959106954125473e-06,
+  "p_faster": 0.9999986139518094,
+  "median_a_ms": 86.420584,
+  "median_b_ms": 829.374583,
+  "n_rounds": 15,
+  "tau": 0.05,
+  "env": {
+   "cpu": "Apple M4",
+   "cores": 10,
+   "python": "3.13.5",
+   "platform": "macOS-26.1-arm64-arm-64bit-Mach-O",
+   "load_avg_1m": 3.134765625
+  },
+  "label_a": "d884153b",
+  "label_b": "329e8828"
+ },
+ "bisect": {
+  "status": "found",
+  "first_bad_commit": "5df314e0c6",
+  "split": 3.098,
+  "subject": "Write pairwise l2 as an explicit double loop; tidy comments",
+  "commits_searched": 22,
+  "steps": 5,
+  "path": [
+   {
+    "commit": "4ea9bb61d5",
+    "side": "fast",
+    "ratio": 1.006,
+    "ci95": [
+     1.001,
+     1.016
+    ]
+   },
+   {
+    "commit": "e40c9bf2bb",
+    "side": "fast",
+    "ratio": 1.007,
+    "ci95": [
+     1.0,
+     1.014
+    ]
+   },
+   {
+    "commit": "bda1bf158e",
+    "side": "fast",
+    "ratio": 1.017,
+    "ci95": [
+     1.005,
+     1.02
+    ]
+   },
+   {
+    "commit": "a327392715",
+    "side": "fast",
+    "ratio": 1.004,
+    "ci95": [
+     0.997,
+     1.012
+    ]
+   },
+   {
+    "commit": "5df314e0c6",
+    "side": "slow",
+    "ratio": 9.513,
+    "ci95": [
+     9.459,
+     9.558
+    ]
+   }
+  ]
+ },
+ "profile": {
+  "commit_a": "d884153b61",
+  "commit_b": "5df314e0c6",
+  "top_on_b": [
+   {
+    "function": "src/hnsw/index.py:232(add_batch)",
+    "calls": 1,
+    "cum_ms": 1751.17,
+    "self_ms": 0.716
+   },
+   {
+    "function": "src/hnsw/index.py:181(add)",
+    "calls": 300,
+    "cum_ms": 1750.454,
+    "self_ms": 10.236
+   },
+   {
+    "function": "src/hnsw/index.py:174(_select)",
+    "calls": 1649,
+    "cum_ms": 1577.147,
+    "self_ms": 8.157
+   },
+   {
+    "function": "src/hnsw/index.py:138(select_neighbors_heuristic)",
+    "calls": 1649,
+    "cum_ms": 1568.99,
+    "self_ms": 27.726
+   },
+   {
+    "function": "src/hnsw/distance.py:55(l2_sq_pairwise)",
+    "calls": 1649,
+    "cum_ms": 1506.387,
+    "self_ms": 270.114
+   },
+   {
+    "function": "src/hnsw/distance.py:26(l2_sq)",
+    "calls": 1399064,
+    "cum_ms": 1198.987,
+    "self_ms": 1135.175
+   },
+   {
+    "function": "src/hnsw/index.py:92(search_layer)",
+    "calls": 866,
+    "cum_ms": 137.358,
+    "self_ms": 37.285
+   },
+   {
+    "function": "src/hnsw/index.py:76(_dists)",
+    "calls": 13281,
+    "cum_ms": 93.756,
+    "self_ms": 34.05
+   },
+   {
+    "function": "src/hnsw/distance.py:38(l2_sq_batch)",
+    "calls": 13281,
+    "cum_ms": 56.934,
+    "self_ms": 30.128
+   },
+   {
+    "function": "~:0(<built-in method numpy.array>)",
+    "calls": 1649,
+    "cum_ms": 37.286,
+    "self_ms": 37.286
+   },
+   {
+    "function": "~:0(<built-in method numpy._core._multiarray_umath.c_einsum>)",
+    "calls": 13281,
+    "cum_ms": 18.511,
+    "self_ms": 18.511
+   },
+   {
+    "function": "~:0(<built-in method builtins.all>)",
+    "calls": 33661,
+    "cum_ms": 16.97,
+    "self_ms": 10.523
+   },
+   {
+    "function": "~:0(<method 'tolist' of 'numpy.ndarray' objects>)",
+    "calls": 14930,
+    "cum_ms": 14.344,
+    "self_ms": 14.344
+   },
+   {
+    "function": "src/hnsw/index.py:21(__init__)",
+    "calls": 1,
+    "cum_ms": 7.598,
+    "self_ms": 0.057
+   },
+   {
+    "function": "~:0(<built-in method builtins.exec>)",
+    "calls": 3,
+    "cum_ms": 7.368,
+    "self_ms": 0.017
+   }
+  ],
+  "biggest_increases": [
+   {
+    "function": "src/hnsw/distance.py:26(l2_sq)",
+    "self_ms_before": null,
+    "self_ms_after": 1135.175,
+    "cum_ms_before": null,
+    "cum_ms_after": 1198.987,
+    "calls_before": 0,
+    "calls_after": 1399064
+   },
+   {
+    "function": "src/hnsw/distance.py:55(l2_sq_pairwise)",
+    "self_ms_before": 14.245,
+    "self_ms_after": 270.114,
+    "cum_ms_before": 19.746,
+    "cum_ms_after": 1506.387,
+    "calls_before": 1649,
+    "calls_after": 1649
+   },
+   {
+    "function": ".venv/lib/python3.13/site-packages/numpy/_core/multiarray.py:757(dot)",
+    "self_ms_before": null,
+    "self_ms_after": 63.812,
+    "cum_ms_before": null,
+    "cum_ms_after": 63.812,
+    "calls_before": 0,
+    "calls_after": 1399064
+   },
+   {
+    "function": "~:0(<built-in method numpy.array>)",
+    "self_ms_before": null,
+    "self_ms_after": 37.286,
+    "cum_ms_before": null,
+    "cum_ms_after": 37.286,
+    "calls_before": 0,
+    "calls_after": 1649
+   },
+   {
+    "function": "src/hnsw/distance.py:38(l2_sq_batch)",
+    "self_ms_before": 21.643,
+    "self_ms_after": 30.128,
+    "cum_ms_before": 39.678,
+    "cum_ms_after": 56.934,
+    "calls_before": 13281,
+    "calls_after": 13281
+   },
+   {
+    "function": "src/hnsw/index.py:76(_dists)",
+    "self_ms_before": 25.64,
+    "self_ms_after": 34.05,
+    "cum_ms_before": 67.255,
+    "cum_ms_after": 93.756,
+    "calls_before": 13281,
+    "calls_after": 13281
+   },
+   {
+    "function": "src/hnsw/index.py:138(select_neighbors_heuristic)",
+    "self_ms_before": 19.542,
+    "self_ms_after": 27.726,
+    "cum_ms_before": 68.958,
+    "cum_ms_after": 1568.99,
+    "calls_before": 1649,
+    "calls_after": 1649
+   },
+   {
+    "function": "src/hnsw/index.py:181(add)",
+    "self_ms_before": 4.263,
+    "self_ms_after": 10.236,
+    "cum_ms_before": 203.052,
+    "cum_ms_after": 1750.454,
+    "calls_before": 300,
+    "calls_after": 300
+   }
+  ]
+ },
+ "finding": null,
+ "patch": null,
+ "verification": null,
+ "steps": 15,
+ "tool_calls": 15,
+ "benchmark_comparisons": 0,
+ "llm_tokens": {
+  "prompt": 82636,
+  "completion": 1242,
+  "llm_seconds": 27.522130012512207
+ },
+ "wall_time_s": 34.27,
+ "trace_path": "results/runs/agent-v3-1.5b/traces/pairwise_python-1.jsonl",
+ "case": "pairwise_python-1",
+ "system": "agent",
+ "model": "qwen2.5-coder:1.5b",
+ "variant": "v3",
+ "run_seconds": 34.4
+}

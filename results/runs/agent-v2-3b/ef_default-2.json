@@ -1,0 +1,93 @@
+{
+ "status": "handoff",
+ "reasons": [
+  "agent did not produce a final answer within the step budget",
+  "no valid patch proposed"
+ ],
+ "initial": {
+  "verdict": "regression",
+  "ratio": 3.643228935325531,
+  "ci_low": 3.6103343366442475,
+  "ci_high": 3.7005840256642264,
+  "p_slower": 1.6959106954125473e-06,
+  "p_faster": 0.9999986139518094,
+  "median_a_ms": 16.975292,
+  "median_b_ms": 61.844875,
+  "n_rounds": 15,
+  "tau": 0.05,
+  "env": {
+   "cpu": "Apple M4",
+   "cores": 10,
+   "python": "3.13.5",
+   "platform": "macOS-26.1-arm64-arm-64bit-Mach-O",
+   "load_avg_1m": 4.4677734375
+  },
+  "label_a": "d884153b",
+  "label_b": "9e39bb88"
+ },
+ "bisect": {
+  "status": "found",
+  "first_bad_commit": "56ca3563c3",
+  "split": 1.909,
+  "subject": "Raise default ef for better recall; tidy comments",
+  "commits_searched": 23,
+  "steps": 4,
+  "path": [
+   {
+    "commit": "0b5ab04742",
+    "side": "fast",
+    "ratio": 0.996,
+    "ci95": [
+     0.981,
+     1.003
+    ]
+   },
+   {
+    "commit": "1ec0806f47",
+    "side": "fast",
+    "ratio": 0.993,
+    "ci95": [
+     0.988,
+     1.006
+    ]
+   },
+   {
+    "commit": "fdc905dc2c",
+    "side": "fast",
+    "ratio": 0.996,
+    "ci95": [
+     0.981,
+     1.007
+    ]
+   },
+   {
+    "commit": "56ca3563c3",
+    "side": "slow",
+    "ratio": 3.697,
+    "ci95": [
+     3.65,
+     3.74
+    ]
+   }
+  ]
+ },
+ "profile": null,
+ "finding": null,
+ "patch": null,
+ "verification": null,
+ "steps": 15,
+ "tool_calls": 13,
+ "benchmark_comparisons": 0,
+ "llm_tokens": {
+  "prompt": 45280,
+  "completion": 1174,
+  "llm_seconds": 32.37565469741821
+ },
+ "wall_time_s": 32.85,
+ "trace_path": "results/runs/agent-v2-3b/traces/ef_default-2.jsonl",
+ "case": "ef_default-2",
+ "system": "agent",
+ "model": "qwen2.5-coder:3b",
+ "variant": "v2",
+ "run_seconds": 32.93
+}

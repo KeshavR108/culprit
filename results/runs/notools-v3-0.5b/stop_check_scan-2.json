@@ -1,0 +1,40 @@
+{
+ "status": "handoff",
+ "initial": {
+  "verdict": "regression",
+  "ratio": 1.066861085064335,
+  "ci_low": 1.0551087653405236,
+  "ci_high": 1.0832784027977445,
+  "p_slower": 1.6916697063271094e-06,
+  "p_faster": 0.9999986174776383,
+  "median_a_ms": 16.730584,
+  "median_b_ms": 17.849209,
+  "n_rounds": 15,
+  "tau": 0.05,
+  "label_a": "d884153b",
+  "label_b": "b8f39999"
+ },
+ "finding": {
+  "culprit_commit": "7dfd6f747a0bec42af9c98a2e0cdc7d14115067a",
+  "file": "src/hnsw/index.py",
+  "line": 103,
+  "explanation": "The search stop condition is not explicit in the current version of the file.",
+  "patch": null,
+  "confidence": "medium"
+ },
+ "reasons": [
+  "patch invalid: old_code was not found in the file; copy it exactly from read_file (without the line-number prefix)"
+ ],
+ "llm_tokens": {
+  "prompt": 341,
+  "completion": 103,
+  "llm_seconds": 0.658768892288208
+ },
+ "benchmark_comparisons": 0,
+ "wall_time_s": 0.77,
+ "case": "stop_check_scan-2",
+ "system": "notools",
+ "model": "qwen2.5-coder:0.5b",
+ "variant": null,
+ "run_seconds": 0.77
+}

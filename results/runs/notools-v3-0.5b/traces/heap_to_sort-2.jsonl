@@ -1,0 +1,1 @@
+{"t": 0.031, "kind": "measurement", "cached": true, "summary": "d884153b 16.84 ms -> 8b878cec 16.88 ms, ratio 1.002 (95% CI 0.994-1.020), p_slower=0.19, n=15 rounds -> no_regression"}

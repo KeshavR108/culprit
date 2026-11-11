@@ -1,0 +1,123 @@
+{
+ "status": "handoff",
+ "reasons": [
+  "patch could not be verified: patched benchmark failed: benchmark raised: Traceback (most recent call last):\n  File \"src/culprit/bench_worker.py\", line 76, in main\n    fn()\n   "
+ ],
+ "initial": {
+  "verdict": "regression",
+  "ratio": 1.5108321428281049,
+  "ci_low": 1.4857663197097626,
+  "ci_high": 1.5246771732175053,
+  "p_slower": 1.6959106954125473e-06,
+  "p_faster": 0.9999986139518094,
+  "median_a_ms": 16.726792,
+  "median_b_ms": 25.271375,
+  "n_rounds": 15,
+  "tau": 0.05,
+  "env": {
+   "cpu": "Apple M4",
+   "cores": 10,
+   "python": "3.13.5",
+   "platform": "macOS-26.1-arm64-arm-64bit-Mach-O",
+   "load_avg_1m": 2.84130859375
+  },
+  "label_a": "d884153b",
+  "label_b": "83441ed0"
+ },
+ "bisect": {
+  "status": "found",
+  "first_bad_commit": "661eee0a9f",
+  "split": 1.229,
+  "subject": "Gather vectors explicitly in _dists",
+  "commits_searched": 22,
+  "steps": 5,
+  "path": [
+   {
+    "commit": "9ee362b9c9",
+    "side": "slow",
+    "ratio": 1.502,
+    "ci95": [
+     1.496,
+     1.516
+    ]
+   },
+   {
+    "commit": "df6bbe92a4",
+    "side": "slow",
+    "ratio": 1.514,
+    "ci95": [
+     1.506,
+     1.528
+    ]
+   },
+   {
+    "commit": "0fbf32f5f5",
+    "side": "fast",
+    "ratio": 1.001,
+    "ci95": [
+     0.983,
+     1.014
+    ]
+   },
+   {
+    "commit": "2def0fdb0d",
+    "side": "fast",
+    "ratio": 1.011,
+    "ci95": [
+     0.997,
+     1.02
+    ]
+   },
+   {
+    "commit": "661eee0a9f",
+    "side": "slow",
+    "ratio": 1.526,
+    "ci95": [
+     1.503,
+     1.54
+    ]
+   }
+  ]
+ },
+ "profile": null,
+ "finding": {
+  "culprit_commit": "661eee0a9f",
+  "file": "src/hnsw/index.py",
+  "line": 68,
+  "explanation": "The change to gather vectors explicitly in `_dists` caused the `search` function to become slower. This is likely due to the increased computation required to gather all vectors before performing the search, which is now done in a single pass instead of multiple passes.",
+  "patch": null,
+  "confidence": "medium"
+ },
+ "patch": {
+  "diff": "--- a/src/hnsw/index.py\n+++ b/src/hnsw/index.py\n@@ -72,9 +72,6 @@\n         if self.metric == \"cosine\":\n             x = normalize(x).astype(np.float32)\n         return x\n-\n-    def _dists(self, q: np.ndarray, ids: list[int]) -> list[float]:\n-        \"\"\"Distances from q to the given nodes, in one NumPy call.\"\"\"\n         return self._dist_batch(q, np.stack([self.vectors[i] for i in ids])).tolist()\n \n     def random_level(self) -> int:\n",
+  "files": [
+   "src/hnsw/index.py"
+  ],
+  "lines_changed": 3
+ },
+ "verification": {
+  "applied": true,
+  "tests_passed": null,
+  "tests_output": "",
+  "speedup": null,
+  "vs_good": null,
+  "significant_speedup": false,
+  "verified": false,
+  "error": "patched benchmark failed: benchmark raised: Traceback (most recent call last):\n  File \"src/culprit/bench_worker.py\", line 76, in main\n    fn()\n    ~~^^\n  File \"perfbench/cases/stack_gather-0/bench.py\", line 20, in <lambda>\n    return lambda: index.batch_search(Q, k=10)\n                   ~~~~~~~~~~~~~~~~~~^^^^^^^^^\n  File \"/private/var/folders/0j/jth79dy10kz68nyk4xr2cjy80000gn/T/culprit-ehyy0rps/wt-83441ed07a5d-patch-1/src/hnsw/index.py\", line 263, in batch_search\n    r_ids, r_dists = self.search(q, k, ef)\n                     ~~~~~~~~~~~^^^^^^"
+ },
+ "steps": 12,
+ "tool_calls": 8,
+ "benchmark_comparisons": 1,
+ "llm_tokens": {
+  "prompt": 34497,
+  "completion": 974,
+  "llm_seconds": 29.52060842514038
+ },
+ "wall_time_s": 30.42,
+ "trace_path": "results/runs/agent-v2-3b/traces/stack_gather-0.jsonl",
+ "case": "stack_gather-0",
+ "system": "agent",
+ "model": "qwen2.5-coder:3b",
+ "variant": "v2",
+ "run_seconds": 30.53
+}

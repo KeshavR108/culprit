@@ -1,0 +1,108 @@
+{
+ "status": "handoff",
+ "reasons": [
+  "no valid patch proposed"
+ ],
+ "initial": {
+  "verdict": "regression",
+  "ratio": 1.3559052919982308,
+  "ci_low": 1.341060730760782,
+  "ci_high": 1.3729606312131313,
+  "p_slower": 1.6959106954125473e-06,
+  "p_faster": 0.9999986139518094,
+  "median_a_ms": 16.972209,
+  "median_b_ms": 23.012708,
+  "n_rounds": 15,
+  "tau": 0.05,
+  "env": {
+   "cpu": "Apple M4",
+   "cores": 10,
+   "python": "3.13.5",
+   "platform": "macOS-26.1-arm64-arm-64bit-Mach-O",
+   "load_avg_1m": 4.33544921875
+  },
+  "label_a": "d884153b",
+  "label_b": "e75d9672"
+ },
+ "bisect": {
+  "status": "found",
+  "first_bad_commit": "3fee7bb078",
+  "split": 1.164,
+  "subject": "Simplify visited tracking in search_layer",
+  "commits_searched": 27,
+  "steps": 5,
+  "path": [
+   {
+    "commit": "300fcd9e21",
+    "side": "fast",
+    "ratio": 1.003,
+    "ci95": [
+     0.995,
+     1.009
+    ]
+   },
+   {
+    "commit": "709bea6941",
+    "side": "fast",
+    "ratio": 0.985,
+    "ci95": [
+     0.973,
+     1.002
+    ]
+   },
+   {
+    "commit": "7f1adf39c1",
+    "side": "fast",
+    "ratio": 0.998,
+    "ci95": [
+     0.956,
+     1.034
+    ]
+   },
+   {
+    "commit": "3fee7bb078",
+    "side": "slow",
+    "ratio": 1.356,
+    "ci95": [
+     1.346,
+     1.377
+    ]
+   },
+   {
+    "commit": "b420ad386c",
+    "side": "fast",
+    "ratio": 1.004,
+    "ci95": [
+     0.988,
+     1.008
+    ]
+   }
+  ]
+ },
+ "profile": null,
+ "finding": {
+  "culprit_commit": "3fee7bb078",
+  "file": "search_layer.py",
+  "line": 100,
+  "explanation": "The change in `search_layer.py` at line 100 simplifies the visited tracking logic, which could potentially reduce the number of operations performed during the search, leading to a performance improvement.",
+  "patch": null,
+  "confidence": "medium"
+ },
+ "patch": null,
+ "verification": null,
+ "steps": 2,
+ "tool_calls": 1,
+ "benchmark_comparisons": 0,
+ "llm_tokens": {
+  "prompt": 3792,
+  "completion": 97,
+  "llm_seconds": 7.96333122253418
+ },
+ "wall_time_s": 8.11,
+ "trace_path": "results/runs/agent-v1-3b/traces/visited_list-0.jsonl",
+ "case": "visited_list-0",
+ "system": "agent",
+ "model": "qwen2.5-coder:3b",
+ "variant": "v1",
+ "run_seconds": 8.14
+}

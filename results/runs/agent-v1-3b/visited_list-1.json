@@ -1,0 +1,108 @@
+{
+ "status": "handoff",
+ "reasons": [
+  "no valid patch proposed"
+ ],
+ "initial": {
+  "verdict": "regression",
+  "ratio": 1.361667289608733,
+  "ci_low": 1.3489690296897303,
+  "ci_high": 1.3785784666731815,
+  "p_slower": 1.6959106954125473e-06,
+  "p_faster": 0.9999986139518094,
+  "median_a_ms": 16.8555,
+  "median_b_ms": 22.951583,
+  "n_rounds": 15,
+  "tau": 0.05,
+  "env": {
+   "cpu": "Apple M4",
+   "cores": 10,
+   "python": "3.13.5",
+   "platform": "macOS-26.1-arm64-arm-64bit-Mach-O",
+   "load_avg_1m": 4.30810546875
+  },
+  "label_a": "d884153b",
+  "label_b": "58109545"
+ },
+ "bisect": {
+  "status": "found",
+  "first_bad_commit": "5810954576",
+  "split": 1.167,
+  "subject": "Simplify visited tracking in search_layer",
+  "commits_searched": 19,
+  "steps": 5,
+  "path": [
+   {
+    "commit": "9940355c34",
+    "side": "fast",
+    "ratio": 1.006,
+    "ci95": [
+     0.993,
+     1.012
+    ]
+   },
+   {
+    "commit": "4a26155e73",
+    "side": "fast",
+    "ratio": 1.011,
+    "ci95": [
+     1.005,
+     1.018
+    ]
+   },
+   {
+    "commit": "be9f105bd6",
+    "side": "fast",
+    "ratio": 1.011,
+    "ci95": [
+     0.981,
+     1.019
+    ]
+   },
+   {
+    "commit": "aec3a10cac",
+    "side": "fast",
+    "ratio": 1.006,
+    "ci95": [
+     0.989,
+     1.014
+    ]
+   },
+   {
+    "commit": "f23b6ebc02",
+    "side": "fast",
+    "ratio": 1.005,
+    "ci95": [
+     0.993,
+     1.017
+    ]
+   }
+  ]
+ },
+ "profile": null,
+ "finding": {
+  "culprit_commit": "581095457615937a84f5f96807dc1069e4cc6640",
+  "file": "search.py",
+  "line": 100,
+  "explanation": "The commit 'Simplify visited tracking in search_layer' introduced a change that likely affected the performance of the 'search' function. The commit reduced the number of visited nodes, which could have improved the efficiency of the search algorithm, but it also introduced a new variable 'visited' that might have been causing additional overhead. The change in the number of visited nodes could have led to a slower execution time, especially if the search algorithm was already optimized. The exact reason for the slowdown is not clear without further analysis of the code.",
+  "patch": null,
+  "confidence": "medium"
+ },
+ "patch": null,
+ "verification": null,
+ "steps": 2,
+ "tool_calls": 1,
+ "benchmark_comparisons": 0,
+ "llm_tokens": {
+  "prompt": 3572,
+  "completion": 193,
+  "llm_seconds": 5.810993671417236
+ },
+ "wall_time_s": 5.96,
+ "trace_path": "results/runs/agent-v1-3b/traces/visited_list-1.jsonl",
+ "case": "visited_list-1",
+ "system": "agent",
+ "model": "qwen2.5-coder:3b",
+ "variant": "v1",
+ "run_seconds": 5.99
+}

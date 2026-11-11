@@ -1,0 +1,40 @@
+{
+ "status": "handoff",
+ "initial": {
+  "verdict": "regression",
+  "ratio": 3.643228935325531,
+  "ci_low": 3.6103343366442475,
+  "ci_high": 3.7005840256642264,
+  "p_slower": 1.6959106954125473e-06,
+  "p_faster": 0.9999986139518094,
+  "median_a_ms": 16.975292,
+  "median_b_ms": 61.844875,
+  "n_rounds": 15,
+  "tau": 0.05,
+  "label_a": "d884153b",
+  "label_b": "9e39bb88"
+ },
+ "finding": {
+  "culprit_commit": "56ca3563c3b1b9e43c1731a80d3071f0d7dfec8a",
+  "file": "src/hnsw/index.py",
+  "line": 241,
+  "explanation": "Increasing ef from 10 to 64 can lead to slower performance because it increases the number of neighbors considered for each query, potentially leading to more expensive distance calculations and more memory usage.",
+  "patch": null,
+  "confidence": "medium"
+ },
+ "reasons": [
+  "patch invalid: old_code was not found in the file; copy it exactly from read_file (without the line-number prefix)"
+ ],
+ "llm_tokens": {
+  "prompt": 382,
+  "completion": 106,
+  "llm_seconds": 3.0020759105682373
+ },
+ "benchmark_comparisons": 0,
+ "wall_time_s": 3.15,
+ "case": "ef_default-2",
+ "system": "notools",
+ "model": "qwen2.5-coder:3b",
+ "variant": null,
+ "run_seconds": 3.15
+}

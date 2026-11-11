@@ -1,0 +1,108 @@
+{
+ "status": "handoff",
+ "reasons": [
+  "no valid patch proposed"
+ ],
+ "initial": {
+  "verdict": "regression",
+  "ratio": 1.0609624425082218,
+  "ci_low": 1.0530095557293413,
+  "ci_high": 1.0702616599477586,
+  "p_slower": 1.6959106954125473e-06,
+  "p_faster": 0.9999986139518094,
+  "median_a_ms": 16.696083,
+  "median_b_ms": 17.713917,
+  "n_rounds": 15,
+  "tau": 0.05,
+  "env": {
+   "cpu": "Apple M4",
+   "cores": 10,
+   "python": "3.13.5",
+   "platform": "macOS-26.1-arm64-arm-64bit-Mach-O",
+   "load_avg_1m": 3.36865234375
+  },
+  "label_a": "d884153b",
+  "label_b": "b6e6a9eb"
+ },
+ "bisect": {
+  "status": "found",
+  "first_bad_commit": "eda9934618",
+  "split": 1.03,
+  "subject": "Make the search stop condition explicit",
+  "commits_searched": 29,
+  "steps": 5,
+  "path": [
+   {
+    "commit": "308bbb7e63",
+    "side": "slow",
+    "ratio": 1.058,
+    "ci95": [
+     1.051,
+     1.067
+    ]
+   },
+   {
+    "commit": "41f467e533",
+    "side": "slow",
+    "ratio": 1.075,
+    "ci95": [
+     1.06,
+     1.085
+    ]
+   },
+   {
+    "commit": "366097990c",
+    "side": "fast",
+    "ratio": 1.003,
+    "ci95": [
+     0.985,
+     1.022
+    ]
+   },
+   {
+    "commit": "6e1ff6c5e4",
+    "side": "fast",
+    "ratio": 0.993,
+    "ci95": [
+     0.985,
+     0.999
+    ]
+   },
+   {
+    "commit": "eda9934618",
+    "side": "slow",
+    "ratio": 1.063,
+    "ci95": [
+     1.054,
+     1.078
+    ]
+   }
+  ]
+ },
+ "profile": null,
+ "finding": {
+  "culprit_commit": "eda9934618",
+  "file": "search.py",
+  "line": 100,
+  "explanation": "The change to make the search stop condition explicit introduced a new function call that is not optimized. This function call is likely causing the slowdown.",
+  "patch": null,
+  "confidence": "medium"
+ },
+ "patch": null,
+ "verification": null,
+ "steps": 2,
+ "tool_calls": 1,
+ "benchmark_comparisons": 0,
+ "llm_tokens": {
+  "prompt": 3827,
+  "completion": 85,
+  "llm_seconds": 3.851226568222046
+ },
+ "wall_time_s": 4.01,
+ "trace_path": "results/runs/agent-v1-3b/traces/stop_check_scan-1.jsonl",
+ "case": "stop_check_scan-1",
+ "system": "agent",
+ "model": "qwen2.5-coder:3b",
+ "variant": "v1",
+ "run_seconds": 4.04
+}

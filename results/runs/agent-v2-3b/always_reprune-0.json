@@ -1,0 +1,93 @@
+{
+ "status": "handoff",
+ "reasons": [
+  "agent did not produce a final answer within the step budget",
+  "no valid patch proposed"
+ ],
+ "initial": {
+  "verdict": "regression",
+  "ratio": 1.230252594619675,
+  "ci_low": 1.2204511019420061,
+  "ci_high": 1.2388265464264536,
+  "p_slower": 2.868531504244278e-05,
+  "p_faster": 0.9999759683847469,
+  "median_a_ms": 87.590583,
+  "median_b_ms": 107.758542,
+  "n_rounds": 15,
+  "tau": 0.05,
+  "env": {
+   "cpu": "Apple M4",
+   "cores": 10,
+   "python": "3.13.5",
+   "platform": "macOS-26.1-arm64-arm-64bit-Mach-O",
+   "load_avg_1m": 3.27392578125
+  },
+  "label_a": "d884153b",
+  "label_b": "a0777cd6"
+ },
+ "bisect": {
+  "status": "found",
+  "first_bad_commit": "b2a85b417d",
+  "split": 1.109,
+  "subject": "Keep reverse links well-chosen on every insert; tidy comments",
+  "commits_searched": 19,
+  "steps": 4,
+  "path": [
+   {
+    "commit": "eb3cb4892e",
+    "side": "slow",
+    "ratio": 1.232,
+    "ci95": [
+     1.222,
+     1.242
+    ]
+   },
+   {
+    "commit": "93f1970952",
+    "side": "fast",
+    "ratio": 0.996,
+    "ci95": [
+     0.985,
+     1.009
+    ]
+   },
+   {
+    "commit": "4a1e6c10a2",
+    "side": "fast",
+    "ratio": 0.989,
+    "ci95": [
+     0.98,
+     1.002
+    ]
+   },
+   {
+    "commit": "b2a85b417d",
+    "side": "slow",
+    "ratio": 1.222,
+    "ci95": [
+     1.214,
+     1.234
+    ]
+   }
+  ]
+ },
+ "profile": null,
+ "finding": null,
+ "patch": null,
+ "verification": null,
+ "steps": 15,
+ "tool_calls": 13,
+ "benchmark_comparisons": 0,
+ "llm_tokens": {
+  "prompt": 47823,
+  "completion": 1335,
+  "llm_seconds": 36.28116273880005
+ },
+ "wall_time_s": 36.76,
+ "trace_path": "results/runs/agent-v2-3b/traces/always_reprune-0.jsonl",
+ "case": "always_reprune-0",
+ "system": "agent",
+ "model": "qwen2.5-coder:3b",
+ "variant": "v2",
+ "run_seconds": 36.84
+}

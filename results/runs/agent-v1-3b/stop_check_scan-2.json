@@ -1,0 +1,108 @@
+{
+ "status": "handoff",
+ "reasons": [
+  "no valid patch proposed"
+ ],
+ "initial": {
+  "verdict": "regression",
+  "ratio": 1.066861085064335,
+  "ci_low": 1.0551087653405236,
+  "ci_high": 1.0832784027977445,
+  "p_slower": 1.6916697063271094e-06,
+  "p_faster": 0.9999986174776383,
+  "median_a_ms": 16.730584,
+  "median_b_ms": 17.849209,
+  "n_rounds": 15,
+  "tau": 0.05,
+  "env": {
+   "cpu": "Apple M4",
+   "cores": 10,
+   "python": "3.13.5",
+   "platform": "macOS-26.1-arm64-arm-64bit-Mach-O",
+   "load_avg_1m": 3.4189453125
+  },
+  "label_a": "d884153b",
+  "label_b": "b8f39999"
+ },
+ "bisect": {
+  "status": "found",
+  "first_bad_commit": "7dfd6f747a",
+  "split": 1.033,
+  "subject": "Make the search stop condition explicit",
+  "commits_searched": 29,
+  "steps": 5,
+  "path": [
+   {
+    "commit": "9521efa7e8",
+    "side": "slow",
+    "ratio": 1.07,
+    "ci95": [
+     1.054,
+     1.087
+    ]
+   },
+   {
+    "commit": "084923eae4",
+    "side": "slow",
+    "ratio": 1.064,
+    "ci95": [
+     1.052,
+     1.072
+    ]
+   },
+   {
+    "commit": "40382dff8d",
+    "side": "fast",
+    "ratio": 1.012,
+    "ci95": [
+     1.0,
+     1.024
+    ]
+   },
+   {
+    "commit": "7dfd6f747a",
+    "side": "slow",
+    "ratio": 1.07,
+    "ci95": [
+     1.059,
+     1.088
+    ]
+   },
+   {
+    "commit": "163bba5d4c",
+    "side": "fast",
+    "ratio": 1.019,
+    "ci95": [
+     1.011,
+     1.031
+    ]
+   }
+  ]
+ },
+ "profile": null,
+ "finding": {
+  "culprit_commit": "7dfd6f747a",
+  "file": "search.py",
+  "line": 100,
+  "explanation": "The change to make the search stop condition explicit likely introduced a performance overhead, as it may have added additional checks or logic that were not present in the previous version.",
+  "patch": null,
+  "confidence": "medium"
+ },
+ "patch": null,
+ "verification": null,
+ "steps": 2,
+ "tool_calls": 1,
+ "benchmark_comparisons": 0,
+ "llm_tokens": {
+  "prompt": 3836,
+  "completion": 90,
+  "llm_seconds": 3.798139810562134
+ },
+ "wall_time_s": 3.96,
+ "trace_path": "results/runs/agent-v1-3b/traces/stop_check_scan-2.jsonl",
+ "case": "stop_check_scan-2",
+ "system": "agent",
+ "model": "qwen2.5-coder:3b",
+ "variant": "v1",
+ "run_seconds": 3.98
+}

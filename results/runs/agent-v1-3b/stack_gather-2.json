@@ -1,0 +1,99 @@
+{
+ "status": "handoff",
+ "reasons": [
+  "no valid patch proposed"
+ ],
+ "initial": {
+  "verdict": "regression",
+  "ratio": 1.5048768045230485,
+  "ci_low": 1.482594239157922,
+  "ci_high": 1.5194761434091113,
+  "p_slower": 1.6959106954125473e-06,
+  "p_faster": 0.9999986139518094,
+  "median_a_ms": 16.797167,
+  "median_b_ms": 25.277667,
+  "n_rounds": 15,
+  "tau": 0.05,
+  "env": {
+   "cpu": "Apple M4",
+   "cores": 10,
+   "python": "3.13.5",
+   "platform": "macOS-26.1-arm64-arm-64bit-Mach-O",
+   "load_avg_1m": 2.80224609375
+  },
+  "label_a": "d884153b",
+  "label_b": "3783d471"
+ },
+ "bisect": {
+  "status": "found",
+  "first_bad_commit": "25960a788d",
+  "split": 1.227,
+  "subject": "Gather vectors explicitly in _dists",
+  "commits_searched": 25,
+  "steps": 4,
+  "path": [
+   {
+    "commit": "f977f53fbf",
+    "side": "fast",
+    "ratio": 1.006,
+    "ci95": [
+     0.997,
+     1.013
+    ]
+   },
+   {
+    "commit": "e1e0dcc3e7",
+    "side": "fast",
+    "ratio": 0.997,
+    "ci95": [
+     0.989,
+     1.011
+    ]
+   },
+   {
+    "commit": "4b21b872c1",
+    "side": "slow",
+    "ratio": 1.522,
+    "ci95": [
+     1.494,
+     1.533
+    ]
+   },
+   {
+    "commit": "25960a788d",
+    "side": "slow",
+    "ratio": 1.482,
+    "ci95": [
+     1.477,
+     1.516
+    ]
+   }
+  ]
+ },
+ "profile": null,
+ "finding": {
+  "culprit_commit": "25960a788d",
+  "file": "src/search.py",
+  "line": 100,
+  "explanation": "The change to gather vectors explicitly in _dists caused the benchmark to slow down. This is likely due to the increased memory usage and processing time required to gather all vectors explicitly, especially for larger datasets.",
+  "patch": null,
+  "confidence": "medium"
+ },
+ "patch": null,
+ "verification": null,
+ "steps": 2,
+ "tool_calls": 1,
+ "benchmark_comparisons": 0,
+ "llm_tokens": {
+  "prompt": 3699,
+  "completion": 101,
+  "llm_seconds": 3.8763692378997803
+ },
+ "wall_time_s": 4.04,
+ "trace_path": "results/runs/agent-v1-3b/traces/stack_gather-2.jsonl",
+ "case": "stack_gather-2",
+ "system": "agent",
+ "model": "qwen2.5-coder:3b",
+ "variant": "v1",
+ "run_seconds": 4.06
+}

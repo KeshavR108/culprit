@@ -1,0 +1,43 @@
+{
+ "status": "no_regression",
+ "reasons": [
+  "benchmark is not significantly slower (CI below threshold)"
+ ],
+ "initial": {
+  "verdict": "no_regression",
+  "ratio": 1.0402186763436827,
+  "ci_low": 1.0312915956077324,
+  "ci_high": 1.0490130447481916,
+  "p_slower": 9.097884950755612e-13,
+  "p_faster": 0.9999999999991639,
+  "median_a_ms": 17.000833,
+  "median_b_ms": 17.684584,
+  "n_rounds": 35,
+  "tau": 0.05,
+  "env": {
+   "cpu": "Apple M4",
+   "cores": 10,
+   "python": "3.13.5",
+   "platform": "macOS-26.1-arm64-arm-64bit-Mach-O",
+   "load_avg_1m": 4.94677734375
+  },
+  "label_a": "d884153b",
+  "label_b": "dfe4cc4e"
+ },
+ "bisect": null,
+ "profile": null,
+ "finding": null,
+ "patch": null,
+ "verification": null,
+ "steps": 0,
+ "tool_calls": 0,
+ "benchmark_comparisons": 0,
+ "llm_tokens": {},
+ "wall_time_s": 0.03,
+ "trace_path": "results/runs/agent-v3-3b/traces/sorted_neighbors-0.jsonl",
+ "case": "sorted_neighbors-0",
+ "system": "agent",
+ "model": "qwen2.5-coder:3b",
+ "variant": "v3",
+ "run_seconds": 0.04
+}

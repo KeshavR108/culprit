@@ -1,0 +1,40 @@
+{
+ "status": "handoff",
+ "initial": {
+  "verdict": "regression",
+  "ratio": 1.5108321428281049,
+  "ci_low": 1.4857663197097626,
+  "ci_high": 1.5246771732175053,
+  "p_slower": 1.6959106954125473e-06,
+  "p_faster": 0.9999986139518094,
+  "median_a_ms": 16.726792,
+  "median_b_ms": 25.271375,
+  "n_rounds": 15,
+  "tau": 0.05,
+  "label_a": "d884153b",
+  "label_b": "83441ed0"
+ },
+ "finding": {
+  "culprit_commit": "661eee0a9f0c84b6e9ca1e558b6cd54092cb96a8",
+  "file": "src/hnsw/index.py",
+  "line": 68,
+  "explanation": "The current implementation of `_dists` uses `self.vectors[ids]` to get the vectors for the given nodes, which is inefficient because it creates a new array for each node. This results in a slower performance compared to using `np.stack([self.vectors[i] for i in ids])`, which concatenates the vectors in a single array.",
+  "patch": null,
+  "confidence": "low"
+ },
+ "reasons": [
+  "patch invalid: old_code was not found in the file; copy it exactly from read_file (without the line-number prefix)"
+ ],
+ "llm_tokens": {
+  "prompt": 350,
+  "completion": 164,
+  "llm_seconds": 2.1562509536743164
+ },
+ "benchmark_comparisons": 0,
+ "wall_time_s": 2.26,
+ "case": "stack_gather-0",
+ "system": "notools",
+ "model": "qwen2.5-coder:1.5b",
+ "variant": null,
+ "run_seconds": 2.26
+}

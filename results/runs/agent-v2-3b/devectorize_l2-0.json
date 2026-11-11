@@ -1,0 +1,93 @@
+{
+ "status": "handoff",
+ "reasons": [
+  "agent did not produce a final answer within the step budget",
+  "no valid patch proposed"
+ ],
+ "initial": {
+  "verdict": "regression",
+  "ratio": 2.406474569517854,
+  "ci_low": 2.3462124527157977,
+  "ci_high": 2.4677316870366464,
+  "p_slower": 1.6959106954125473e-06,
+  "p_faster": 0.9999986139518094,
+  "median_a_ms": 17.553167,
+  "median_b_ms": 42.24125,
+  "n_rounds": 15,
+  "tau": 0.05,
+  "env": {
+   "cpu": "Apple M4",
+   "cores": 10,
+   "python": "3.13.5",
+   "platform": "macOS-26.1-arm64-arm-64bit-Mach-O",
+   "load_avg_1m": 3.837890625
+  },
+  "label_a": "d884153b",
+  "label_b": "6583c9c9"
+ },
+ "bisect": {
+  "status": "found",
+  "first_bad_commit": "5170804da3",
+  "split": 1.551,
+  "subject": "Write l2 distance as an explicit loop; tidy comments",
+  "commits_searched": 19,
+  "steps": 4,
+  "path": [
+   {
+    "commit": "ed56261890",
+    "side": "fast",
+    "ratio": 0.993,
+    "ci95": [
+     0.984,
+     1.005
+    ]
+   },
+   {
+    "commit": "886d8f0e59",
+    "side": "slow",
+    "ratio": 2.427,
+    "ci95": [
+     2.402,
+     2.453
+    ]
+   },
+   {
+    "commit": "e4da89ce49",
+    "side": "slow",
+    "ratio": 2.367,
+    "ci95": [
+     2.158,
+     2.706
+    ]
+   },
+   {
+    "commit": "5170804da3",
+    "side": "slow",
+    "ratio": 2.49,
+    "ci95": [
+     2.432,
+     2.507
+    ]
+   }
+  ]
+ },
+ "profile": null,
+ "finding": null,
+ "patch": null,
+ "verification": null,
+ "steps": 15,
+ "tool_calls": 13,
+ "benchmark_comparisons": 0,
+ "llm_tokens": {
+  "prompt": 48018,
+  "completion": 1652,
+  "llm_seconds": 46.09508275985718
+ },
+ "wall_time_s": 46.64,
+ "trace_path": "results/runs/agent-v2-3b/traces/devectorize_l2-0.jsonl",
+ "case": "devectorize_l2-0",
+ "system": "agent",
+ "model": "qwen2.5-coder:3b",
+ "variant": "v2",
+ "run_seconds": 46.72
+}

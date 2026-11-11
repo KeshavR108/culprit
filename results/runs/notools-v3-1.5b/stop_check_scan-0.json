@@ -1,0 +1,40 @@
+{
+ "status": "handoff",
+ "initial": {
+  "verdict": "regression",
+  "ratio": 1.07054540855235,
+  "ci_low": 1.0549994945860528,
+  "ci_high": 1.0798980690931572,
+  "p_slower": 4.5633233150969535e-07,
+  "p_faster": 0.9999996026026046,
+  "median_a_ms": 16.8009375,
+  "median_b_ms": 17.9861665,
+  "n_rounds": 20,
+  "tau": 0.05,
+  "label_a": "d884153b",
+  "label_b": "cf90c0e0"
+ },
+ "finding": {
+  "culprit_commit": "12f26200594621a47d53abcaadcce4129a532c0e",
+  "file": "src/hnsw/index.py",
+  "line": 103,
+  "explanation": "The new code checks if the current distance to the nearest unexpanded candidate is greater than the maximum negative distance in the heap, which is a more efficient way to determine if expanding further can help. This prevents unnecessary expansion and improves the performance of the search.",
+  "patch": null,
+  "confidence": "high"
+ },
+ "reasons": [
+  "patch invalid: old_code was not found in the file; copy it exactly from read_file (without the line-number prefix)"
+ ],
+ "llm_tokens": {
+  "prompt": 343,
+  "completion": 143,
+  "llm_seconds": 1.9482741355895996
+ },
+ "benchmark_comparisons": 0,
+ "wall_time_s": 2.06,
+ "case": "stop_check_scan-0",
+ "system": "notools",
+ "model": "qwen2.5-coder:1.5b",
+ "variant": null,
+ "run_seconds": 2.06
+}

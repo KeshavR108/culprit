@@ -1,0 +1,114 @@
+{
+ "status": "handoff",
+ "reasons": [
+  "patch could not be verified: patched benchmark failed: benchmark setup failed: Traceback (most recent call last):\n  File \"src/culprit/bench_worker.py\", line 62, in main\n    sp"
+ ],
+ "initial": {
+  "verdict": "regression",
+  "ratio": 2.406474569517854,
+  "ci_low": 2.3462124527157977,
+  "ci_high": 2.4677316870366464,
+  "p_slower": 1.6959106954125473e-06,
+  "p_faster": 0.9999986139518094,
+  "median_a_ms": 17.553167,
+  "median_b_ms": 42.24125,
+  "n_rounds": 15,
+  "tau": 0.05,
+  "env": {
+   "cpu": "Apple M4",
+   "cores": 10,
+   "python": "3.13.5",
+   "platform": "macOS-26.1-arm64-arm-64bit-Mach-O",
+   "load_avg_1m": 3.837890625
+  },
+  "label_a": "d884153b",
+  "label_b": "6583c9c9"
+ },
+ "bisect": {
+  "status": "found",
+  "first_bad_commit": "5170804da3",
+  "split": 1.551,
+  "subject": "Write l2 distance as an explicit loop; tidy comments",
+  "commits_searched": 19,
+  "steps": 4,
+  "path": [
+   {
+    "commit": "ed56261890",
+    "side": "fast",
+    "ratio": 0.993,
+    "ci95": [
+     0.984,
+     1.005
+    ]
+   },
+   {
+    "commit": "886d8f0e59",
+    "side": "slow",
+    "ratio": 2.427,
+    "ci95": [
+     2.402,
+     2.453
+    ]
+   },
+   {
+    "commit": "e4da89ce49",
+    "side": "slow",
+    "ratio": 2.367,
+    "ci95": [
+     2.158,
+     2.706
+    ]
+   },
+   {
+    "commit": "5170804da3",
+    "side": "slow",
+    "ratio": 2.49,
+    "ci95": [
+     2.432,
+     2.507
+    ]
+   }
+  ]
+ },
+ "profile": null,
+ "finding": {
+  "culprit_commit": "5170804da3",
+  "file": "src/hnsw/distance.py",
+  "line": 39,
+  "explanation": "The change to write the L2 distance as an explicit loop and tidy comments likely caused the slowdown. The explicit loop might be more computationally intensive, especially for large datasets, leading to a higher execution time.",
+  "patch": null,
+  "confidence": "medium"
+ },
+ "patch": {
+  "diff": "--- a/src/hnsw/distance.py\n+++ b/src/hnsw/distance.py\n@@ -39,9 +39,9 @@\n def l2_sq_batch(q: np.ndarray, X: np.ndarray) -> np.ndarray:\n     \"\"\"Squared L2 distance from q to every row of X. Shape (n,).\"\"\"\n     diff = X - q\n-    # einsum computes the row-wise dot product diff[i] . diff[i] without\n-    # building another (n, d) temporary like (diff ** 2).sum(1) would.\n-    return np.array([np.einsum(\"j,j->\", row, row) for row in diff], dtype=diff.dtype)\n+         # einsum computes the row-wise dot product diff[i] . diff[i] without\n+         # building another (n, d) temporary like (diff ** 2).sum(1) would.\n+         return np.einsum(\"ij,ij->i\", diff, diff)\n \n \n def cosine_dist_batch(q: np.ndarray, X: np.ndarray) -> np.ndarray:\n",
+  "files": [
+   "src/hnsw/distance.py"
+  ],
+  "lines_changed": 6
+ },
+ "verification": {
+  "applied": true,
+  "tests_passed": null,
+  "tests_output": "",
+  "speedup": null,
+  "vs_good": null,
+  "significant_speedup": false,
+  "verified": false,
+  "error": "patched benchmark failed: benchmark setup failed: Traceback (most recent call last):\n  File \"src/culprit/bench_worker.py\", line 62, in main\n    spec.loader.exec_module(mod)\n    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^\n  File \"<frozen importlib._bootstrap_external>\", line 1026, in exec_module\n  File \"<frozen importlib._bootstrap>\", line 488, in _call_with_frames_removed\n  File \"perfbench/cases/devectorize_l2-0/bench.py\", line 11, in <module>\n    from hnsw import HNSWIndex, load\n  File \"/private/var/folders/0j/jth79dy10kz68nyk4xr2cjy80000gn/T/culprit-__ioil_"
+ },
+ "steps": 8,
+ "tool_calls": 4,
+ "benchmark_comparisons": 0,
+ "llm_tokens": {
+  "prompt": 20508,
+  "completion": 607,
+  "llm_seconds": 18.33034324645996
+ },
+ "wall_time_s": 18.78,
+ "trace_path": "results/runs/agent-v3-3b/traces/devectorize_l2-0.jsonl",
+ "case": "devectorize_l2-0",
+ "system": "agent",
+ "model": "qwen2.5-coder:3b",
+ "variant": "v3",
+ "run_seconds": 18.84
+}

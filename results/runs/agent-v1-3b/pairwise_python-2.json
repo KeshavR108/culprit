@@ -1,0 +1,108 @@
+{
+ "status": "handoff",
+ "reasons": [
+  "no valid patch proposed"
+ ],
+ "initial": {
+  "verdict": "regression",
+  "ratio": 9.483851458053167,
+  "ci_low": 9.40380782778697,
+  "ci_high": 9.561106162806004,
+  "p_slower": 1.6959106954125473e-06,
+  "p_faster": 0.9999986139518094,
+  "median_a_ms": 86.967542,
+  "median_b_ms": 824.78725,
+  "n_rounds": 15,
+  "tau": 0.05,
+  "env": {
+   "cpu": "Apple M4",
+   "cores": 10,
+   "python": "3.13.5",
+   "platform": "macOS-26.1-arm64-arm-64bit-Mach-O",
+   "load_avg_1m": 3.3359375
+  },
+  "label_a": "d884153b",
+  "label_b": "10d0d302"
+ },
+ "bisect": {
+  "status": "found",
+  "first_bad_commit": "63dc2fce81",
+  "split": 3.08,
+  "subject": "Write pairwise l2 as an explicit double loop",
+  "commits_searched": 25,
+  "steps": 5,
+  "path": [
+   {
+    "commit": "05270f361b",
+    "side": "fast",
+    "ratio": 1.002,
+    "ci95": [
+     0.996,
+     1.009
+    ]
+   },
+   {
+    "commit": "7d23e0a970",
+    "side": "fast",
+    "ratio": 1.006,
+    "ci95": [
+     0.997,
+     1.015
+    ]
+   },
+   {
+    "commit": "f83043cbd6",
+    "side": "fast",
+    "ratio": 1.001,
+    "ci95": [
+     0.996,
+     1.006
+    ]
+   },
+   {
+    "commit": "307e27bf08",
+    "side": "slow",
+    "ratio": 9.453,
+    "ci95": [
+     9.408,
+     9.55
+    ]
+   },
+   {
+    "commit": "63dc2fce81",
+    "side": "slow",
+    "ratio": 9.508,
+    "ci95": [
+     9.44,
+     9.537
+    ]
+   }
+  ]
+ },
+ "profile": null,
+ "finding": {
+  "culprit_commit": "63dc2fce81",
+  "file": "io.py",
+  "line": 100,
+  "explanation": "The change to `write_pairwise_l2` introduces a significant increase in execution time, likely due to the explicit double loop implementation, which is less efficient than the previous implementation. This change is slower because it performs a more complex operation that requires more iterations and calculations.",
+  "patch": null,
+  "confidence": "medium"
+ },
+ "patch": null,
+ "verification": null,
+ "steps": 2,
+ "tool_calls": 1,
+ "benchmark_comparisons": 0,
+ "llm_tokens": {
+  "prompt": 3767,
+  "completion": 110,
+  "llm_seconds": 4.3345513343811035
+ },
+ "wall_time_s": 4.49,
+ "trace_path": "results/runs/agent-v1-3b/traces/pairwise_python-2.jsonl",
+ "case": "pairwise_python-2",
+ "system": "agent",
+ "model": "qwen2.5-coder:3b",
+ "variant": "v1",
+ "run_seconds": 4.51
+}

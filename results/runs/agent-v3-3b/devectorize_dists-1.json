@@ -1,0 +1,93 @@
+{
+ "status": "handoff",
+ "reasons": [
+  "agent did not produce a final answer within the step budget",
+  "no valid patch proposed"
+ ],
+ "initial": {
+  "verdict": "regression",
+  "ratio": 3.029566093211627,
+  "ci_low": 2.9778719111295717,
+  "ci_high": 3.076874641414404,
+  "p_slower": 1.6959106954125473e-06,
+  "p_faster": 0.9999986139518094,
+  "median_a_ms": 17.452458,
+  "median_b_ms": 52.873375,
+  "n_rounds": 15,
+  "tau": 0.05,
+  "env": {
+   "cpu": "Apple M4",
+   "cores": 10,
+   "python": "3.13.5",
+   "platform": "macOS-26.1-arm64-arm-64bit-Mach-O",
+   "load_avg_1m": 4.08544921875
+  },
+  "label_a": "d884153b",
+  "label_b": "e73867e0"
+ },
+ "bisect": {
+  "status": "found",
+  "first_bad_commit": "2e8f2ca5f9",
+  "split": 1.741,
+  "subject": "Compute distances node by node for readability",
+  "commits_searched": 15,
+  "steps": 4,
+  "path": [
+   {
+    "commit": "310601323e",
+    "side": "slow",
+    "ratio": 3.016,
+    "ci95": [
+     2.973,
+     3.046
+    ]
+   },
+   {
+    "commit": "bf3e80950d",
+    "side": "fast",
+    "ratio": 1.001,
+    "ci95": [
+     0.967,
+     1.037
+    ]
+   },
+   {
+    "commit": "619ebcb672",
+    "side": "fast",
+    "ratio": 1.018,
+    "ci95": [
+     0.999,
+     1.037
+    ]
+   },
+   {
+    "commit": "2e8f2ca5f9",
+    "side": "slow",
+    "ratio": 3.013,
+    "ci95": [
+     2.992,
+     3.033
+    ]
+   }
+  ]
+ },
+ "profile": null,
+ "finding": null,
+ "patch": null,
+ "verification": null,
+ "steps": 15,
+ "tool_calls": 13,
+ "benchmark_comparisons": 0,
+ "llm_tokens": {
+  "prompt": 45311,
+  "completion": 1195,
+  "llm_seconds": 33.26345682144165
+ },
+ "wall_time_s": 33.75,
+ "trace_path": "results/runs/agent-v3-3b/traces/devectorize_dists-1.jsonl",
+ "case": "devectorize_dists-1",
+ "system": "agent",
+ "model": "qwen2.5-coder:3b",
+ "variant": "v3",
+ "run_seconds": 33.83
+}

@@ -1,0 +1,43 @@
+{
+ "status": "handoff",
+ "reasons": [
+  "measurements too noisy to confirm a regression"
+ ],
+ "initial": {
+  "verdict": "inconclusive",
+  "ratio": 1.0431380275616458,
+  "ci_low": 1.0387174968584325,
+  "ci_high": 1.0523687552105687,
+  "p_slower": 1.6762343410740499e-13,
+  "p_faster": 0.9999999999998439,
+  "median_a_ms": 16.8123125,
+  "median_b_ms": 17.5375625,
+  "n_rounds": 40,
+  "tau": 0.05,
+  "env": {
+   "cpu": "Apple M4",
+   "cores": 10,
+   "python": "3.13.5",
+   "platform": "macOS-26.1-arm64-arm-64bit-Mach-O",
+   "load_avg_1m": 4.94677734375
+  },
+  "label_a": "d884153b",
+  "label_b": "6ff7b92d"
+ },
+ "bisect": null,
+ "profile": null,
+ "finding": null,
+ "patch": null,
+ "verification": null,
+ "steps": 0,
+ "tool_calls": 0,
+ "benchmark_comparisons": 0,
+ "llm_tokens": {},
+ "wall_time_s": 0.03,
+ "trace_path": "results/runs/agent-v3-1.5b/traces/sorted_neighbors-2.jsonl",
+ "case": "sorted_neighbors-2",
+ "system": "agent",
+ "model": "qwen2.5-coder:1.5b",
+ "variant": "v3",
+ "run_seconds": 0.05
+}

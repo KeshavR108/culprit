@@ -1,0 +1,40 @@
+{
+ "status": "handoff",
+ "initial": {
+  "verdict": "regression",
+  "ratio": 2.406474569517854,
+  "ci_low": 2.3462124527157977,
+  "ci_high": 2.4677316870366464,
+  "p_slower": 1.6959106954125473e-06,
+  "p_faster": 0.9999986139518094,
+  "median_a_ms": 17.553167,
+  "median_b_ms": 42.24125,
+  "n_rounds": 15,
+  "tau": 0.05,
+  "label_a": "d884153b",
+  "label_b": "6583c9c9"
+ },
+ "finding": {
+  "culprit_commit": "5170804da31ba1dfd4847ce39510497f75a025d0",
+  "file": "src/hnsw/distance.py",
+  "line": 39,
+  "explanation": "The new implementation uses a list comprehension to compute the L2 squared distance for each row in the diff matrix, which is slower than the original implementation that uses einsum. The list comprehension creates a new array for each row, which is not efficient for large datasets.",
+  "patch": null,
+  "confidence": "medium"
+ },
+ "reasons": [
+  "patch invalid: old_code was not found in the file; copy it exactly from read_file (without the line-number prefix)"
+ ],
+ "llm_tokens": {
+  "prompt": 438,
+  "completion": 145,
+  "llm_seconds": 10.871248722076416
+ },
+ "benchmark_comparisons": 0,
+ "wall_time_s": 11.25,
+ "case": "devectorize_l2-0",
+ "system": "notools",
+ "model": "qwen2.5-coder:3b",
+ "variant": null,
+ "run_seconds": 11.25
+}

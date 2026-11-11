@@ -1,0 +1,93 @@
+{
+ "status": "handoff",
+ "reasons": [
+  "agent did not produce a final answer within the step budget",
+  "no valid patch proposed"
+ ],
+ "initial": {
+  "verdict": "regression",
+  "ratio": 6.453227057498369,
+  "ci_low": 6.38728907764223,
+  "ci_high": 6.516948240459805,
+  "p_slower": 1.6959106954125473e-06,
+  "p_faster": 0.9999986139518094,
+  "median_a_ms": 86.971041,
+  "median_b_ms": 561.243875,
+  "n_rounds": 15,
+  "tau": 0.05,
+  "env": {
+   "cpu": "Apple M4",
+   "cores": 10,
+   "python": "3.13.5",
+   "platform": "macOS-26.1-arm64-arm-64bit-Mach-O",
+   "load_avg_1m": 3.68212890625
+  },
+  "label_a": "d884153b",
+  "label_b": "eb72f3dc"
+ },
+ "bisect": {
+  "status": "found",
+  "first_bad_commit": "5a539922e5",
+  "split": 2.54,
+  "subject": "Inline pairwise distance check in heuristic; tidy comments",
+  "commits_searched": 23,
+  "steps": 4,
+  "path": [
+   {
+    "commit": "2aae677350",
+    "side": "slow",
+    "ratio": 6.474,
+    "ci95": [
+     6.376,
+     6.664
+    ]
+   },
+   {
+    "commit": "5658c952d1",
+    "side": "slow",
+    "ratio": 6.608,
+    "ci95": [
+     6.561,
+     6.645
+    ]
+   },
+   {
+    "commit": "5a539922e5",
+    "side": "slow",
+    "ratio": 6.398,
+    "ci95": [
+     6.322,
+     6.481
+    ]
+   },
+   {
+    "commit": "a94416be6b",
+    "side": "fast",
+    "ratio": 1.021,
+    "ci95": [
+     1.011,
+     1.026
+    ]
+   }
+  ]
+ },
+ "profile": null,
+ "finding": null,
+ "patch": null,
+ "verification": null,
+ "steps": 15,
+ "tool_calls": 0,
+ "benchmark_comparisons": 0,
+ "llm_tokens": {
+  "prompt": 41700,
+  "completion": 1995,
+  "llm_seconds": 12.3398756980896
+ },
+ "wall_time_s": 12.43,
+ "trace_path": "results/runs/agent-v3-0.5b/traces/heuristic_recompute-2.jsonl",
+ "case": "heuristic_recompute-2",
+ "system": "agent",
+ "model": "qwen2.5-coder:0.5b",
+ "variant": "v3",
+ "run_seconds": 12.45
+}

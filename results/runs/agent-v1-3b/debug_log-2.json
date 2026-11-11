@@ -1,0 +1,108 @@
+{
+ "status": "handoff",
+ "reasons": [
+  "no valid patch proposed"
+ ],
+ "initial": {
+  "verdict": "regression",
+  "ratio": 1.1594630160657227,
+  "ci_low": 1.1458033255575466,
+  "ci_high": 1.1697296796557495,
+  "p_slower": 1.6959106954125473e-06,
+  "p_faster": 0.9999986139518094,
+  "median_a_ms": 16.782625,
+  "median_b_ms": 19.458833,
+  "n_rounds": 15,
+  "tau": 0.05,
+  "env": {
+   "cpu": "Apple M4",
+   "cores": 10,
+   "python": "3.13.5",
+   "platform": "macOS-26.1-arm64-arm-64bit-Mach-O",
+   "load_avg_1m": 4.9375
+  },
+  "label_a": "d884153b",
+  "label_b": "747fbc0a"
+ },
+ "bisect": {
+  "status": "found",
+  "first_bad_commit": "6601f3143d",
+  "split": 1.077,
+  "subject": "Add debug logging to search_layer",
+  "commits_searched": 20,
+  "steps": 5,
+  "path": [
+   {
+    "commit": "14e772512b",
+    "side": "slow",
+    "ratio": 1.156,
+    "ci95": [
+     1.138,
+     1.165
+    ]
+   },
+   {
+    "commit": "3a4c72389d",
+    "side": "slow",
+    "ratio": 1.151,
+    "ci95": [
+     1.146,
+     1.158
+    ]
+   },
+   {
+    "commit": "617ce768b8",
+    "side": "fast",
+    "ratio": 1.008,
+    "ci95": [
+     1.002,
+     1.014
+    ]
+   },
+   {
+    "commit": "4682965b48",
+    "side": "fast",
+    "ratio": 0.999,
+    "ci95": [
+     0.986,
+     1.017
+    ]
+   },
+   {
+    "commit": "6601f3143d",
+    "side": "slow",
+    "ratio": 1.153,
+    "ci95": [
+     1.133,
+     1.162
+    ]
+   }
+  ]
+ },
+ "profile": null,
+ "finding": {
+  "culprit_commit": "6601f3143d",
+  "file": "search.py",
+  "line": 100,
+  "explanation": "The addition of debug logging to the `search_layer` function caused the `search` benchmark to slow down. Debugging statements can introduce overhead, especially if they are not optimized or if they are executed frequently.",
+  "patch": null,
+  "confidence": "medium"
+ },
+ "patch": null,
+ "verification": null,
+ "steps": 2,
+ "tool_calls": 1,
+ "benchmark_comparisons": 0,
+ "llm_tokens": {
+  "prompt": 3643,
+  "completion": 101,
+  "llm_seconds": 3.914976119995117
+ },
+ "wall_time_s": 4.07,
+ "trace_path": "results/runs/agent-v1-3b/traces/debug_log-2.jsonl",
+ "case": "debug_log-2",
+ "system": "agent",
+ "model": "qwen2.5-coder:3b",
+ "variant": "v1",
+ "run_seconds": 4.09
+}

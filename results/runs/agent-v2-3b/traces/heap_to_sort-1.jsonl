@@ -1,0 +1,3 @@
+{"t": 0.032, "kind": "measurement", "cached": true, "summary": "d884153b 17.77 ms -> 3f03a08c 18.60 ms, ratio 1.047 (95% CI 0.989-1.112), p_slower=0.036, n=40 rounds -> inconclusive"}
+{"t": 0.032, "kind": "initial_measurement", "verdict": "inconclusive", "ratio": 1.0465978527670456, "ci_low": 0.9893183875990188, "ci_high": 1.1119900128676794, "p_slower": 0.03635895882489648, "p_faster": 0.9644015553623742, "median_a_ms": 17.7695205, "median_b_ms": 18.597542, "n_rounds": 40, "tau": 0.05, "label_a": "d884153b", "label_b": "3f03a08c"}
+{"t": 0.032, "kind": "report", "status": "handoff", "reasons": ["measurements too noisy to confirm a regression"]}

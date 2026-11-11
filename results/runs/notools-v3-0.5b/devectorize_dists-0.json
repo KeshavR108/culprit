@@ -1,0 +1,40 @@
+{
+ "status": "handoff",
+ "initial": {
+  "verdict": "regression",
+  "ratio": 3.1757762751920176,
+  "ci_low": 2.687044238163245,
+  "ci_high": 4.0612604848018465,
+  "p_slower": 2.403161525315467e-05,
+  "p_faster": 0.9999799001345363,
+  "median_a_ms": 19.04125,
+  "median_b_ms": 60.47075,
+  "n_rounds": 15,
+  "tau": 0.05,
+  "label_a": "d884153b",
+  "label_b": "022a3bcc"
+ },
+ "finding": {
+  "culprit_commit": "8cc201b6c82b5bf67e422886aba749ef9c9a1b43",
+  "file": "src/hnsw/index.py",
+  "line": 68,
+  "explanation": "The current implementation of the `distances` method is inefficient. It uses a loop to compute the distances for each node, which can be computationally expensive for large datasets.",
+  "patch": null,
+  "confidence": "low"
+ },
+ "reasons": [
+  "patch invalid: new_code is identical to old_code"
+ ],
+ "llm_tokens": {
+  "prompt": 352,
+  "completion": 125,
+  "llm_seconds": 0.7787032127380371
+ },
+ "benchmark_comparisons": 0,
+ "wall_time_s": 0.89,
+ "case": "devectorize_dists-0",
+ "system": "notools",
+ "model": "qwen2.5-coder:0.5b",
+ "variant": null,
+ "run_seconds": 0.89
+}

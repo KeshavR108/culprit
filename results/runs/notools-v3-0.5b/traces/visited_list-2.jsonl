@@ -1,0 +1,2 @@
+{"t": 0.031, "kind": "measurement", "cached": true, "summary": "d884153b 16.87 ms -> 2003dfd8 23.07 ms, ratio 1.367 (95% CI 1.340-1.376), p_slower=1.7e-06, n=15 rounds -> regression"}
+{"t": 0.639, "kind": "llm", "content": "{\n  \"file\": \"src/hnsw/index.py\",\n  \"line\": 14,\n  \"explanation\": \"Simplifies visited tracking in search_layer; tidies comments\",\n  \"old_code\": \"def __init__(self, dim: int, ...):\",\n  \"new_code\": \"class HNSWIndex:\",\n  \"confidence\": \"medium\"\n}"}

@@ -5,6 +5,7 @@ from __future__ import annotations
 import json
 import re
 import time
+import urllib.error
 import urllib.request
 
 from ..schemas import ToolCall
@@ -27,8 +28,14 @@ class OllamaLLM:
         req = urllib.request.Request(f"{self.host}/api/chat", data=json.dumps(body).encode(),
                                      headers={"Content-Type": "application/json"})
         t0 = time.time()
-        with urllib.request.urlopen(req, timeout=self.timeout) as r:
-            data = json.loads(r.read())
+        try:
+            with urllib.request.urlopen(req, timeout=self.timeout) as r:
+                data = json.loads(r.read())
+        except urllib.error.HTTPError as e:
+            if e.code != 500:
+                raise
+            detail = e.read().decode(errors="replace")[:300]
+            return ChatResponse(content=f"[unparseable model output: {detail}]", seconds=time.time() - t0)
         msg = data.get("message", {})
         calls = [ToolCall(name=c["function"]["name"], arguments=_as_dict(c["function"].get("arguments")))
                  for c in msg.get("tool_calls") or []]

@@ -1,0 +1,43 @@
+{
+ "status": "no_regression",
+ "reasons": [
+  "benchmark is not significantly slower (CI below threshold)"
+ ],
+ "initial": {
+  "verdict": "no_regression",
+  "ratio": 1.01148747734799,
+  "ci_low": 0.9939454267116713,
+  "ci_high": 1.0153414064020496,
+  "p_slower": 0.12274250060156211,
+  "p_faster": 0.8854855166876527,
+  "median_a_ms": 16.731959,
+  "median_b_ms": 16.924167,
+  "n_rounds": 15,
+  "tau": 0.05,
+  "env": {
+   "cpu": "Apple M4",
+   "cores": 10,
+   "python": "3.13.5",
+   "platform": "macOS-26.1-arm64-arm-64bit-Mach-O",
+   "load_avg_1m": 4.9423828125
+  },
+  "label_a": "d884153b",
+  "label_b": "4b4636b8"
+ },
+ "bisect": null,
+ "profile": null,
+ "finding": null,
+ "patch": null,
+ "verification": null,
+ "steps": 0,
+ "tool_calls": 0,
+ "benchmark_comparisons": 0,
+ "llm_tokens": {},
+ "wall_time_s": 0.03,
+ "trace_path": "results/runs/agent-v1-3b/traces/prepare_in_loop-2.jsonl",
+ "case": "prepare_in_loop-2",
+ "system": "agent",
+ "model": "qwen2.5-coder:3b",
+ "variant": "v1",
+ "run_seconds": 0.05
+}

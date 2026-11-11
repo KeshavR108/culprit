@@ -1,0 +1,108 @@
+{
+ "status": "handoff",
+ "reasons": [
+  "no valid patch proposed"
+ ],
+ "initial": {
+  "verdict": "regression",
+  "ratio": 3.1757762751920176,
+  "ci_low": 2.687044238163245,
+  "ci_high": 4.0612604848018465,
+  "p_slower": 2.403161525315467e-05,
+  "p_faster": 0.9999799001345363,
+  "median_a_ms": 19.04125,
+  "median_b_ms": 60.47075,
+  "n_rounds": 15,
+  "tau": 0.05,
+  "env": {
+   "cpu": "Apple M4",
+   "cores": 10,
+   "python": "3.13.5",
+   "platform": "macOS-26.1-arm64-arm-64bit-Mach-O",
+   "load_avg_1m": 4.27587890625
+  },
+  "label_a": "d884153b",
+  "label_b": "022a3bcc"
+ },
+ "bisect": {
+  "status": "found",
+  "first_bad_commit": "8cc201b6c8",
+  "split": 1.782,
+  "subject": "Compute distances node by node for readability",
+  "commits_searched": 29,
+  "steps": 5,
+  "path": [
+   {
+    "commit": "f49eb2b75e",
+    "side": "slow",
+    "ratio": 2.906,
+    "ci95": [
+     2.615,
+     3.133
+    ]
+   },
+   {
+    "commit": "ab03e9b05b",
+    "side": "slow",
+    "ratio": 3.118,
+    "ci95": [
+     3.074,
+     3.147
+    ]
+   },
+   {
+    "commit": "1c3a67722b",
+    "side": "slow",
+    "ratio": 3.032,
+    "ci95": [
+     3.024,
+     3.057
+    ]
+   },
+   {
+    "commit": "80c97ca6a1",
+    "side": "fast",
+    "ratio": 0.982,
+    "ci95": [
+     0.977,
+     0.993
+    ]
+   },
+   {
+    "commit": "8cc201b6c8",
+    "side": "slow",
+    "ratio": 3.054,
+    "ci95": [
+     3.029,
+     3.082
+    ]
+   }
+  ]
+ },
+ "profile": null,
+ "finding": {
+  "culprit_commit": "8cc201b6c8",
+  "file": "src/search.py",
+  "line": 100,
+  "explanation": "The change to compute distances node by node for readability introduced a significant slowdown. This is likely due to the increased number of operations performed during the distance computation, which is now done for each node individually instead of in a more efficient batch operation.",
+  "patch": null,
+  "confidence": "medium"
+ },
+ "patch": null,
+ "verification": null,
+ "steps": 2,
+ "tool_calls": 1,
+ "benchmark_comparisons": 0,
+ "llm_tokens": {
+  "prompt": 3878,
+  "completion": 107,
+  "llm_seconds": 4.549952030181885
+ },
+ "wall_time_s": 4.7,
+ "trace_path": "results/runs/agent-v1-3b/traces/devectorize_dists-0.jsonl",
+ "case": "devectorize_dists-0",
+ "system": "agent",
+ "model": "qwen2.5-coder:3b",
+ "variant": "v1",
+ "run_seconds": 4.72
+}

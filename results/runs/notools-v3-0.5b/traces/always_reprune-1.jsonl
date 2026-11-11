@@ -1,0 +1,2 @@
+{"t": 0.03, "kind": "measurement", "cached": true, "summary": "d884153b 88.00 ms -> cd37bf04 107.79 ms, ratio 1.225 (95% CI 1.216-1.236), p_slower=1.7e-06, n=15 rounds -> regression"}
+{"t": 0.579, "kind": "llm", "content": "{\n  \"file\": \"src/hnsw/index.py\",\n  \"line\": 213,\n  \"explanation\": \"Kept deliberately simple; profile before optimizing.\",\n  \"old_code\": \"def add(self, vec) -> int:\",\n  \"new_code\": \"def add(self, vec) -> int:\",\n  \"confidence\": \"medium\"\n}"}

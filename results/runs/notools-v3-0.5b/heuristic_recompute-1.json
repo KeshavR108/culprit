@@ -1,0 +1,40 @@
+{
+ "status": "handoff",
+ "initial": {
+  "verdict": "regression",
+  "ratio": 6.521984387637803,
+  "ci_low": 6.423218301680557,
+  "ci_high": 6.724597713651117,
+  "p_slower": 1.6959106954125473e-06,
+  "p_faster": 0.9999986139518094,
+  "median_a_ms": 87.318625,
+  "median_b_ms": 569.490709,
+  "n_rounds": 15,
+  "tau": 0.05,
+  "label_a": "d884153b",
+  "label_b": "f23dc498"
+ },
+ "finding": {
+  "culprit_commit": "9ed011aa633dd58815c455e3d4c35fc9976a47d0",
+  "file": "src/hnsw/index.py",
+  "line": 152,
+  "explanation": "The current implementation of the `__len__` method is inefficient because it iterates over all pairs of indices and checks if the distance between them is greater than the threshold.",
+  "patch": null,
+  "confidence": "low"
+ },
+ "reasons": [
+  "patch invalid: new_code is identical to old_code"
+ ],
+ "llm_tokens": {
+  "prompt": 392,
+  "completion": 102,
+  "llm_seconds": 0.6673259735107422
+ },
+ "benchmark_comparisons": 0,
+ "wall_time_s": 0.77,
+ "case": "heuristic_recompute-1",
+ "system": "notools",
+ "model": "qwen2.5-coder:0.5b",
+ "variant": null,
+ "run_seconds": 0.77
+}

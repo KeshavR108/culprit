@@ -1,0 +1,40 @@
+{
+ "status": "handoff",
+ "initial": {
+  "verdict": "regression",
+  "ratio": 3.0175298425129844,
+  "ci_low": 3.003070231650539,
+  "ci_high": 3.0552436055867713,
+  "p_slower": 1.6959106954125473e-06,
+  "p_faster": 0.9999986139518094,
+  "median_a_ms": 17.168209,
+  "median_b_ms": 51.805583,
+  "n_rounds": 15,
+  "tau": 0.05,
+  "label_a": "d884153b",
+  "label_b": "45932a25"
+ },
+ "finding": {
+  "culprit_commit": "c690e1f0d184ca58f3d9108b72b0ab6a20702f16",
+  "file": "src/hnsw/index.py",
+  "line": 70,
+  "explanation": "The current implementation of `_dists` in the `HNSWIndex` class computes distances for all nodes in the batch at once, which can be slower than computing distances for each node individually. This is because the current implementation uses a list comprehension to convert the NumPy array to a list, which can be slower than using a generator expression.",
+  "patch": null,
+  "confidence": "low"
+ },
+ "reasons": [
+  "patch invalid: old_code was not found in the file; copy it exactly from read_file (without the line-number prefix)"
+ ],
+ "llm_tokens": {
+  "prompt": 441,
+  "completion": 163,
+  "llm_seconds": 2.2779150009155273
+ },
+ "benchmark_comparisons": 0,
+ "wall_time_s": 2.39,
+ "case": "devectorize_dists-2",
+ "system": "notools",
+ "model": "qwen2.5-coder:1.5b",
+ "variant": null,
+ "run_seconds": 2.39
+}

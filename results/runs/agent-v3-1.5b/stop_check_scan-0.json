@@ -1,0 +1,93 @@
+{
+ "status": "handoff",
+ "reasons": [
+  "agent did not produce a final answer within the step budget",
+  "no valid patch proposed"
+ ],
+ "initial": {
+  "verdict": "regression",
+  "ratio": 1.07054540855235,
+  "ci_low": 1.0549994945860528,
+  "ci_high": 1.0798980690931572,
+  "p_slower": 4.5633233150969535e-07,
+  "p_faster": 0.9999996026026046,
+  "median_a_ms": 16.8009375,
+  "median_b_ms": 17.9861665,
+  "n_rounds": 20,
+  "tau": 0.05,
+  "env": {
+   "cpu": "Apple M4",
+   "cores": 10,
+   "python": "3.13.5",
+   "platform": "macOS-26.1-arm64-arm-64bit-Mach-O",
+   "load_avg_1m": 3.22705078125
+  },
+  "label_a": "d884153b",
+  "label_b": "cf90c0e0"
+ },
+ "bisect": {
+  "status": "found",
+  "first_bad_commit": "12f2620059",
+  "split": 1.035,
+  "subject": "Make the search stop condition explicit",
+  "commits_searched": 18,
+  "steps": 4,
+  "path": [
+   {
+    "commit": "dd1ebbf106",
+    "side": "slow",
+    "ratio": 1.068,
+    "ci95": [
+     1.055,
+     1.082
+    ]
+   },
+   {
+    "commit": "12f2620059",
+    "side": "slow",
+    "ratio": 1.069,
+    "ci95": [
+     1.057,
+     1.084
+    ]
+   },
+   {
+    "commit": "2fa75b2c1c",
+    "side": "fast",
+    "ratio": 1.002,
+    "ci95": [
+     0.989,
+     1.015
+    ]
+   },
+   {
+    "commit": "37dd04ea3a",
+    "side": "fast",
+    "ratio": 1.002,
+    "ci95": [
+     0.993,
+     1.009
+    ]
+   }
+  ]
+ },
+ "profile": null,
+ "finding": null,
+ "patch": null,
+ "verification": null,
+ "steps": 15,
+ "tool_calls": 15,
+ "benchmark_comparisons": 0,
+ "llm_tokens": {
+  "prompt": 42087,
+  "completion": 1005,
+  "llm_seconds": 818.6178996562958
+ },
+ "wall_time_s": 819.38,
+ "trace_path": "results/runs/agent-v3-1.5b/traces/stop_check_scan-0.jsonl",
+ "case": "stop_check_scan-0",
+ "system": "agent",
+ "model": "qwen2.5-coder:1.5b",
+ "variant": "v3",
+ "run_seconds": 819.42
+}

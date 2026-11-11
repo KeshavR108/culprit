@@ -1,0 +1,95 @@
+{
+ "status": "verified",
+ "initial": {
+  "verdict": "regression",
+  "ratio": 2.5192629348130984,
+  "ci_low": 2.4976547515143674,
+  "ci_high": 2.5353108810875224,
+  "p_slower": 1.6959106954125473e-06,
+  "p_faster": 0.9999986139518094,
+  "median_a_ms": 17.194083,
+  "median_b_ms": 43.316416,
+  "n_rounds": 15,
+  "tau": 0.05,
+  "label_a": "d884153b",
+  "label_b": "05b229f8"
+ },
+ "finding": {
+  "culprit_commit": "33c43ddae912c688f5802fba516f0d5bd1fc59e8",
+  "file": "src/hnsw/distance.py",
+  "line": 41,
+  "explanation": "The new code introduces an explicit loop, which can be slower than the original einsum operation because it involves more explicit operations and potentially more overhead.",
+  "patch": null,
+  "confidence": "medium"
+ },
+ "reasons": [],
+ "llm_tokens": {
+  "prompt": 459,
+  "completion": 121,
+  "llm_seconds": 3.493255138397217
+ },
+ "patch": {
+  "diff": "--- a/src/hnsw/distance.py\n+++ b/src/hnsw/distance.py\n@@ -41,7 +41,7 @@\n     diff = X - q\n     # einsum computes the row-wise dot product diff[i] . diff[i] without\n     # building another (n, d) temporary like (diff ** 2).sum(1) would.\n-    return np.array([np.einsum(\"j,j->\", row, row) for row in diff], dtype=diff.dtype)\n+    return np.einsum(\"ij,ij->i\", diff, diff)\n \n \n def cosine_dist_batch(q: np.ndarray, X: np.ndarray) -> np.ndarray:\n",
+  "files": [
+   "src/hnsw/distance.py"
+  ],
+  "lines_changed": 2
+ },
+ "verification": {
+  "applied": true,
+  "tests_passed": true,
+  "tests_output": "........................................                                 [100%]\n40 passed, 9 deselected in 1.80s",
+  "speedup": {
+   "verdict": "no_regression",
+   "ratio": 0.396645532530801,
+   "ci_low": 0.3932940039444062,
+   "ci_high": 0.4024027858444344,
+   "p_slower": 0.9999986139518094,
+   "p_faster": 1.6959106954125473e-06,
+   "median_a_ms": 42.4905,
+   "median_b_ms": 16.853667,
+   "n_rounds": 15,
+   "tau": 0.05,
+   "env": {
+    "cpu": "Apple M4",
+    "cores": 10,
+    "python": "3.13.5",
+    "platform": "macOS-26.1-arm64-arm-64bit-Mach-O",
+    "load_avg_1m": 3.58203125
+   },
+   "label_a": "05b229f8",
+   "label_b": "patched"
+  },
+  "vs_good": {
+   "verdict": "no_regression",
+   "ratio": 1.0040971857811984,
+   "ci_low": 0.9569835318875989,
+   "ci_high": 1.037556387412676,
+   "p_slower": 0.614224406092214,
+   "p_faster": 0.4017312871573856,
+   "median_a_ms": 17.288208,
+   "median_b_ms": 17.359041,
+   "n_rounds": 15,
+   "tau": 0.05,
+   "env": {
+    "cpu": "Apple M4",
+    "cores": 10,
+    "python": "3.13.5",
+    "platform": "macOS-26.1-arm64-arm-64bit-Mach-O",
+    "load_avg_1m": 3.58203125
+   },
+   "label_a": "d884153b",
+   "label_b": "patched"
+  },
+  "significant_speedup": true,
+  "verified": true,
+  "error": null
+ },
+ "benchmark_comparisons": 2,
+ "wall_time_s": 7.82,
+ "case": "devectorize_l2-1",
+ "system": "notools",
+ "model": "qwen2.5-coder:3b",
+ "variant": null,
+ "run_seconds": 7.82
+}

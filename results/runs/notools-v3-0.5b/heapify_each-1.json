@@ -1,0 +1,40 @@
+{
+ "status": "handoff",
+ "initial": {
+  "verdict": "regression",
+  "ratio": 1.0970875454873328,
+  "ci_low": 1.0705810360046404,
+  "ci_high": 1.1250003584854775,
+  "p_slower": 4.638978392297252e-05,
+  "p_faster": 0.9999585379161275,
+  "median_a_ms": 17.4277915,
+  "median_b_ms": 19.119813,
+  "n_rounds": 20,
+  "tau": 0.05,
+  "label_a": "d884153b",
+  "label_b": "4d9fd353"
+ },
+ "finding": {
+  "culprit_commit": "c1356bcdbddc9936d643af2201e561c48b59e41f",
+  "file": "src/hnsw/index.py",
+  "line": 113,
+  "explanation": "The commit made a benchmark slower because the `heapq.heappush` operation is not efficient.",
+  "patch": null,
+  "confidence": "medium"
+ },
+ "reasons": [
+  "patch invalid: new_code is identical to old_code"
+ ],
+ "llm_tokens": {
+  "prompt": 343,
+  "completion": 109,
+  "llm_seconds": 0.6861469745635986
+ },
+ "benchmark_comparisons": 0,
+ "wall_time_s": 0.79,
+ "case": "heapify_each-1",
+ "system": "notools",
+ "model": "qwen2.5-coder:0.5b",
+ "variant": null,
+ "run_seconds": 0.79
+}

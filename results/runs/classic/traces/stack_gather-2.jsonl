@@ -1,0 +1,11 @@
+{"t": 0.123, "kind": "worker_started", "key": "d884153b6122523056545afd5a991221af1a3e5d", "setup_s": 0.03823970793746412}
+{"t": 0.216, "kind": "worker_started", "key": "3783d471d7716a1be07462cc1c685c511ca97cdf", "setup_s": 0.03716387506574392}
+{"t": 1.038, "kind": "measurement", "cached": false, "summary": "d884153b 16.80 ms -> 3783d471 25.28 ms, ratio 1.505 (95% CI 1.483-1.519), p_slower=1.7e-06, n=15 rounds -> regression"}
+{"t": 1.147, "kind": "worker_started", "key": "f977f53fbf8301477c86745c8b9650be5cfb394e", "setup_s": 0.035518083022907376}
+{"t": 1.811, "kind": "measurement", "cached": false, "summary": "d884153b 16.64 ms -> f977f53f 16.74 ms, ratio 1.006 (95% CI 0.997-1.013), p_slower=0.049, n=15 rounds -> no_regression"}
+{"t": 1.902, "kind": "worker_started", "key": "e1e0dcc3e79b4456e1f41d51cf9cf6911e9c7ce3", "setup_s": 0.03778625000268221}
+{"t": 2.577, "kind": "measurement", "cached": false, "summary": "d884153b 16.73 ms -> e1e0dcc3 16.67 ms, ratio 0.997 (95% CI 0.989-1.011), p_slower=0.58, n=15 rounds -> no_regression"}
+{"t": 2.667, "kind": "worker_started", "key": "4b21b872c12a88e61b7e9e8a71e2ba97b3d208d5", "setup_s": 0.03605162492021918}
+{"t": 3.495, "kind": "measurement", "cached": false, "summary": "d884153b 16.79 ms -> 4b21b872 25.55 ms, ratio 1.522 (95% CI 1.494-1.533), p_slower=1.7e-06, n=15 rounds -> regression"}
+{"t": 3.584, "kind": "worker_started", "key": "25960a788d04124861363182563fabce9e1b330c", "setup_s": 0.03601987496949732}
+{"t": 4.407, "kind": "measurement", "cached": false, "summary": "d884153b 16.87 ms -> 25960a78 25.00 ms, ratio 1.482 (95% CI 1.477-1.516), p_slower=1.7e-06, n=15 rounds -> regression"}

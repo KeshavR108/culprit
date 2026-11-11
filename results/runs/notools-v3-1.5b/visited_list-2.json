@@ -1,0 +1,40 @@
+{
+ "status": "handoff",
+ "initial": {
+  "verdict": "regression",
+  "ratio": 1.3673281239637225,
+  "ci_low": 1.3400997073014065,
+  "ci_high": 1.3760813765680153,
+  "p_slower": 1.6959106954125473e-06,
+  "p_faster": 0.9999986139518094,
+  "median_a_ms": 16.872291,
+  "median_b_ms": 23.069958,
+  "n_rounds": 15,
+  "tau": 0.05,
+  "label_a": "d884153b",
+  "label_b": "2003dfd8"
+ },
+ "finding": {
+  "culprit_commit": "566f7b8b823d81557d075e00b3e0ca8b685b0927",
+  "file": "src/hnsw/index.py",
+  "line": 109,
+  "explanation": "The current implementation of the `HNSWIndex` class uses a set to track visited entries, which can lead to slower performance due to the overhead of set operations. The new implementation uses a list to store visited entries, which is more efficient for this use case.",
+  "patch": null,
+  "confidence": "high"
+ },
+ "reasons": [
+  "patch invalid: old_code was not found in the file; copy it exactly from read_file (without the line-number prefix)"
+ ],
+ "llm_tokens": {
+  "prompt": 522,
+  "completion": 119,
+  "llm_seconds": 1.8968729972839355
+ },
+ "benchmark_comparisons": 0,
+ "wall_time_s": 2.01,
+ "case": "visited_list-2",
+ "system": "notools",
+ "model": "qwen2.5-coder:1.5b",
+ "variant": null,
+ "run_seconds": 2.01
+}

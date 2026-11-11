@@ -1,0 +1,43 @@
+{
+ "status": "no_regression",
+ "reasons": [
+  "benchmark is not significantly slower (CI below threshold)"
+ ],
+ "initial": {
+  "verdict": "no_regression",
+  "ratio": 1.002477402493262,
+  "ci_low": 0.9936851670958766,
+  "ci_high": 1.0201397358871271,
+  "p_slower": 0.19186631383125152,
+  "p_faster": 0.8192518169645508,
+  "median_a_ms": 16.835375,
+  "median_b_ms": 16.877083,
+  "n_rounds": 15,
+  "tau": 0.05,
+  "env": {
+   "cpu": "Apple M4",
+   "cores": 10,
+   "python": "3.13.5",
+   "platform": "macOS-26.1-arm64-arm-64bit-Mach-O",
+   "load_avg_1m": 4.38720703125
+  },
+  "label_a": "d884153b",
+  "label_b": "8b878cec"
+ },
+ "bisect": null,
+ "profile": null,
+ "finding": null,
+ "patch": null,
+ "verification": null,
+ "steps": 0,
+ "tool_calls": 0,
+ "benchmark_comparisons": 0,
+ "llm_tokens": {},
+ "wall_time_s": 0.03,
+ "trace_path": "results/runs/agent-v3-1.5b/traces/heap_to_sort-2.jsonl",
+ "case": "heap_to_sort-2",
+ "system": "agent",
+ "model": "qwen2.5-coder:1.5b",
+ "variant": "v3",
+ "run_seconds": 0.05
+}

@@ -1,0 +1,40 @@
+{
+ "status": "handoff",
+ "initial": {
+  "verdict": "regression",
+  "ratio": 1.4709117860520355,
+  "ci_low": 1.454029783540383,
+  "ci_high": 1.4914820573868917,
+  "p_slower": 1.6959106954125473e-06,
+  "p_faster": 0.9999986139518094,
+  "median_a_ms": 17.050875,
+  "median_b_ms": 25.080333,
+  "n_rounds": 15,
+  "tau": 0.05,
+  "label_a": "d884153b",
+  "label_b": "16d2b649"
+ },
+ "finding": {
+  "culprit_commit": "fd8abb1b458e7c0611de92cbbd36029ef464e6bf",
+  "file": "src/hnsw/index.py",
+  "line": 73,
+  "explanation": "The old code creates a copy of the vectors array and then uses it to calculate distances. This is slower because it involves creating a new array and copying data, which is an expensive operation. The new code directly uses the original vectors array without creating a copy.",
+  "patch": null,
+  "confidence": "medium"
+ },
+ "reasons": [
+  "patch invalid: old_code was not found in the file; copy it exactly from read_file (without the line-number prefix)"
+ ],
+ "llm_tokens": {
+  "prompt": 431,
+  "completion": 132,
+  "llm_seconds": 10.648792028427124
+ },
+ "benchmark_comparisons": 0,
+ "wall_time_s": 11.26,
+ "case": "copy_vectors-1",
+ "system": "notools",
+ "model": "qwen2.5-coder:3b",
+ "variant": null,
+ "run_seconds": 11.26
+}

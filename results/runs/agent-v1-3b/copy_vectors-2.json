@@ -1,0 +1,99 @@
+{
+ "status": "handoff",
+ "reasons": [
+  "no valid patch proposed"
+ ],
+ "initial": {
+  "verdict": "regression",
+  "ratio": 1.4791584537519256,
+  "ci_low": 1.4539685062208492,
+  "ci_high": 1.4944643156594242,
+  "p_slower": 1.6959106954125473e-06,
+  "p_faster": 0.9999986139518094,
+  "median_a_ms": 17.04125,
+  "median_b_ms": 25.206709,
+  "n_rounds": 15,
+  "tau": 0.05,
+  "env": {
+   "cpu": "Apple M4",
+   "cores": 10,
+   "python": "3.13.5",
+   "platform": "macOS-26.1-arm64-arm-64bit-Mach-O",
+   "load_avg_1m": 4.26513671875
+  },
+  "label_a": "d884153b",
+  "label_b": "2e90740a"
+ },
+ "bisect": {
+  "status": "found",
+  "first_bad_commit": "2002a912a0",
+  "split": 1.216,
+  "subject": "Avoid aliasing the vector storage in _dists",
+  "commits_searched": 28,
+  "steps": 4,
+  "path": [
+   {
+    "commit": "25e1964229",
+    "side": "fast",
+    "ratio": 0.989,
+    "ci95": [
+     0.98,
+     0.998
+    ]
+   },
+   {
+    "commit": "2696735097",
+    "side": "slow",
+    "ratio": 1.464,
+    "ci95": [
+     1.443,
+     1.494
+    ]
+   },
+   {
+    "commit": "760809cdfb",
+    "side": "slow",
+    "ratio": 1.466,
+    "ci95": [
+     1.449,
+     1.481
+    ]
+   },
+   {
+    "commit": "2002a912a0",
+    "side": "slow",
+    "ratio": 1.465,
+    "ci95": [
+     1.454,
+     1.487
+    ]
+   }
+  ]
+ },
+ "profile": null,
+ "finding": {
+  "culprit_commit": "2002a912a0",
+  "file": "src/distance.py",
+  "line": 100,
+  "explanation": "The change in `src/distance.py` at line 100, which avoids aliasing the vector storage in `_dists`, likely caused the slowdown in the `search` benchmark. This change may have introduced additional overhead or memory allocations, leading to a performance regression.",
+  "patch": null,
+  "confidence": "medium"
+ },
+ "patch": null,
+ "verification": null,
+ "steps": 2,
+ "tool_calls": 1,
+ "benchmark_comparisons": 0,
+ "llm_tokens": {
+  "prompt": 3769,
+  "completion": 117,
+  "llm_seconds": 4.289330959320068
+ },
+ "wall_time_s": 4.45,
+ "trace_path": "results/runs/agent-v1-3b/traces/copy_vectors-2.jsonl",
+ "case": "copy_vectors-2",
+ "system": "agent",
+ "model": "qwen2.5-coder:3b",
+ "variant": "v1",
+ "run_seconds": 4.47
+}

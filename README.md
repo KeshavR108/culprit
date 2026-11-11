@@ -6,6 +6,10 @@ Culprit looks at a benchmark that got slower between two commits and tries to wo
 
 Everything runs locally. The LLM part uses small models through [Ollama](https://ollama.com) (`qwen2.5-coder`), so there are no API costs.
 
+![Culprit finding and fixing a planted regression](results/demo_verified.gif)
+
+*A real run (3B model) on one of the cases it solves: right commit, right line, fix measured at 0.87× of the bad commit's time, tests passing. Most cases end in a hand-off instead (see results); [here's one](results/demo_handoff.gif).*
+
 ## How it works
 
 ```
@@ -35,7 +39,7 @@ A few design choices:
 - **The LLM never executes anything.** It asks for a tool, and the code validates the arguments and runs it in a sandbox: allowlisted commands only, temp git worktrees, timeouts, no network, no writes outside a temp dir (macOS `sandbox-exec`).
 - **Nothing touches your repo** unless you pass `--apply` and type `apply`. Even then it doesn't commit.
 
-More detail: [HOW_IT_WORKS.md](HOW_IT_WORKS.md).
+More detail: [HOW_IT_WORKS.md](HOW_IT_WORKS.md). Full write-up: [results/WRITEUP.md](results/WRITEUP.md). Failure analysis: [results/failure_analysis.md](results/failure_analysis.md).
 
 ## Results
 
@@ -58,7 +62,11 @@ Results on the 36 detectable regressions (95% Wilson intervals are in `results/m
 | Culprit v2 (3B) | 39% (14/36) | 36% (13/36) | 6% (2/36) | 3% (1/36) | 0/1 | 37 s |
 | Culprit v3 (3B) | 67% (24/36) | 61% (22/36) | 11% (4/36) | 6% (2/36) | 0/2 | 70 s |
 
-Measurement engine, the same for every system: **36/36** detectable regressions detected, **0/12** false alarms on the controls, and 3 of the 15 tiny probes flagged.
+Measurement engine, the same for every system:
+- **36/36** detectable regressions detected,
+- **0/12** false alarms on the controls,
+- **0/60** false alarms when comparing identical code against itself (`results/false_alarm.json`),
+- 3 of the 15 tiny probes flagged.
 
 How to read this:
 
@@ -85,7 +93,19 @@ Where v3 still fails (34 misses):
 | right commit, wrong line | 2 |
 | ran out of steps | 2 |
 
-A model-size comparison (0.5B / 1.5B / 3B) is running and will be added here.
+### Model size
+
+Same agent (v3), three sizes of `qwen2.5-coder`, same 36 cases:
+
+| model | culprit commit | line (±1) | verified fix | what it does |
+|---|---|---|---|---|
+| 0.5B | 0% | 0% | 0% | never calls a tool, just repeats a made-up answer |
+| 1.5B | 0% | 0% | 0% | uses bisect, diff and read correctly, then can't produce a valid patch call |
+| 3B | 67% | 11% | 6% | finds the commit and line most of the time, but rarely writes a working fix |
+
+![model size](results/model_size.png)
+
+It isn't a smooth curve. Below 3B these models can't get through the tool workflow at all. There were no false fixes at any size, because the hand-off rules don't depend on the model being good. Timings are rough: the 3B run overlapped with an unstable Ollama server, which inflated its times (details in [results/WRITEUP.md](results/WRITEUP.md)).
 
 ## Running it
 
@@ -117,7 +137,7 @@ python perfbench/analyze.py
 - **Small, synthetic benchmark.** 36 detectable cases, all in two source files (~350 lines) of one project, so the confidence intervals are wide. The planted changes are realistic, but I wrote them.
 - **Line-finding is easy here.** A culprit commit is usually small, which is why the no-LLM baseline does so well. Real regressions spread over large commits would be harder.
 - **Python only, and laptop timing.** All numbers were measured on an Apple M4 laptop. A sub-5% slowdown is intentionally reported as "no regression".
-- **Small models only so far** (up to 3B). Larger local models are the obvious next experiment.
+- **Small models only so far** (up to 3B). 7B+ local models are the obvious next experiment.
 
 ## Layout
 

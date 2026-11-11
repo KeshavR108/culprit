@@ -1,0 +1,40 @@
+{
+ "status": "handoff",
+ "initial": {
+  "verdict": "regression",
+  "ratio": 1.0609624425082218,
+  "ci_low": 1.0530095557293413,
+  "ci_high": 1.0702616599477586,
+  "p_slower": 1.6959106954125473e-06,
+  "p_faster": 0.9999986139518094,
+  "median_a_ms": 16.696083,
+  "median_b_ms": 17.713917,
+  "n_rounds": 15,
+  "tau": 0.05,
+  "label_a": "d884153b",
+  "label_b": "b6e6a9eb"
+ },
+ "finding": {
+  "culprit_commit": "eda99346184a7d20ae0faf54f0916a84caf8d66c",
+  "file": "src/hnsw/index.py",
+  "line": 105,
+  "explanation": "The new condition `len(W) >= ef and d_c > max(-w for w, _ in W)` is slower because it involves calculating the maximum of a list of negative values, which is an O(n) operation. The previous condition `if d_c > -W[0][0] and len(W) >= ef` is faster because it only compares the current distance `d_c` with the worst distance in the list `W` without needing to calculate the maximum.",
+  "patch": null,
+  "confidence": "medium"
+ },
+ "reasons": [
+  "patch invalid: old_code was not found in the file; copy it exactly from read_file (without the line-number prefix)"
+ ],
+ "llm_tokens": {
+  "prompt": 340,
+  "completion": 186,
+  "llm_seconds": 19.233986139297485
+ },
+ "benchmark_comparisons": 0,
+ "wall_time_s": 19.38,
+ "case": "stop_check_scan-1",
+ "system": "notools",
+ "model": "qwen2.5-coder:3b",
+ "variant": null,
+ "run_seconds": 19.38
+}

@@ -3,6 +3,8 @@
 from __future__ import annotations
 
 import argparse
+import http.client
+import urllib.error
 import json
 import re
 import shlex
@@ -182,6 +184,8 @@ def main():
                 res = run_notools(case, meta, args.model, trace_path)
             else:
                 res = run_agent(case, meta, args.model, trace_path, args.variant)
+        except (urllib.error.URLError, http.client.HTTPException, ConnectionError) as e:
+            sys.exit(f"LLM server unreachable at case {cid} ({e}); not recording it. Restart Ollama and rerun.")
         except Exception:
             res = {"status": "error", "error": traceback.format_exc()[-3000:]}
         res.update({"case": cid, "system": args.system, "model": None if args.system == "classic" else args.model,

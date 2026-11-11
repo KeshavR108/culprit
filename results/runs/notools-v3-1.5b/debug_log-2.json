@@ -1,0 +1,40 @@
+{
+ "status": "handoff",
+ "initial": {
+  "verdict": "regression",
+  "ratio": 1.1594630160657227,
+  "ci_low": 1.1458033255575466,
+  "ci_high": 1.1697296796557495,
+  "p_slower": 1.6959106954125473e-06,
+  "p_faster": 0.9999986139518094,
+  "median_a_ms": 16.782625,
+  "median_b_ms": 19.458833,
+  "n_rounds": 15,
+  "tau": 0.05,
+  "label_a": "d884153b",
+  "label_b": "747fbc0a"
+ },
+ "finding": {
+  "culprit_commit": "6601f3143d873b1940055911d7f69b82829074fb",
+  "file": "src/hnsw/index.py",
+  "line": 104,
+  "explanation": "The addition of debug logging to the `expand_node` method in the `HNSWIndex` class slows down the benchmark because it introduces additional overhead. Debug logging prints messages to the console, which can be time-consuming and slow down the execution of the code.",
+  "patch": null,
+  "confidence": "low"
+ },
+ "reasons": [
+  "patch invalid: new_code is identical to old_code"
+ ],
+ "llm_tokens": {
+  "prompt": 398,
+  "completion": 168,
+  "llm_seconds": 2.281285285949707
+ },
+ "benchmark_comparisons": 0,
+ "wall_time_s": 2.4,
+ "case": "debug_log-2",
+ "system": "notools",
+ "model": "qwen2.5-coder:1.5b",
+ "variant": null,
+ "run_seconds": 2.4
+}

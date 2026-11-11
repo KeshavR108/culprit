@@ -1,0 +1,40 @@
+{
+ "status": "handoff",
+ "initial": {
+  "verdict": "regression",
+  "ratio": 1.4709117860520355,
+  "ci_low": 1.454029783540383,
+  "ci_high": 1.4914820573868917,
+  "p_slower": 1.6959106954125473e-06,
+  "p_faster": 0.9999986139518094,
+  "median_a_ms": 17.050875,
+  "median_b_ms": 25.080333,
+  "n_rounds": 15,
+  "tau": 0.05,
+  "label_a": "d884153b",
+  "label_b": "16d2b649"
+ },
+ "finding": {
+  "culprit_commit": "fd8abb1b458e7c0611de92cbbd36029ef464e6bf",
+  "file": "src/hnsw/index.py",
+  "line": 37,
+  "explanation": "The current implementation of the `distances` method is inefficient because it creates a new NumPy array for each query and vector pair, which can be costly in terms of memory usage.",
+  "patch": null,
+  "confidence": "low"
+ },
+ "reasons": [
+  "patch invalid: new_code is identical to old_code"
+ ],
+ "llm_tokens": {
+  "prompt": 431,
+  "completion": 127,
+  "llm_seconds": 0.8147931098937988
+ },
+ "benchmark_comparisons": 0,
+ "wall_time_s": 0.92,
+ "case": "copy_vectors-1",
+ "system": "notools",
+ "model": "qwen2.5-coder:0.5b",
+ "variant": null,
+ "run_seconds": 0.92
+}

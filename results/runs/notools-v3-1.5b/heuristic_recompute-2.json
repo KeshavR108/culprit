@@ -1,0 +1,40 @@
+{
+ "status": "handoff",
+ "initial": {
+  "verdict": "regression",
+  "ratio": 6.453227057498369,
+  "ci_low": 6.38728907764223,
+  "ci_high": 6.516948240459805,
+  "p_slower": 1.6959106954125473e-06,
+  "p_faster": 0.9999986139518094,
+  "median_a_ms": 86.971041,
+  "median_b_ms": 561.243875,
+  "n_rounds": 15,
+  "tau": 0.05,
+  "label_a": "d884153b",
+  "label_b": "eb72f3dc"
+ },
+ "finding": {
+  "culprit_commit": "5a539922e5357adf3bf5729afe111ac11d5f3382",
+  "file": "src/hnsw/index.py",
+  "line": 150,
+  "explanation": "The old code checks if all elements in the selected list are greater than the current distance. This is inefficient because it requires checking all elements in the selected list for each candidate, which can be slow for large datasets. The new code uses the `self._dist_pairwise` method to compare the current distance with the distances of the candidates to the selected elements, which is more efficient.",
+  "patch": null,
+  "confidence": "low"
+ },
+ "reasons": [
+  "patch invalid: old_code was not found in the file; copy it exactly from read_file (without the line-number prefix)"
+ ],
+ "llm_tokens": {
+  "prompt": 408,
+  "completion": 173,
+  "llm_seconds": 2.326601982116699
+ },
+ "benchmark_comparisons": 0,
+ "wall_time_s": 2.44,
+ "case": "heuristic_recompute-2",
+ "system": "notools",
+ "model": "qwen2.5-coder:1.5b",
+ "variant": null,
+ "run_seconds": 2.44
+}

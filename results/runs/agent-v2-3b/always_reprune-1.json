@@ -1,0 +1,163 @@
+{
+ "status": "handoff",
+ "reasons": [
+  "patch gives no significant speedup"
+ ],
+ "initial": {
+  "verdict": "regression",
+  "ratio": 1.2248751242723412,
+  "ci_low": 1.2157447725449269,
+  "ci_high": 1.235659879921935,
+  "p_slower": 1.6959106954125473e-06,
+  "p_faster": 0.9999986139518094,
+  "median_a_ms": 88.003291,
+  "median_b_ms": 107.793042,
+  "n_rounds": 15,
+  "tau": 0.05,
+  "env": {
+   "cpu": "Apple M4",
+   "cores": 10,
+   "python": "3.13.5",
+   "platform": "macOS-26.1-arm64-arm-64bit-Mach-O",
+   "load_avg_1m": 3.4228515625
+  },
+  "label_a": "d884153b",
+  "label_b": "cd37bf04"
+ },
+ "bisect": {
+  "status": "found",
+  "first_bad_commit": "2ea2bd3598",
+  "split": 1.107,
+  "subject": "Keep reverse links well-chosen on every insert; tidy comments",
+  "commits_searched": 27,
+  "steps": 5,
+  "path": [
+   {
+    "commit": "90f37af43a",
+    "side": "slow",
+    "ratio": 1.223,
+    "ci95": [
+     1.216,
+     1.23
+    ]
+   },
+   {
+    "commit": "f3eae12122",
+    "side": "fast",
+    "ratio": 0.996,
+    "ci95": [
+     0.99,
+     1.008
+    ]
+   },
+   {
+    "commit": "2ea2bd3598",
+    "side": "slow",
+    "ratio": 1.22,
+    "ci95": [
+     1.21,
+     1.236
+    ]
+   },
+   {
+    "commit": "8bbd955aef",
+    "side": "fast",
+    "ratio": 1.0,
+    "ci95": [
+     0.993,
+     1.005
+    ]
+   },
+   {
+    "commit": "f883adb52a",
+    "side": "fast",
+    "ratio": 0.996,
+    "ci95": [
+     0.988,
+     1.006
+    ]
+   }
+  ]
+ },
+ "profile": null,
+ "finding": {
+  "culprit_commit": "2ea2bd3598",
+  "file": "src/hnsw/index.py",
+  "line": 174,
+  "explanation": "The commit introduces a comment that states the `keep_reverse_links` function is kept deliberately simple and that it should be profiled before optimizing. This comment may indicate that the function is not optimized and is causing the benchmark to slow down.",
+  "patch": null,
+  "confidence": "medium"
+ },
+ "patch": {
+  "diff": "--- a/src/hnsw/index.py\n+++ b/src/hnsw/index.py\n@@ -173,9 +173,6 @@\n             return self.select_neighbors_heuristic(candidates, M)\n         return self.select_neighbors_simple(candidates, M)\n \n-    # ------------------------------------------------------------- Alg. 1: insert\n-\n-    # Kept deliberately simple; profile before optimizing.\n     def add(self, vec) -> int:\n         \"\"\"Insert one vector and return its id.\"\"\"\n         x = self._prepare(vec)\n",
+  "files": [
+   "src/hnsw/index.py"
+  ],
+  "lines_changed": 3
+ },
+ "verification": {
+  "applied": true,
+  "tests_passed": null,
+  "tests_output": "",
+  "speedup": {
+   "verdict": "inconclusive",
+   "ratio": 1.0399646850184967,
+   "ci_low": 0.9987076411948489,
+   "ci_high": 1.0657110058918737,
+   "p_slower": 0.04120576082782567,
+   "p_faster": 0.9596366065208529,
+   "median_a_ms": 115.904917,
+   "median_b_ms": 120.5370205,
+   "n_rounds": 40,
+   "tau": 0.05,
+   "env": {
+    "cpu": "Apple M4",
+    "cores": 10,
+    "python": "3.13.5",
+    "platform": "macOS-26.1-arm64-arm-64bit-Mach-O",
+    "load_avg_1m": 2.8544921875
+   },
+   "label_a": "cd37bf04",
+   "label_b": "patched"
+  },
+  "vs_good": {
+   "verdict": "regression",
+   "ratio": 1.2505665897584173,
+   "ci_low": 1.210982802481816,
+   "ci_high": 1.274191639607643,
+   "p_slower": 1.6959106954125473e-06,
+   "p_faster": 0.9999986139518094,
+   "median_a_ms": 87.457458,
+   "median_b_ms": 109.371375,
+   "n_rounds": 15,
+   "tau": 0.05,
+   "env": {
+    "cpu": "Apple M4",
+    "cores": 10,
+    "python": "3.13.5",
+    "platform": "macOS-26.1-arm64-arm-64bit-Mach-O",
+    "load_avg_1m": 2.86572265625
+   },
+   "label_a": "d884153b",
+   "label_b": "patched"
+  },
+  "significant_speedup": false,
+  "verified": false,
+  "error": null
+ },
+ "steps": 12,
+ "tool_calls": 8,
+ "benchmark_comparisons": 2,
+ "llm_tokens": {
+  "prompt": 34887,
+  "completion": 699,
+  "llm_seconds": 21.2601158618927
+ },
+ "wall_time_s": 36.24,
+ "trace_path": "results/runs/agent-v2-3b/traces/always_reprune-1.jsonl",
+ "case": "always_reprune-1",
+ "system": "agent",
+ "model": "qwen2.5-coder:3b",
+ "variant": "v2",
+ "run_seconds": 36.39
+}

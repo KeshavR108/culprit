@@ -1,0 +1,102 @@
+{
+ "status": "handoff",
+ "reasons": [
+  "agent did not produce a final answer within the step budget",
+  "no valid patch proposed"
+ ],
+ "initial": {
+  "verdict": "regression",
+  "ratio": 6.521984387637803,
+  "ci_low": 6.423218301680557,
+  "ci_high": 6.724597713651117,
+  "p_slower": 1.6959106954125473e-06,
+  "p_faster": 0.9999986139518094,
+  "median_a_ms": 87.318625,
+  "median_b_ms": 569.490709,
+  "n_rounds": 15,
+  "tau": 0.05,
+  "env": {
+   "cpu": "Apple M4",
+   "cores": 10,
+   "python": "3.13.5",
+   "platform": "macOS-26.1-arm64-arm-64bit-Mach-O",
+   "load_avg_1m": 4.1982421875
+  },
+  "label_a": "d884153b",
+  "label_b": "f23dc498"
+ },
+ "bisect": {
+  "status": "found",
+  "first_bad_commit": "9ed011aa63",
+  "split": 2.554,
+  "subject": "Inline pairwise distance check in heuristic; tidy comments",
+  "commits_searched": 24,
+  "steps": 5,
+  "path": [
+   {
+    "commit": "9ba782fe6e",
+    "side": "fast",
+    "ratio": 1.0,
+    "ci95": [
+     0.994,
+     1.011
+    ]
+   },
+   {
+    "commit": "08933c2b16",
+    "side": "fast",
+    "ratio": 1.015,
+    "ci95": [
+     1.01,
+     1.022
+    ]
+   },
+   {
+    "commit": "9ed011aa63",
+    "side": "slow",
+    "ratio": 6.42,
+    "ci95": [
+     6.362,
+     6.512
+    ]
+   },
+   {
+    "commit": "cf023e1dc0",
+    "side": "fast",
+    "ratio": 1.005,
+    "ci95": [
+     1.001,
+     1.018
+    ]
+   },
+   {
+    "commit": "79f1e632db",
+    "side": "fast",
+    "ratio": 1.0,
+    "ci95": [
+     0.996,
+     1.003
+    ]
+   }
+  ]
+ },
+ "profile": null,
+ "finding": null,
+ "patch": null,
+ "verification": null,
+ "steps": 15,
+ "tool_calls": 0,
+ "benchmark_comparisons": 0,
+ "llm_tokens": {
+  "prompt": 46800,
+  "completion": 2730,
+  "llm_seconds": 18.139750003814697
+ },
+ "wall_time_s": 18.24,
+ "trace_path": "results/runs/agent-v3-0.5b/traces/heuristic_recompute-1.jsonl",
+ "case": "heuristic_recompute-1",
+ "system": "agent",
+ "model": "qwen2.5-coder:0.5b",
+ "variant": "v3",
+ "run_seconds": 18.26
+}

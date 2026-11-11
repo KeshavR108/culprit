@@ -1,0 +1,93 @@
+{
+ "status": "handoff",
+ "reasons": [
+  "agent did not produce a final answer within the step budget",
+  "no valid patch proposed"
+ ],
+ "initial": {
+  "verdict": "regression",
+  "ratio": 9.456716193158718,
+  "ci_low": 9.38800162649095,
+  "ci_high": 9.509879249319333,
+  "p_slower": 1.6959106954125473e-06,
+  "p_faster": 0.9999986139518094,
+  "median_a_ms": 87.047958,
+  "median_b_ms": 823.187834,
+  "n_rounds": 15,
+  "tau": 0.05,
+  "env": {
+   "cpu": "Apple M4",
+   "cores": 10,
+   "python": "3.13.5",
+   "platform": "macOS-26.1-arm64-arm-64bit-Mach-O",
+   "load_avg_1m": 4.0625
+  },
+  "label_a": "d884153b",
+  "label_b": "ac2322db"
+ },
+ "bisect": {
+  "status": "found",
+  "first_bad_commit": "92e04014b7",
+  "split": 3.075,
+  "subject": "Write pairwise l2 as an explicit double loop",
+  "commits_searched": 16,
+  "steps": 4,
+  "path": [
+   {
+    "commit": "9cfa09d191",
+    "side": "fast",
+    "ratio": 1.002,
+    "ci95": [
+     0.993,
+     1.013
+    ]
+   },
+   {
+    "commit": "d05efbb8e7",
+    "side": "fast",
+    "ratio": 1.004,
+    "ci95": [
+     0.998,
+     1.01
+    ]
+   },
+   {
+    "commit": "3046fcebf5",
+    "side": "slow",
+    "ratio": 9.434,
+    "ci95": [
+     9.375,
+     9.488
+    ]
+   },
+   {
+    "commit": "92e04014b7",
+    "side": "slow",
+    "ratio": 9.435,
+    "ci95": [
+     9.362,
+     9.463
+    ]
+   }
+  ]
+ },
+ "profile": null,
+ "finding": null,
+ "patch": null,
+ "verification": null,
+ "steps": 15,
+ "tool_calls": 0,
+ "benchmark_comparisons": 0,
+ "llm_tokens": {
+  "prompt": 45465,
+  "completion": 2730,
+  "llm_seconds": 16.835102081298828
+ },
+ "wall_time_s": 16.92,
+ "trace_path": "results/runs/agent-v3-0.5b/traces/pairwise_python-0.jsonl",
+ "case": "pairwise_python-0",
+ "system": "agent",
+ "model": "qwen2.5-coder:0.5b",
+ "variant": "v3",
+ "run_seconds": 16.94
+}

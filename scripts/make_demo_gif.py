@@ -16,11 +16,11 @@ COLS, ROWS = 100, 34
 FONT = "/System/Library/Fonts/Menlo.ttc"
 
 
-def record(model: str) -> list[tuple[float, str]]:
-    cmd = [str(ROOT / ".venv" / "bin" / "culprit"), "demo", "--model", model]
+def record(model: str, case: str) -> list[tuple[float, str]]:
+    cmd = [str(ROOT / ".venv" / "bin" / "culprit"), "demo", "--model", model, "--case", case]
     env = {**os.environ, "COLUMNS": str(COLS), "TERM": "dumb", "NO_COLOR": "1"}
     t0 = time.time()
-    lines = [(0.0, f"$ culprit demo --model {model}")]
+    lines = [(0.0, f"$ culprit demo --model {model} --case {case}")]
     p = subprocess.Popen(cmd, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, text=True, env=env, cwd=ROOT)
     for line in p.stdout:
         lines.append((round(time.time() - t0, 2), line.rstrip("\n")))
@@ -59,18 +59,21 @@ def render(lines: list[tuple[float, str]], out: Path) -> None:
         durations.append(110 if l.strip() else 40)
         prev_t = t
     durations[-1] = 6000
+    frames = [f.quantize(colors=16) for f in frames]
     frames[0].save(out, save_all=True, append_images=frames[1:], duration=durations, loop=0, optimize=True)
 
 
 def main():
     p = argparse.ArgumentParser()
     p.add_argument("--model", default="qwen2.5-coder:3b")
+    p.add_argument("--case", default="demo")
+    p.add_argument("--name", default="demo")
     args = p.parse_args()
-    lines = record(args.model)
-    (RESULTS / "demo_cast.json").write_text(json.dumps(lines, indent=0))
-    (RESULTS / "demo_output.txt").write_text("\n".join(l for _, l in lines) + "\n")
-    render(lines, RESULTS / "demo.gif")
-    print(f"recorded {len(lines)} lines over {lines[-1][0]:.0f}s -> {RESULTS / 'demo.gif'}")
+    lines = record(args.model, args.case)
+    (RESULTS / f"{args.name}_cast.json").write_text(json.dumps(lines, indent=0))
+    (RESULTS / f"{args.name}_output.txt").write_text("\n".join(l for _, l in lines) + "\n")
+    render(lines, RESULTS / f"{args.name}.gif")
+    print(f"recorded {len(lines)} lines over {lines[-1][0]:.0f}s -> {RESULTS / (args.name + '.gif')}")
 
 
 if __name__ == "__main__":

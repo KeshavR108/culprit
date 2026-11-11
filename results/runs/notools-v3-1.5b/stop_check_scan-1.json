@@ -1,0 +1,40 @@
+{
+ "status": "handoff",
+ "initial": {
+  "verdict": "regression",
+  "ratio": 1.0609624425082218,
+  "ci_low": 1.0530095557293413,
+  "ci_high": 1.0702616599477586,
+  "p_slower": 1.6959106954125473e-06,
+  "p_faster": 0.9999986139518094,
+  "median_a_ms": 16.696083,
+  "median_b_ms": 17.713917,
+  "n_rounds": 15,
+  "tau": 0.05,
+  "label_a": "d884153b",
+  "label_b": "b6e6a9eb"
+ },
+ "finding": {
+  "culprit_commit": "eda99346184a7d20ae0faf54f0916a84caf8d66c",
+  "file": "src/hnsw/index.py",
+  "line": 105,
+  "explanation": "The new code checks if the current candidate's distance is greater than the maximum distance of the existing candidates in the window W. This ensures that we only expand the window if the new candidate is closer than the worst candidate in the window, which can prevent the search from getting stuck in a local minimum.",
+  "patch": null,
+  "confidence": "high"
+ },
+ "reasons": [
+  "patch invalid: old_code was not found in the file; copy it exactly from read_file (without the line-number prefix)"
+ ],
+ "llm_tokens": {
+  "prompt": 340,
+  "completion": 152,
+  "llm_seconds": 2.1360719203948975
+ },
+ "benchmark_comparisons": 0,
+ "wall_time_s": 2.26,
+ "case": "stop_check_scan-1",
+ "system": "notools",
+ "model": "qwen2.5-coder:1.5b",
+ "variant": null,
+ "run_seconds": 2.26
+}

@@ -12,12 +12,12 @@ laptop makes them noisier (Culprit will say "inconclusive" rather than guess, bu
 make test
 ```
 
-Expected: `31 passed` in about a minute. What they cover:
+Expected: `30 passed` in about 35 seconds. What they cover:
 
 | file | what it proves |
 |---|---|
 | `tests/test_measure.py` (7) | identical code → `no_regression` ≥ 95% of 40 checks; a `time.sleep` that doubles runtime → `regression` 20/20; heavy random noise → `inconclusive`, never a false alarm; one huge outlier doesn't fake a regression |
-| `tests/test_tools.py` (15) | path traversal and symlink escapes rejected; only allowlisted commands run (`rm`, `bash -c`, `python -c`, `git push`, `git reset` all refused); timeouts enforced; **no network** and **no writes outside the sandbox** (macOS `sandbox-exec`); every tool works on a real tiny git repo; a "fast but wrong" patch is NOT verified because tests fail |
+| `tests/test_tools.py` (14) | path traversal and symlink escapes rejected; only allowlisted commands run (`rm`, `bash -c`, `python -c`, `git push`, `git reset` all refused); timeouts enforced; **no network** and **no writes outside the sandbox** (macOS `sandbox-exec`); every tool works on a real tiny git repo; a "fast but wrong" patch is NOT verified because tests fail |
 | `tests/test_agent.py` (9) | the agent loop with a scripted fake LLM: happy path verified; wrong commit, low confidence, budget exhausted, invented arguments → all handed off; v2 evidence gate rejects a premature answer |
 
 `make test-fast` skips the real-timing tests (about 20 s).
@@ -40,8 +40,11 @@ Check the report makes sense:
 - Section 2: did bisect name the "Simplify visited tracking" commit? Look at the bisect table:
   each step is "slow" or "fast" relative to the split point.
 - Section 4: is the root cause `src/hnsw/index.py`, near the `visited = list(...)` line?
-- If it says **HANDED OFF**, read *why*: that's the system working as designed when the small
-  model didn't produce a verified fix. Running it again measures everything fresh; the LLM runs
+- With the 3B model this case ends **HANDED OFF** (the model runs out of steps before writing a
+  working patch). Read *why* in the report: that's the system working as designed.
+- To see a verified fix end to end, run `.venv/bin/culprit demo --case debug_log-1`: one of the 2
+  cases (of 36) the 3B agent verifies. It removes a debug-log line from the hot loop; the patched
+  copy measures at about 0.87× of the bad commit's time, and the tests pass. Running it again measures everything fresh; the LLM runs
   at temperature 0, so expect the same decisions unless timing noise changes a measurement.
 
 The report and the full step trace are saved under `runs/demo-<time>/`.

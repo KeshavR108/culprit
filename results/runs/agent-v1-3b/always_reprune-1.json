@@ -1,0 +1,108 @@
+{
+ "status": "handoff",
+ "reasons": [
+  "no valid patch proposed"
+ ],
+ "initial": {
+  "verdict": "regression",
+  "ratio": 1.2248751242723412,
+  "ci_low": 1.2157447725449269,
+  "ci_high": 1.235659879921935,
+  "p_slower": 1.6959106954125473e-06,
+  "p_faster": 0.9999986139518094,
+  "median_a_ms": 88.003291,
+  "median_b_ms": 107.793042,
+  "n_rounds": 15,
+  "tau": 0.05,
+  "env": {
+   "cpu": "Apple M4",
+   "cores": 10,
+   "python": "3.13.5",
+   "platform": "macOS-26.1-arm64-arm-64bit-Mach-O",
+   "load_avg_1m": 3.4228515625
+  },
+  "label_a": "d884153b",
+  "label_b": "cd37bf04"
+ },
+ "bisect": {
+  "status": "found",
+  "first_bad_commit": "2ea2bd3598",
+  "split": 1.107,
+  "subject": "Keep reverse links well-chosen on every insert; tidy comments",
+  "commits_searched": 27,
+  "steps": 5,
+  "path": [
+   {
+    "commit": "90f37af43a",
+    "side": "slow",
+    "ratio": 1.223,
+    "ci95": [
+     1.216,
+     1.23
+    ]
+   },
+   {
+    "commit": "f3eae12122",
+    "side": "fast",
+    "ratio": 0.996,
+    "ci95": [
+     0.99,
+     1.008
+    ]
+   },
+   {
+    "commit": "2ea2bd3598",
+    "side": "slow",
+    "ratio": 1.22,
+    "ci95": [
+     1.21,
+     1.236
+    ]
+   },
+   {
+    "commit": "8bbd955aef",
+    "side": "fast",
+    "ratio": 1.0,
+    "ci95": [
+     0.993,
+     1.005
+    ]
+   },
+   {
+    "commit": "f883adb52a",
+    "side": "fast",
+    "ratio": 0.996,
+    "ci95": [
+     0.988,
+     1.006
+    ]
+   }
+  ]
+ },
+ "profile": null,
+ "finding": {
+  "culprit_commit": "2ea2bd3598",
+  "file": "src/algorithm.py",
+  "line": 100,
+  "explanation": "The commit introduces a change to the `keep_reverse_links` function, which is responsible for maintaining reverse links in the data structure. This change may have introduced additional overhead or inefficiencies, causing the benchmark to slow down.",
+  "patch": null,
+  "confidence": "medium"
+ },
+ "patch": null,
+ "verification": null,
+ "steps": 2,
+ "tool_calls": 1,
+ "benchmark_comparisons": 0,
+ "llm_tokens": {
+  "prompt": 3770,
+  "completion": 103,
+  "llm_seconds": 4.138907194137573
+ },
+ "wall_time_s": 4.3,
+ "trace_path": "results/runs/agent-v1-3b/traces/always_reprune-1.jsonl",
+ "case": "always_reprune-1",
+ "system": "agent",
+ "model": "qwen2.5-coder:3b",
+ "variant": "v1",
+ "run_seconds": 4.32
+}

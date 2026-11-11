@@ -1,0 +1,40 @@
+{
+ "status": "handoff",
+ "initial": {
+  "verdict": "regression",
+  "ratio": 3.611374690864533,
+  "ci_low": 3.5843786710418377,
+  "ci_high": 3.6623511969572675,
+  "p_slower": 1.6959106954125473e-06,
+  "p_faster": 0.9999986139518094,
+  "median_a_ms": 16.730125,
+  "median_b_ms": 60.41875,
+  "n_rounds": 15,
+  "tau": 0.05,
+  "label_a": "d884153b",
+  "label_b": "76685c28"
+ },
+ "finding": {
+  "culprit_commit": "b70e661cb8720036a4437e24b686ab38603aa9da",
+  "file": "src/hnsw/index.py",
+  "line": 236,
+  "explanation": "Increasing ef from 10 to 64 can lead to slower performance because it increases the number of nodes that need to be visited during the search process. This is because ef determines the number of neighbors to consider for each node during the search, and a larger ef means more neighbors to consider, which can increase the time complexity of the search.",
+  "patch": null,
+  "confidence": "medium"
+ },
+ "reasons": [
+  "patch invalid: old_code was not found in the file; copy it exactly from read_file (without the line-number prefix)"
+ ],
+ "llm_tokens": {
+  "prompt": 404,
+  "completion": 151,
+  "llm_seconds": 9.7571542263031
+ },
+ "benchmark_comparisons": 0,
+ "wall_time_s": 10.02,
+ "case": "ef_default-1",
+ "system": "notools",
+ "model": "qwen2.5-coder:3b",
+ "variant": null,
+ "run_seconds": 10.02
+}

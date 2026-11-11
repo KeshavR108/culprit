@@ -1,0 +1,40 @@
+{
+ "status": "handoff",
+ "initial": {
+  "verdict": "regression",
+  "ratio": 1.1032094952540779,
+  "ci_low": 1.0808460890682687,
+  "ci_high": 1.1085703617264013,
+  "p_slower": 1.6959106954125473e-06,
+  "p_faster": 0.9999986139518094,
+  "median_a_ms": 16.833083,
+  "median_b_ms": 18.570417,
+  "n_rounds": 15,
+  "tau": 0.05,
+  "label_a": "d884153b",
+  "label_b": "e4de2af2"
+ },
+ "finding": {
+  "culprit_commit": "b5792e59e7d2d1d35d64a1b63f4310c82f075ecb",
+  "file": "src/hnsw/index.py",
+  "line": 113,
+  "explanation": "The new code appends the new element to the list C and then calls heapify to maintain the heap property. This operation is O(n) in the worst case, where n is the number of elements in C. The old code uses heapq.heappush, which is O(log n) in the worst case, but since it is called for each element in the unvisited set, the overall complexity becomes O(n log n) for each insertion, which is slower than the previous implementation.",
+  "patch": null,
+  "confidence": "medium"
+ },
+ "reasons": [
+  "patch invalid: old_code was not found in the file; copy it exactly from read_file (without the line-number prefix)"
+ ],
+ "llm_tokens": {
+  "prompt": 346,
+  "completion": 178,
+  "llm_seconds": 12.880478382110596
+ },
+ "benchmark_comparisons": 0,
+ "wall_time_s": 13.16,
+ "case": "heapify_each-0",
+ "system": "notools",
+ "model": "qwen2.5-coder:3b",
+ "variant": null,
+ "run_seconds": 13.16
+}

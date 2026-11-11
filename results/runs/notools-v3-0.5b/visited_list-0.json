@@ -1,0 +1,40 @@
+{
+ "status": "handoff",
+ "initial": {
+  "verdict": "regression",
+  "ratio": 1.3559052919982308,
+  "ci_low": 1.341060730760782,
+  "ci_high": 1.3729606312131313,
+  "p_slower": 1.6959106954125473e-06,
+  "p_faster": 0.9999986139518094,
+  "median_a_ms": 16.972209,
+  "median_b_ms": 23.012708,
+  "n_rounds": 15,
+  "tau": 0.05,
+  "label_a": "d884153b",
+  "label_b": "e75d9672"
+ },
+ "finding": {
+  "culprit_commit": "3fee7bb0781ffa02607cb6ee9ff1e6dbdda14d1f",
+  "file": "src/hnsw/index.py",
+  "line": 93,
+  "explanation": "The current implementation of the `HNSWIndex` class has a time complexity of O(n log n) for the `__init__` method, which is slower than the expected O(n log k) time complexity for the `__getitem__` method.",
+  "patch": null,
+  "confidence": "low"
+ },
+ "reasons": [
+  "patch invalid: old_code was not found in the file; copy it exactly from read_file (without the line-number prefix)"
+ ],
+ "llm_tokens": {
+  "prompt": 435,
+  "completion": 135,
+  "llm_seconds": 0.8815889358520508
+ },
+ "benchmark_comparisons": 0,
+ "wall_time_s": 1.0,
+ "case": "visited_list-0",
+ "system": "notools",
+ "model": "qwen2.5-coder:0.5b",
+ "variant": null,
+ "run_seconds": 1.0
+}

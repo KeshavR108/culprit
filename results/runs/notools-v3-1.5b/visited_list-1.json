@@ -1,0 +1,40 @@
+{
+ "status": "handoff",
+ "initial": {
+  "verdict": "regression",
+  "ratio": 1.361667289608733,
+  "ci_low": 1.3489690296897303,
+  "ci_high": 1.3785784666731815,
+  "p_slower": 1.6959106954125473e-06,
+  "p_faster": 0.9999986139518094,
+  "median_a_ms": 16.8555,
+  "median_b_ms": 22.951583,
+  "n_rounds": 15,
+  "tau": 0.05,
+  "label_a": "d884153b",
+  "label_b": "58109545"
+ },
+ "finding": {
+  "culprit_commit": "581095457615937a84f5f96807dc1069e4cc6640",
+  "file": "src/hnsw/index.py",
+  "line": 112,
+  "explanation": "The old code uses a set to track visited entries, which is more efficient than a list. However, the new code uses a list to track visited entries, which can lead to slower performance due to the overhead of list operations.",
+  "patch": null,
+  "confidence": "low"
+ },
+ "reasons": [
+  "patch invalid: old_code was not found in the file; copy it exactly from read_file (without the line-number prefix)"
+ ],
+ "llm_tokens": {
+  "prompt": 446,
+  "completion": 111,
+  "llm_seconds": 1.7107038497924805
+ },
+ "benchmark_comparisons": 0,
+ "wall_time_s": 1.82,
+ "case": "visited_list-1",
+ "system": "notools",
+ "model": "qwen2.5-coder:1.5b",
+ "variant": null,
+ "run_seconds": 1.82
+}

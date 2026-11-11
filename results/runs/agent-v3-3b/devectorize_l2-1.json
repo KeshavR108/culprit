@@ -1,0 +1,163 @@
+{
+ "status": "handoff",
+ "reasons": [
+  "patch gives no significant speedup"
+ ],
+ "initial": {
+  "verdict": "regression",
+  "ratio": 2.5192629348130984,
+  "ci_low": 2.4976547515143674,
+  "ci_high": 2.5353108810875224,
+  "p_slower": 1.6959106954125473e-06,
+  "p_faster": 0.9999986139518094,
+  "median_a_ms": 17.194083,
+  "median_b_ms": 43.316416,
+  "n_rounds": 15,
+  "tau": 0.05,
+  "env": {
+   "cpu": "Apple M4",
+   "cores": 10,
+   "python": "3.13.5",
+   "platform": "macOS-26.1-arm64-arm-64bit-Mach-O",
+   "load_avg_1m": 4.24365234375
+  },
+  "label_a": "d884153b",
+  "label_b": "05b229f8"
+ },
+ "bisect": {
+  "status": "found",
+  "first_bad_commit": "33c43ddae9",
+  "split": 1.587,
+  "subject": "Write l2 distance as an explicit loop; tidy comments",
+  "commits_searched": 24,
+  "steps": 5,
+  "path": [
+   {
+    "commit": "0dc90bc3b8",
+    "side": "fast",
+    "ratio": 0.998,
+    "ci95": [
+     0.992,
+     1.005
+    ]
+   },
+   {
+    "commit": "7e6bd7f7fa",
+    "side": "fast",
+    "ratio": 1.001,
+    "ci95": [
+     0.993,
+     1.008
+    ]
+   },
+   {
+    "commit": "51f1c14fae",
+    "side": "fast",
+    "ratio": 1.002,
+    "ci95": [
+     0.995,
+     1.01
+    ]
+   },
+   {
+    "commit": "937f8e7199",
+    "side": "fast",
+    "ratio": 0.99,
+    "ci95": [
+     0.983,
+     1.004
+    ]
+   },
+   {
+    "commit": "33c43ddae9",
+    "side": "slow",
+    "ratio": 2.485,
+    "ci95": [
+     2.444,
+     2.533
+    ]
+   }
+  ]
+ },
+ "profile": null,
+ "finding": {
+  "culprit_commit": "33c43ddae9",
+  "file": "src/hnsw/distance.py",
+  "line": 41,
+  "explanation": "The change to compute the L2 distance as an explicit loop instead of using `np.einsum` likely caused the slowdown. The explicit loop might be more computationally intensive, especially for large datasets.",
+  "patch": null,
+  "confidence": "medium"
+ },
+ "patch": {
+  "diff": "--- a/src/hnsw/distance.py\n+++ b/src/hnsw/distance.py\n@@ -41,6 +41,7 @@\n     diff = X - q\n     # einsum computes the row-wise dot product diff[i] . diff[i] without\n     # building another (n, d) temporary like (diff ** 2).sum(1) would.\n+    return np.array([np.einsum(\"j,j->\", row, row) for row in diff], dtype=diff.dtype)\n     return np.array([np.einsum(\"j,j->\", row, row) for row in diff], dtype=diff.dtype)\n \n \n",
+  "files": [
+   "src/hnsw/distance.py"
+  ],
+  "lines_changed": 1
+ },
+ "verification": {
+  "applied": true,
+  "tests_passed": null,
+  "tests_output": "",
+  "speedup": {
+   "verdict": "no_regression",
+   "ratio": 1.0057190063568138,
+   "ci_low": 0.9963623084730509,
+   "ci_high": 1.0149645149419295,
+   "p_slower": 0.13137652057383037,
+   "p_faster": 0.8772574993984379,
+   "median_a_ms": 41.156625,
+   "median_b_ms": 41.392,
+   "n_rounds": 15,
+   "tau": 0.05,
+   "env": {
+    "cpu": "Apple M4",
+    "cores": 10,
+    "python": "3.13.5",
+    "platform": "macOS-26.1-arm64-arm-64bit-Mach-O",
+    "load_avg_1m": 4.40234375
+   },
+   "label_a": "05b229f8",
+   "label_b": "patched"
+  },
+  "vs_good": {
+   "verdict": "regression",
+   "ratio": 2.4463177641653906,
+   "ci_low": 2.420372650193925,
+   "ci_high": 2.4736953787743965,
+   "p_slower": 1.6959106954125473e-06,
+   "p_faster": 0.9999986139518094,
+   "median_a_ms": 16.978,
+   "median_b_ms": 41.533583,
+   "n_rounds": 15,
+   "tau": 0.05,
+   "env": {
+    "cpu": "Apple M4",
+    "cores": 10,
+    "python": "3.13.5",
+    "platform": "macOS-26.1-arm64-arm-64bit-Mach-O",
+    "load_avg_1m": 4.40234375
+   },
+   "label_a": "d884153b",
+   "label_b": "patched"
+  },
+  "significant_speedup": false,
+  "verified": false,
+  "error": null
+ },
+ "steps": 10,
+ "tool_calls": 6,
+ "benchmark_comparisons": 0,
+ "llm_tokens": {
+  "prompt": 27960,
+  "completion": 727,
+  "llm_seconds": 20.92168164253235
+ },
+ "wall_time_s": 21.47,
+ "trace_path": "results/runs/agent-v3-3b/traces/devectorize_l2-1.jsonl",
+ "case": "devectorize_l2-1",
+ "system": "agent",
+ "model": "qwen2.5-coder:3b",
+ "variant": "v3",
+ "run_seconds": 21.56
+}
